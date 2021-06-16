@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     //public TextMeshProUGUI countText;
     private Animator anim;
     public float forwardMaxSpeed;
+    public Camera cam;
+
     public Transform spine;
 
     // Start is called before the first frame update
@@ -39,8 +41,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
-        anim.SetFloat("vely", movementY);
-        anim.SetFloat("velx", movementX);
+
         Debug.Log("onMove " + movementY.ToString());
 
         //rb.MovePosition(rb.position + this.transform.forward * movementY */* Time.deltaTime */ forwardMaxSpeed);
@@ -49,15 +50,13 @@ public class PlayerController : MonoBehaviour
     void OnYLook(InputValue look)
     {
         
-        float ychange = look.Get<float>();
-        Debug.Log("onyLook " + ychange);
-        //float RotationX = HorizontalSensitivity * this.InputsManager.MouseX * Time.deltaTime;
-        float RotationY = ychange ;
-        Debug.Log("onLooktransform " + RotationY);
+        Vector2 mousepos = look.Get<Vector2>();
+        Debug.Log("mousepos " + mousepos.ToString() );
+        Vector3 point = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));
+        float t = cam.transform.position.y / (cam.transform.position.y - point.y);
+        Vector3 finalPoint = new Vector3(t * (point.x - cam.transform.position.x) + cam.transform.position.x, 0.4f, t * (point.z - cam.transform.position.z) + cam.transform.position.z);
 
-        // lock players x axis rotation when aiming vertically so feet stay on ground
-        spine.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, RotationY, transform.rotation.eulerAngles.z); 
-        
+        transform.LookAt(finalPoint, Vector3.up);
     }   
     void OnLeftAttack(InputValue movementValue)
     {
@@ -72,21 +71,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void OnJump(InputValue movementValue)
     {
-        rb.AddForce(new Vector3(0.0f, 0.4f, 0.0f) * speed, ForceMode.Impulse);
+        //anim.SetTrigger("Jump");
+        rb.AddForce(new Vector3(0.0f, 0.4f, 0.0f) * 20 * speed, ForceMode.VelocityChange);
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+        anim.SetFloat("vely", rb.velocity.z  );
+        anim.SetFloat("velx", rb.velocity.x  );
+
         Vector3 movementVector = new Vector3(movementX, 0.0f, movementY);
         if(movementVector != Vector3.zero )  {
             Debug.Log("Adding force: " + movementVector.ToString() + " " + speed);
-            rb.AddForce(movementVector * speed);
+            rb.AddForce(movementVector * speed, ForceMode.VelocityChange);
         }
     }
     void Update() 
     {
-
-// anim.SetFloat("velx", inputTurn);
+        // anim.SetFloat("velx", inputTurn);
     }
 
     private void OnTriggerEnter(Collider other)

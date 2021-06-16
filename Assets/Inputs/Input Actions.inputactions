@@ -215,10 +215,10 @@
                 {
                     "name": "",
                     "id": "d36591fa-1a57-4bae-87a8-fde559f9f91f",
-                    "path": "<Mouse>/position/y",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "Keyboard&Mouse;Touch;Joystick",
                     "action": "YLook",
                     "isComposite": false,
                     "isPartOfComposite": false
