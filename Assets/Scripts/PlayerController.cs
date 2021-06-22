@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour
         rb.useGravity = false;
         yield return new WaitForSeconds(dashForceDelay);
         dashImpulsing = true;
-        yield return new WaitForSeconds(0.2f);
         rb.useGravity = true;
         isDashing = false;
     }
