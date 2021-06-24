@@ -18,12 +18,9 @@ public class GoalBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == ball) { 
+        if(other.gameObject == ball/* and recentgoal = false*/) { 
             //Goal!
-            ball.transform.position = ballSpawn.transform.position;
-            ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            team.score = team.score + 1;
+            team.ScoreGoal();
         }
     }
     // Update is called once per frame
