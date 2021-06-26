@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Collider collider;
     public float forwardMaxSpeed;
     public Camera cam;
-
+    
     public Transform spine;
     public float fallMultiplier;
     public float lowJumpMultiplier;
@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
     public float attackDashStrength;
     public float dashForceDelay;
     private bool dashImpulsing = false;
+
+    private float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    static Vector3 moveDir = new Vector3(0f, 0f, 0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +56,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
-
+        
         //Debug.Log("onMove " + movementY.ToString());
 
     }
@@ -85,10 +90,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 movementVector = new Vector3(movementX, 0.0f, movementY);
+        Vector3 movementVector = new Vector3(movementX, 0.0f, movementY).normalized;
+
+        if (movementVector.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(movementVector.x, movementVector.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+        }
+
+        else
+            moveDir = new Vector3(0f, 0f, 0f);
+
 
         //Debug.Log("MovementVect: " + rb.velocity.magnitude.ToString() );
-        if(movementVector == Vector3.zero){
+        if (moveDir == Vector3.zero){
             if(Math.Abs(rb.velocity.x) > 0.1f || Math.Abs(rb.velocity.z) > 0.1f && isGrounded){
                 //Debug.Log("STOPPING: " + rb.velocity.magnitude.ToString() );
                 rb.AddForce(rb.velocity * -0.4f , ForceMode.Impulse);
@@ -96,7 +116,7 @@ public class PlayerController : MonoBehaviour
         } else {
             if(isGrounded && rb.velocity.magnitude <= forwardMaxSpeed)  {
             //Debug.Log("Adding force: " + movementVector.ToString() + " " + speed);
-                rb.AddForce(movementVector * speed, ForceMode.VelocityChange);
+                rb.AddForce(moveDir * speed, ForceMode.VelocityChange);
             }
         }
         if(!isDashing){
@@ -127,14 +147,24 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("vely", rb.velocity.z);
         isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + 0.1f);
 
+        //pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));
+        //float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
+        //directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
+        //transform.LookAt(directionFacing, Vector3.up);
 
-        pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));
-        float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
-        directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
+        //Debug.Log("Left: " + Vector3.left);
+        //Debug.Log("Up: " + Vector3.up);
+        //Debug.Log("directionFacing: " + directionFacing);
+
+
+        //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+        //transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        // moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
         //anim.SetFloat("velx", rb.velocity.x  );
         // anim.SetFloat("velx", inputTurn);
-        transform.LookAt(directionFacing, Vector3.up);
+
 
     }
 
