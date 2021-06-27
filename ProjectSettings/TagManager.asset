@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - Ball
+  - EnemyGoal
   layers:
   - Default
   - TransparentFX
