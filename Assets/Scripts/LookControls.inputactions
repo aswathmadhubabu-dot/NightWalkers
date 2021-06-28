@@ -12,6 +12,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "CompositeLook",
+                    "type": "PassThrough",
+                    "id": "76f23d9c-ebf8-4170-b23c-2c0c23ffd4c9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -25,6 +33,61 @@
                     "action": "MouseLook",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "426d1e7a-8995-4bae-88b9-da6744a2c53f",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompositeLook",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f010ad60-ff7e-40e7-a870-b198f708594a",
+                    "path": "<Keyboard>/#(-)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompositeLook",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "85e739a8-e61f-4dcb-ad6c-1dda75794283",
+                    "path": "<Keyboard>/#(=)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompositeLook",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "7ac26f18-cce2-449d-addf-e733288f54c1",
+                    "path": "<Keyboard>/#(Q)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompositeLook",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b19b9864-c6ad-451c-af34-845c530d1036",
+                    "path": "<Keyboard>/#(E)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CompositeLook",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
