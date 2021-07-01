@@ -57,9 +57,9 @@ public class PlayerController : MonoBehaviour
     }
     void OnYLook(InputValue look)
     {
-        
         mousepos = look.Get<Vector2>();
-    
+        Debug.Log("YLOOK: " + mousepos.ToString());
+
     }   
     void OnLeftAttack(InputValue movementValue)
     {
@@ -88,11 +88,17 @@ public class PlayerController : MonoBehaviour
         Vector3 movementVector = new Vector3(movementX, 0.0f, movementY);
 
         //Debug.Log("MovementVect: " + rb.velocity.magnitude.ToString() );
-        if(movementVector == Vector3.zero){
-            if(Math.Abs(rb.velocity.x) > 0.1f || Math.Abs(rb.velocity.z) > 0.1f && isGrounded){
+        if(movementVector == Vector3.zero || dashImpulsing ){
+            if(Math.Abs(rb.velocity.x) > 0.1f && isGrounded || Math.Abs(rb.velocity.z) > 0.1f && isGrounded){
                 //Debug.Log("STOPPING: " + rb.velocity.magnitude.ToString() );
                 rb.AddForce(rb.velocity * -0.4f , ForceMode.Impulse);
+            } else {
+                if(Math.Abs(rb.velocity.x) > 0.1f || Math.Abs(rb.velocity.z) > 0.1f){
+                    //Debug.Log("STOPPING: " + rb.velocity.magnitude.ToString() );
+                    rb.AddForce(rb.velocity * -0.6f , ForceMode.Impulse);
+                }
             }
+
         } else {
             if(isGrounded && rb.velocity.magnitude <= forwardMaxSpeed)  {
             //Debug.Log("Adding force: " + movementVector.ToString() + " " + speed);
@@ -127,14 +133,19 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("vely", rb.velocity.z);
         isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + 0.1f);
 
+        if(GetComponent<PlayerInput>().currentControlScheme.ToString() != "Gamepad" ){
+            pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));Debug.Log(pointerDirection);
+            float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
+            directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
+            transform.LookAt(directionFacing, Vector3.up);
 
-        pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));
-        float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
-        directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
-
+        } else {
+            directionFacing = new Vector3(mousepos.x, 0, mousepos.y);
+            transform.rotation = Quaternion.LookRotation(directionFacing);
+        }
+        
         //anim.SetFloat("velx", rb.velocity.x  );
         // anim.SetFloat("velx", inputTurn);
-        transform.LookAt(directionFacing, Vector3.up);
 
     }
 
