@@ -38,14 +38,23 @@ public class MatchController : MonoBehaviour
         timeText.text = minutes.ToString() + " : " + seconds.ToString();
     }
 
-    public void NewGoal(TeamScript team){
-        goalText.text = "" + team.teamName + " Goal!";
-        StartCoroutine(ResetPlayersAndBall());
+    public void NewGoal(TeamScript happyTeam ){
+        goalText.text = "" + happyTeam.teamName + " Goal!";
+        StartCoroutine(ResetPlayersAndBall(happyTeam));
     }
 
-    IEnumerator ResetPlayersAndBall(){
+    IEnumerator ResetPlayersAndBall(TeamScript happyTeam){
         recentGoal = true;
         goalText.enabled = true;
+        TeamScript angryTeam;
+        if(teamA.name == happyTeam.name){
+            angryTeam = teamB;
+        } else {
+            angryTeam = teamA;
+        }
+        setAngry(angryTeam);
+        setHappy(happyTeam);
+
 
         yield return new WaitForSeconds(goalTimeout);
         
@@ -55,6 +64,8 @@ public class MatchController : MonoBehaviour
         
         resetPlayerPos(teamA);
         resetPlayerPos(teamB);
+        setNormal(teamA);
+        setNormal(teamB);
 
         goalText.enabled = false;
         recentGoal = false;
@@ -67,5 +78,19 @@ public class MatchController : MonoBehaviour
             player.transform.position = team.playerSpawn.transform.position;
         }
     }
-
+    void setHappy(TeamScript team){
+        foreach (GameObject player in team.players){
+            player.GetComponent<Animator>().SetInteger("Emotion", 1);
+        }
+    }
+    void setAngry(TeamScript team){
+        foreach (GameObject player in team.players){
+            player.GetComponent<Animator>().SetInteger("Emotion", 2);
+        }
+    }
+    void setNormal(TeamScript team){
+        foreach (GameObject player in team.players){
+            player.GetComponent<Animator>().SetInteger("Emotion", 0);
+        }
+    }
 }

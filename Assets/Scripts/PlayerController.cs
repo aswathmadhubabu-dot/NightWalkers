@@ -134,14 +134,15 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + 0.1f);
 
         if(GetComponent<PlayerInput>().currentControlScheme.ToString() != "Gamepad" ){
-            pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));Debug.Log(pointerDirection);
-            float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
-            directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
-            transform.LookAt(directionFacing, Vector3.up);
-
+                pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));Debug.Log(pointerDirection);
+                float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
+                directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
+                transform.LookAt(directionFacing, Vector3.up);
         } else {
-            directionFacing = new Vector3(mousepos.x, 0, mousepos.y);
-            transform.rotation = Quaternion.LookRotation(directionFacing);
+            if(Math.Abs(mousepos.x) >= .1f & Math.Abs(mousepos.y) >= .1f){
+                directionFacing = new Vector3(mousepos.x, 0, mousepos.y);
+                transform.rotation = Quaternion.LookRotation(directionFacing);
+            }
         }
         
         //anim.SetFloat("velx", rb.velocity.x  );
