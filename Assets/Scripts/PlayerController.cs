@@ -124,15 +124,15 @@ public class PlayerController : MonoBehaviour
         {
             if (rb.velocity.y < 0)
             {
-                rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
             else if (rb.velocity.y < 7f)
             {
-                rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
             else if (rb.velocity.y > 0 && !jumping)
             {
-                rb.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
+                rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         }
 
@@ -171,8 +171,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            directionFacing = new Vector3(mousepos.x, 0, mousepos.y);
-            transform.rotation = Quaternion.LookRotation(directionFacing);
+            if (Math.Abs(mousepos.x) >= .1f & Math.Abs(mousepos.y) >= .1f)
+            {
+                directionFacing = new Vector3(mousepos.x, 0, mousepos.y);
+                transform.rotation = Quaternion.LookRotation(directionFacing);
+            }
         }
 
         //anim.SetFloat("velx", rb.velocity.x  );
