@@ -21,6 +21,7 @@ public class GoalBehaviourScript : MonoBehaviour
         if(other.gameObject == ball/* and recentgoal = false*/) { 
             //Goal!
             team.ScoreGoal();
+            EventManager.TriggerEvent<HitGoalEvent, Vector3>(other.transform.position);
         }
     }
     // Update is called once per frame
