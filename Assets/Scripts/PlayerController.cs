@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Collider collider;
     public float forwardMaxSpeed;
-    public Camera cam;
+    private Camera cam;
 
     public Transform spine;
     public float fallMultiplier;
@@ -31,11 +31,37 @@ public class PlayerController : MonoBehaviour
     public float dashForceDelay;
     private bool dashImpulsing = false;
     // Start is called before the first frame update
+
+    //NEW FROM MULTIPLAYER
+    private PlayerConfiguration playerConfig;
+    private SkinnedMeshRenderer playerMesh;
+
+    private InputActions controls;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         collider = GetComponent<Collider>();
+        controls = new InputActions();
+        playerMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        cam =  GameObject.Find("MainCamera").GetComponent<Camera>();
+    }
+
+    public void InitializePlayer(PlayerConfiguration pc)
+    {
+        playerConfig = pc;
+        playerMesh.material = pc.PlayerMaterial;
+        playerConfig.Input.onActionTriggered += Input_onActionTriggered;
+
+    }
+
+    private void Input_onActionTriggered(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if(obj.action.name == controls.Player.Move.name)
+        {
+            this.OnMove(obj.ReadValue<Vector2>());
+        }
     }
 
     /*void SetCountText()
@@ -46,9 +72,9 @@ public class PlayerController : MonoBehaviour
         }
     }*/
     // Update is called once per frame
-    void OnMove(InputValue movementValue)
+    void OnMove(Vector2 movementVector)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
+        //Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
 

@@ -12,9 +12,8 @@ public class PlayerConfigurationManager : MonoBehaviour
     private int MaxPlayers = 6;
 
     public static PlayerConfigurationManager Instance {get; private set;}
-
-    private void Awake(){
-        if(Instance == null)
+    void Awake(){
+        if(Instance != null)
         {
             Debug.Log("SINGLETON - Trying to create another instance of singleton!!");
             
@@ -22,9 +21,12 @@ public class PlayerConfigurationManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfiguration>();
+            //Debug.Log("CREATING INITIAL!!");
         }
     }
-     
+    public List<PlayerConfiguration> GetPlayerConfigs(){
+        return playerConfigs;
+    }
     public void SetPlayerColor(int index, Material color)
     {
         playerConfigs[index].PlayerMaterial = color;
@@ -32,19 +34,22 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].IsReady = true;
-        if(playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady))
+        if(playerConfigs.Count >= 1 && playerConfigs.All(p => p.IsReady))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Minigame");
         }
     }
     public void HandlePlayerJoin(PlayerInput pi)
     {
         Debug.Log("Player joined " + pi.playerIndex);
+        Debug.Log("Total Players" + (playerConfigs.Count + 1 ).ToString());
+
         if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
+
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(pi));
-            
+
         }
     }
 
@@ -56,8 +61,8 @@ public class PlayerConfiguration
         PlayerIndex = pi.playerIndex;
         Input = pi;
     }
-    public PlayerInput Input { get; set;}
-    public int PlayerIndex { get; set; }
+    public PlayerInput Input { get; private set;}
+    public int PlayerIndex { get; private set; }
     
     public bool IsReady {get; set;}
 
