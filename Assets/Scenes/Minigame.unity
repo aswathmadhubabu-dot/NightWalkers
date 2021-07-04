@@ -383,7 +383,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 770598484}
+  - {fileID: 2075016200}
   - {fileID: 2108733617}
+  - {fileID: 783419534}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,9 +401,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29881ccfd8637c84bbd7dfc5377a2f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawns:
+  teamOrangePlayerSpawns:
   - {fileID: 770598484}
+  - {fileID: 2075016200}
+  teamBluePlayerSpawns:
   - {fileID: 2108733617}
+  - {fileID: 783419534}
   playerPrefabs: {fileID: 231380171898691278, guid: c7f19e5a770fc234695c53bf27c4e87d,
     type: 3}
   cam: {fileID: 1405210650}
@@ -630,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 770598484}
   m_Layer: 0
-  m_Name: TeamAPlayerSpawn
+  m_Name: P1TeamOrangeSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,7 +649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770598483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: -3.91}
+  m_LocalPosition: {x: 5, y: 0.75, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 216335937}
@@ -742,6 +747,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: 50, z: 0}
+--- !u!1 &783419533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 783419534}
+  m_Layer: 0
+  m_Name: P2TeamBlueSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &783419534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783419533}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -5, y: 0.75, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 216335937}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &797832007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1175,7 @@ PrefabInstance:
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: teamName
-      value: Team A
+      value: Team Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
@@ -1170,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 6334366550731466513, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: m_Name
-      value: Team A
+      value: Team Blue
       objectReference: {fileID: 0}
     - target: {fileID: 8569481531302420623, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
@@ -1287,7 +1322,7 @@ PrefabInstance:
     - target: {fileID: 5214423759921710870, guid: e9fa48ecdfef6504a8af6a46d96b3f27,
         type: 3}
       propertyPath: m_Name
-      value: Team Score B
+      value: Team Score Orange
       objectReference: {fileID: 0}
     - target: {fileID: 5214423759921710871, guid: e9fa48ecdfef6504a8af6a46d96b3f27,
         type: 3}
@@ -1651,7 +1686,7 @@ PrefabInstance:
     - target: {fileID: 5214423759921710870, guid: e9fa48ecdfef6504a8af6a46d96b3f27,
         type: 3}
       propertyPath: m_Name
-      value: Team Score A
+      value: Team Score Blue
       objectReference: {fileID: 0}
     - target: {fileID: 5214423759921710871, guid: e9fa48ecdfef6504a8af6a46d96b3f27,
         type: 3}
@@ -1816,6 +1851,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2075016199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075016200}
+  m_Layer: 0
+  m_Name: P2TeamOrangeSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2075016200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075016199}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 0.75, z: -4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 216335937}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108733616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2108733617}
   m_Layer: 0
-  m_Name: TeamBPlayerSpawn
+  m_Name: P1TeamBlueSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,13 +1904,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108733616}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 3.93}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 5, y: 0.75, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 216335937}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1548663815288009080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1866,7 +1931,7 @@ PrefabInstance:
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: teamName
-      value: Team B
+      value: Team Orange
       objectReference: {fileID: 0}
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
@@ -1891,7 +1956,7 @@ PrefabInstance:
     - target: {fileID: 6334366550731466513, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: m_Name
-      value: Team B
+      value: Team Orange
       objectReference: {fileID: 0}
     - target: {fileID: 8569481531302420623, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}

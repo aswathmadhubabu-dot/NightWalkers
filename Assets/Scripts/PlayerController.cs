@@ -37,15 +37,19 @@ public class PlayerController : MonoBehaviour
     private SkinnedMeshRenderer playerMesh;
 
     private InputActions controls;
+    private InputAction.CallbackContext ctx;
 
-    void Start()
+    public Transform originalPosition;
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         collider = GetComponent<Collider>();
         controls = new InputActions();
-        playerMesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        cam =  GameObject.Find("MainCamera").GetComponent<Camera>();
+        SkinnedMeshRenderer[] mrs = this.GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        playerMesh = mrs[1];
+        cam =  GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     public void InitializePlayer(PlayerConfiguration pc)
@@ -53,14 +57,34 @@ public class PlayerController : MonoBehaviour
         playerConfig = pc;
         playerMesh.material = pc.PlayerMaterial;
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
-
     }
 
     private void Input_onActionTriggered(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
+    {        
+        Debug.Log("ACTION " + obj.action.name + " " + obj.action.activeControl.device.name);
         if(obj.action.name == controls.Player.Move.name)
         {
             this.OnMove(obj.ReadValue<Vector2>());
+        }
+        if(obj.action.name == controls.Player.YLook.name)
+        {
+            this.OnYLook(obj.ReadValue<Vector2>(), obj);
+        }
+        if(obj.action.name == controls.Player.LeftAttack.name)
+        {
+            this.OnLeftAttack();
+        }
+        if(obj.action.name == controls.Player.Jump.name)
+        {
+            this.OnJump(obj.ReadValue<float>());
+        }
+        if(obj.action.name == controls.Player.YLook.name)
+        {
+            this.OnYLook(obj.ReadValue<Vector2>(), obj);
+        }
+        if(obj.action.name == controls.Player.RightAttack.name)
+        {
+            this.OnRightAttack();
         }
     }
 
@@ -75,35 +99,37 @@ public class PlayerController : MonoBehaviour
     void OnMove(Vector2 movementVector)
     {
         //Vector2 movementVector = movementValue.Get<Vector2>();
+        Debug.Log("ONMOVE VA OK");
         movementX = movementVector.x;
         movementY = movementVector.y;
 
         //Debug.Log("onMove " + movementY.ToString());
 
     }
-    void OnYLook(InputValue look)
+    void OnYLook(Vector2 look,InputAction.CallbackContext ctx)
     {
-        mousepos = look.Get<Vector2>();
-        Debug.Log("YLOOK: " + mousepos.ToString());
+        mousepos = look;
+        this.ctx = ctx;
+        //Debug.Log("YLOOK: " + mousepos.ToString());
 
     }   
-    void OnLeftAttack(InputValue movementValue)
+    void OnLeftAttack()
     {
         anim.SetTrigger("lattack");
         StartCoroutine(Dash());
     }
     
 
-    void OnRightAttack(InputValue movementValue)
+    void OnRightAttack()
     {
         anim.SetTrigger("rattack");
         StartCoroutine(Dash());
     }
     // Update is called once per frame
-    void OnJump(InputValue input)
+    void OnJump(float input)
     {
         //anim.SetTrigger("Jump");
-        jumping = Convert.ToBoolean(input.Get<float>());
+        jumping = Convert.ToBoolean(input);
         if(jumping && isGrounded){
             rb.AddForce(Vector3.up * 10 * speed, ForceMode.VelocityChange);
         }
@@ -127,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
         } else {
             if(isGrounded && rb.velocity.magnitude <= forwardMaxSpeed)  {
-            //Debug.Log("Adding force: " + movementVector.ToString() + " " + speed);
+                //Debug.Log("Adding force: " + movementVector.ToString() + " " + speed);
                 rb.AddForce(movementVector * speed, ForceMode.VelocityChange);
             }
         }
@@ -159,8 +185,11 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("vely", rb.velocity.z);
         isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + 0.1f);
 
-        if(GetComponent<PlayerInput>().currentControlScheme.ToString() != "Gamepad" ){
-                pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));Debug.Log(pointerDirection);
+        //if(GetComponent<PlayerInput>().currentControlScheme.ToString() != "Gamepad" ){
+        //Debug.Log(ctx);
+
+        if(ctx.action != null && ctx.action.activeControl != null && ctx.action.activeControl.device.name == "Mouse" ){
+                pointerDirection = cam.ScreenToWorldPoint(new Vector3(mousepos.x, mousepos.y, 1));
                 float t = cam.transform.position.y / (cam.transform.position.y - pointerDirection.y);
                 directionFacing = new Vector3(t * (pointerDirection.x - cam.transform.position.x) + cam.transform.position.x, rb.transform.position.y  , t * (pointerDirection.z - cam.transform.position.z) + cam.transform.position.z);
                 transform.LookAt(directionFacing, Vector3.up);

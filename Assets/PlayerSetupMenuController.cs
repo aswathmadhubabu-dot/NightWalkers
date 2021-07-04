@@ -9,6 +9,9 @@ public class PlayerSetupMenuController : MonoBehaviour
     private int PlayerIndex;
     [SerializeField]
     private TextMeshProUGUI titleText;
+
+    [SerializeField]
+    public TextMeshProUGUI readyText;
     [SerializeField]
     GameObject readyPanel;
     [SerializeField]
@@ -20,6 +23,8 @@ public class PlayerSetupMenuController : MonoBehaviour
     private float ignoreInputTime = 1.5f;
     private bool inputEnabled;
 
+    private string color;
+    private string team;
     public void SetPlayerIndex(int pi)
     {
         PlayerIndex = pi;
@@ -38,7 +43,24 @@ public class PlayerSetupMenuController : MonoBehaviour
         if(!enabled){
             return;
         }
-        PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, color);
+        
+        if(color.name == "LilRobot Red"){
+           this.color = "Red";
+           team = "Orange";
+        }
+        if(color.name == "LilRobot Orange"){
+           this.color = "Orange";
+           team = "Orange";
+        }
+        if(color.name == "LilRobot LightBlue"){
+           this.color = "LightBlue";
+           team = "Blue";
+        }
+        if(color.name == "LilRobot Blue"){
+           this.color = "Blue";
+           team = "Blue";
+        }
+        PlayerConfigurationManager.Instance.SetPlayerColor(PlayerIndex, color, team);
         readyPanel.SetActive(true);
         readyButton.Select();
         menuPanel.SetActive(false);
@@ -49,5 +71,7 @@ public class PlayerSetupMenuController : MonoBehaviour
         if(!inputEnabled){return;}
         PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
         readyButton.gameObject.SetActive(false);
+        readyText.text = "<b>Ready!</b>\n Team " + team + "\nColor: " + color;
+
     }
 }

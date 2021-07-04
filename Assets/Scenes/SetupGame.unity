@@ -265,12 +265,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 50
+    m_Right: 50
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 6089540527034280168, guid: f3f2d9119f766f246ae9a3e31bad0ef8,
         type: 3}
       propertyPath: MaxPlayers
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6089540527034280169, guid: f3f2d9119f766f246ae9a3e31bad0ef8,
         type: 3}

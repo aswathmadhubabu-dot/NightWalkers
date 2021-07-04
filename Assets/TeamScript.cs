@@ -9,8 +9,6 @@ public class TeamScript : MonoBehaviour
     public string teamName;
     public TextMeshProUGUI scoreBoardText;
     
-    public GameObject playerSpawn;
-
     public MatchController match;
 
     public List<GameObject> players;

@@ -75,7 +75,8 @@ public class MatchController : MonoBehaviour
         foreach (GameObject player in team.players){
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            player.transform.position = team.playerSpawn.transform.position;
+            player.transform.position = player.GetComponent<PlayerController>().originalPosition.position;
+            player.transform.rotation = player.GetComponent<PlayerController>().originalPosition.rotation;
         }
     }
     void setHappy(TeamScript team){

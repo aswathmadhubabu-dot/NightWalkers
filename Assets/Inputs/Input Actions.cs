@@ -279,22 +279,22 @@ public class @InputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d36591fa-1a57-4bae-87a8-fde559f9f91f"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""606d5ef3-117e-4a43-82ea-eeece434d151"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""YLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""606d5ef3-117e-4a43-82ea-eeece434d151"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""d1750aaf-2d0b-4f0d-9c00-c21e92f4cee6"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""YLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
