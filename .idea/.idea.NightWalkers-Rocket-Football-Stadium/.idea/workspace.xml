@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aac9f79-8110-4839-b0c6-68bb690afce9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MatchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,9 +16,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1AC5F07D-268A-4976-9515-B60FB04F4104/b5/4a8cd83e/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Timer.cs" />
+      <option value="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs" />
       <option value="$PROJECT_DIR$/Assets/MatchController.cs" />
     </changedPaths>
   </component>
@@ -42,10 +49,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="56634">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="56634" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />

@@ -5,30 +5,38 @@ using TMPro;
 
 public class MatchController : MonoBehaviour
 {
-    public TextMeshProUGUI goalText;
-
     public int gameTimeInSecs;
 
     public GameObject ball;
     public GameObject ballSpawn;
-   
+
     public TeamScript teamA;
     public TeamScript teamB;
-    
+
     public bool recentGoal;
     public int goalTimeout;
 
+    public TeamScript lastScoredTeam;
+    
     [SerializeField] private Timer timer;
+    [SerializeField] private GoalScoredPanelController goalScoredPanelController;
 
     void Start()
     {
-        goalText.enabled = false;
         recentGoal = false;
 
         timer
             .SetDuration(gameTimeInSecs)
             .OnEnd(() => Debug.Log("Timer 1 ended"))
             .Begin();
+
+        goalScoredPanelController.show(false, "");
+    }
+
+    private void ContinueClickedOnGoalScore()
+    {
+        goalScoredPanelController.show(false, "");
+        StartCoroutine(ResetPlayersAndBall(lastScoredTeam));
     }
 
     // Update is called once per frame
@@ -38,19 +46,19 @@ public class MatchController : MonoBehaviour
 
     void DisplayTimeEnded()
     {
-        
     }
 
     public void NewGoal(TeamScript happyTeam)
     {
-        goalText.text = "" + happyTeam.teamName + " Goal!";
-        StartCoroutine(ResetPlayersAndBall(happyTeam));
+        // goalText.text = "" + happyTeam.teamName + " Goal!";
+        lastScoredTeam = happyTeam;
+        goalScoredPanelController.continueButton.onClick.AddListener(ContinueClickedOnGoalScore);
+        goalScoredPanelController.show(true, "" + happyTeam.teamName + " has scored a Goal!");
     }
 
     IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
     {
         recentGoal = true;
-        goalText.enabled = true;
         TeamScript angryTeam;
         if (teamA.name == happyTeam.name)
         {
@@ -76,7 +84,6 @@ public class MatchController : MonoBehaviour
         setNormal(teamA);
         setNormal(teamB);
 
-        goalText.enabled = false;
         recentGoal = false;
     }
 
