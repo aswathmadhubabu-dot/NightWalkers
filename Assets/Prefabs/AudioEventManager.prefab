@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6339647933519021549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6339647933519021551}
+  - component: {fileID: 6339647933519021548}
+  m_Layer: 0
+  m_Name: AudioEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6339647933519021551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339647933519021549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98490095, y: 4.0387173, z: 0.58768845}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6339647933519021548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339647933519021549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15411571b7d3844ca4ee9be3c82beb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSound3DPrefab: {fileID: 114791402448356372, guid: ed1277a7e52294c6e9a9760e1ad8fd71,
+    type: 3}
+  hitGoalAudio: {fileID: 8300000, guid: 9073e410d62374ce7bc54c3dc8b2ecc3, type: 3}
+  hitBallAudio: {fileID: 8300000, guid: 962fba12a28df9d42a05abbea18f672f, type: 3}
+  punchBallAudio: {fileID: 8300000, guid: 20ebd1476d681284e956c270eb04deeb, type: 3}
+  ovationAudio1: {fileID: 8300000, guid: 162f768f1a14ef849a5a40b5aceb0bf2, type: 3}
+  ovationAudio2: {fileID: 8300000, guid: 4ab727493a6da544d9b169240d98cd9f, type: 3}
+  ovationAudio3: {fileID: 8300000, guid: 52852d308d1b64c4cbf114ac927a2b20, type: 3}
