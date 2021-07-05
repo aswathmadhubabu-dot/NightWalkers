@@ -72,11 +72,17 @@ public class PlayerController : MonoBehaviour
         }
         if(obj.action.name == controls.Player.LeftAttack.name)
         {
-            this.OnLeftAttack();
+            Debug.Log("   " + obj.started + " " + obj.performed);
+            
+            if(obj.started){
+                this.OnLeftAttack();
+            }
         }
         if(obj.action.name == controls.Player.Jump.name)
         {
-            this.OnJump(obj.ReadValue<float>());
+            if(obj.started){
+                this.OnJump(obj.ReadValue<float>());
+            }
         }
         if(obj.action.name == controls.Player.YLook.name)
         {
@@ -84,7 +90,9 @@ public class PlayerController : MonoBehaviour
         }
         if(obj.action.name == controls.Player.RightAttack.name)
         {
-            this.OnRightAttack();
+            if(obj.started){
+                this.OnRightAttack();
+            }
         }
     }
 
@@ -99,7 +107,6 @@ public class PlayerController : MonoBehaviour
     void OnMove(Vector2 movementVector)
     {
         //Vector2 movementVector = movementValue.Get<Vector2>();
-        Debug.Log("ONMOVE VA OK");
         movementX = movementVector.x;
         movementY = movementVector.y;
 
@@ -115,6 +122,7 @@ public class PlayerController : MonoBehaviour
     }   
     void OnLeftAttack()
     {
+        Debug.Log("LATTACK");
         anim.SetTrigger("lattack");
         StartCoroutine(Dash());
     }
@@ -182,7 +190,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update() 
     {
-        anim.SetFloat("vely", rb.velocity.z);
+        anim.SetFloat("vely", Mathf.Max(Mathf.Abs(rb.velocity.z), Mathf.Abs(rb.velocity.y)));
         isGrounded = Physics.Raycast(collider.bounds.center, Vector3.down, collider.bounds.extents.y + 0.1f);
 
         //if(GetComponent<PlayerInput>().currentControlScheme.ToString() != "Gamepad" ){
