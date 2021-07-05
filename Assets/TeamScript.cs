@@ -9,11 +9,9 @@ public class TeamScript : MonoBehaviour
     public string teamName;
     public TextMeshProUGUI scoreBoardText;
     
-    public GameObject playerSpawn;
-
     public MatchController match;
 
-    public GameObject[] players;
+    public List<GameObject> players;
     // Start is called before the first frame update
     void Start()
     {
