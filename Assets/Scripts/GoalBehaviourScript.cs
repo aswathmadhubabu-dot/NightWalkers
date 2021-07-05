@@ -21,6 +21,7 @@ public class GoalBehaviourScript : MonoBehaviour
         {
             //Goal!
             team.ScoreGoal();
+            EventManager.TriggerEvent<HitGoalEvent, Vector3>(other.transform.position);
         }
     }
 
