@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void Input_onActionTriggered(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {        
-        Debug.Log("ACTION " + obj.action.name + " " + obj.action.activeControl.device.name);
+        //Debug.Log("ACTION " + obj.action.name + " " + obj.action.activeControl.device.name);
         if(obj.action.name == controls.Player.Move.name)
         {
             this.OnMove(obj.ReadValue<Vector2>());

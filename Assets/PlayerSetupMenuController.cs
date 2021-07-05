@@ -40,7 +40,7 @@ public class PlayerSetupMenuController : MonoBehaviour
     }
 
     public void SetColor(Material color){
-        if(!enabled){
+        if(!inputEnabled){
             return;
         }
         

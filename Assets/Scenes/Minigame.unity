@@ -1096,6 +1096,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1008876530908141875, guid: ddaf598ffa14fd44d8bc708abc47fadc,
         type: 3}
+      propertyPath: m_Name
+      value: GoalOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008876530908141875, guid: ddaf598ffa14fd44d8bc708abc47fadc,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -1108,12 +1113,17 @@ PrefabInstance:
         type: 3}
       propertyPath: team
       value: 
-      objectReference: {fileID: 1548663815288009082}
+      objectReference: {fileID: 1223629855}
     - target: {fileID: 2554118394145681556, guid: ddaf598ffa14fd44d8bc708abc47fadc,
         type: 3}
       propertyPath: ballSpawn
       value: 
       objectReference: {fileID: 1237519514}
+    - target: {fileID: 3879572315963509923, guid: ddaf598ffa14fd44d8bc708abc47fadc,
+        type: 3}
+      propertyPath: m_Name
+      value: GoalBlue
+      objectReference: {fileID: 0}
     - target: {fileID: 3879572315963509923, guid: ddaf598ffa14fd44d8bc708abc47fadc,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1128,7 +1138,7 @@ PrefabInstance:
         type: 3}
       propertyPath: team
       value: 
-      objectReference: {fileID: 1223629855}
+      objectReference: {fileID: 1548663815288009082}
     - target: {fileID: 4799802635049323797, guid: ddaf598ffa14fd44d8bc708abc47fadc,
         type: 3}
       propertyPath: ballSpawn
