@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aac9f79-8110-4839-b0c6-68bb690afce9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Timer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Timer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MatchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
