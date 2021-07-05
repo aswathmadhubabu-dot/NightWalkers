@@ -16,10 +16,11 @@ public class MatchController : MonoBehaviour
     public bool recentGoal;
     public int goalTimeout;
 
-    public TeamScript lastScoredTeam;
-    
+    private TeamScript lastScoredTeam;
+
     [SerializeField] private Timer timer;
     [SerializeField] private GoalScoredPanelController goalScoredPanelController;
+    [SerializeField] private TimeEndedPanelController timeEndedPanelController;
 
     void Start()
     {
@@ -27,10 +28,15 @@ public class MatchController : MonoBehaviour
 
         timer
             .SetDuration(gameTimeInSecs)
-            .OnEnd(() => Debug.Log("Timer 1 ended"))
+            .OnEnd(() =>
+            {
+                Debug.Log("Timer ended");
+                DisplayTimeEnded();
+            })
             .Begin();
 
         goalScoredPanelController.show(false, "");
+        timeEndedPanelController.show(false, teamA, teamB);
     }
 
     private void ContinueClickedOnGoalScore()
@@ -44,8 +50,15 @@ public class MatchController : MonoBehaviour
     {
     }
 
+    private void RestartClickedOnTimeEnded()
+    {
+        // TODO: Redirect to landing screen
+    }
+
     void DisplayTimeEnded()
     {
+        timeEndedPanelController.restartButton.onClick.AddListener(RestartClickedOnTimeEnded);
+        timeEndedPanelController.show(true, teamA, teamB);
     }
 
     public void NewGoal(TeamScript happyTeam)

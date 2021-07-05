@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aac9f79-8110-4839-b0c6-68bb690afce9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TimeEndedPanelController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TimeEndedPanelController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MatchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" afterDir="false" />
@@ -18,11 +18,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1AC5F07D-268A-4976-9515-B60FB04F4104/b5/4a8cd83e/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/ScriptableRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/External/LibTessDotNet/Tess.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.2/InputSystem/Devices/Joystick.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/2D/Renderer2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/Passes/SceneViewDepthCopy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/External/LibTessDotNet/Sweep.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Timer.cs" />
       <option value="$PROJECT_DIR$/Assets/GoalScoredPanelController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Timer.cs" />
+      <option value="$PROJECT_DIR$/Assets/TeamScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/TimeEndedPanelController.cs" />
       <option value="$PROJECT_DIR$/Assets/MatchController.cs" />
     </changedPaths>
   </component>
@@ -32,6 +40,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34971997" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
