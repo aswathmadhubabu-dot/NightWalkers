@@ -1,57 +1,79 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class MatchController : MonoBehaviour
 {
-    public TextMeshProUGUI goalText;
-    public TextMeshProUGUI timeText;
     public int gameTimeInSecs;
-    private float remainingTime;
+
     public GameObject ball;
     public GameObject ballSpawn;
-    public TeamScript teamA;
 
+    public TeamScript teamA;
     public TeamScript teamB;
+
     public bool recentGoal;
     public int goalTimeout;
 
+    private TeamScript lastScoredTeam;
+
+    [SerializeField] private Timer timer;
+    [SerializeField] private GoalScoredPanelController goalScoredPanelController;
+    [SerializeField] private TimeEndedPanelController timeEndedPanelController;
+
     void Start()
     {
-        remainingTime = gameTimeInSecs;
-        goalText.enabled = false;
         recentGoal = false;
+
+        timer
+            .SetDuration(gameTimeInSecs)
+            .OnEnd(() =>
+            {
+                Debug.Log("Timer ended");
+                DisplayTimeEnded();
+            })
+            .Begin();
+
+        goalScoredPanelController.show(false, "");
+        timeEndedPanelController.show(false, teamA, teamB);
+    }
+
+    private void ContinueClickedOnGoalScore()
+    {
+        goalScoredPanelController.show(false, "");
+        StartCoroutine(ResetPlayersAndBall(lastScoredTeam));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (remainingTime > 0)
-        {
-            remainingTime -= Time.deltaTime;
-        }
+    }
 
-        float minutes = Mathf.FloorToInt(remainingTime / 60);
-        float seconds = Mathf.FloorToInt(remainingTime % 60);
-        timeText.text = minutes.ToString() + " : " + seconds.ToString();
+    private void RestartClickedOnTimeEnded()
+    {
+        // TODO: Redirect to landing screen
+    }
+
+    void DisplayTimeEnded()
+    {
+        timeEndedPanelController.restartButton.onClick.AddListener(RestartClickedOnTimeEnded);
+        timeEndedPanelController.show(true, teamA, teamB);
     }
 
     public void NewGoal(TeamScript happyTeam)
     {
-        goalText.text = "" + happyTeam.teamName + " Goal!";
-        StartCoroutine(ResetPlayersAndBall(happyTeam));
+        lastScoredTeam = happyTeam;
+        goalScoredPanelController.continueButton.onClick.AddListener(ContinueClickedOnGoalScore);
+        goalScoredPanelController.show(true, "" + happyTeam.teamName + " has scored a Goal!");
     }
 
     IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
     {
         recentGoal = true;
-        goalText.enabled = true;
         TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
 
         setAngry(angryTeam);
         setHappy(happyTeam);
-
 
         yield return new WaitForSeconds(goalTimeout);
 
@@ -64,7 +86,6 @@ public class MatchController : MonoBehaviour
         setNormal(teamA);
         setNormal(teamB);
 
-        goalText.enabled = false;
         recentGoal = false;
     }
 
