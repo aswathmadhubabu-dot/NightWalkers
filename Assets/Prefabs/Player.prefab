@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 7096736426996364660}
   - component: {fileID: 7096736426996364663}
   - component: {fileID: 7096736426996364661}
+  - component: {fileID: -9055807467921701537}
   m_Layer: 0
-  m_Name: Player 1
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231380171898691278}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -138,8 +139,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -157,12 +158,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   forwardMaxSpeed: 10
-  cam: {fileID: 0}
   spine: {fileID: 91183348411644327}
   fallMultiplier: 3.5
   lowJumpMultiplier: 2.5
   attackDashStrength: 50
   dashForceDelay: 0.3
+  originalPosition: {fileID: 0}
+--- !u!114 &-9055807467921701537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231380171898691278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c87656ec25be2d4881027156aba14c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothingTimeFactor: 0.5
 --- !u!1 &312887910592107274
 GameObject:
   m_ObjectHideFlags: 0
