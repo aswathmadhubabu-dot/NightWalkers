@@ -10,7 +10,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     private List<PlayerConfiguration> playerConfigs;
     
     [SerializeField]
-    private int MaxPlayers = 6;
+    private int MaxPlayers = 4;
 
     public static PlayerConfigurationManager Instance {get; private set;}
     void Awake(){
@@ -41,6 +41,22 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     } 
 
+    public void DestroyPlayer(int index)
+    {   
+        //Debug.Log("SETTING COLOR");
+        for(var i=0 ; i < this.transform.childCount;i++)
+        {
+            Transform child = this.transform.GetChild(i);
+            SpawnPlayerSetupMenu sps = child.gameObject.GetComponent<SpawnPlayerSetupMenu>();
+            if(sps.playerIndex == index){
+                Destroy(sps.psmc);
+                Destroy(child.gameObject);
+                playerConfigs.RemoveAt(index);
+    
+            }
+        }
+
+    } 
     private int GetTeamPlayerIndex(string teamName)
     {
         int val = -1;

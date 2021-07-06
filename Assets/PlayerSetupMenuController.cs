@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
-public class PlayerSetupMenuController : MonoBehaviour
-{
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+public class PlayerSetupMenuController : MonoBehaviour {
+    public void DestroyPlayer()
+    {
+        PlayerConfigurationManager.Instance.DestroyPlayer(PlayerIndex);
+    }
     private int PlayerIndex;
     [SerializeField]
     private TextMeshProUGUI titleText;

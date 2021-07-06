@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 7508444930639332314}
   - component: {fileID: 7508444930639332315}
   - component: {fileID: 7508444930639332312}
+  - component: {fileID: 3172702624443900496}
   m_Layer: 5
   m_Name: Blue
   m_TagString: Untagged
@@ -488,6 +489,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3172702624443900496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508444930639332310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7441adffc84cb4d897898f0d55689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508444930911271556
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +550,7 @@ GameObject:
   - component: {fileID: 7508444931195403351}
   - component: {fileID: 7508444931195403348}
   - component: {fileID: 7508444931195403349}
+  - component: {fileID: 373839987005464656}
   m_Layer: 5
   m_Name: ReadyButton
   m_TagString: Untagged
@@ -655,6 +669,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &373839987005464656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508444931195403347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7441adffc84cb4d897898f0d55689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508444931263964866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1092,7 @@ GameObject:
   - component: {fileID: 7508444931391830415}
   - component: {fileID: 7508444931391830412}
   - component: {fileID: 7508444931391830413}
+  - component: {fileID: 2461909257649542277}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -1185,6 +1212,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2461909257649542277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508444931391830411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7441adffc84cb4d897898f0d55689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508444931766420358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1236,7 @@ GameObject:
   - component: {fileID: 7508444931766420362}
   - component: {fileID: 7508444931766420363}
   - component: {fileID: 7508444931766420360}
+  - component: {fileID: 8708390704542816625}
   m_Layer: 5
   m_Name: Orange
   m_TagString: Untagged
@@ -1316,6 +1356,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8708390704542816625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508444931766420358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7441adffc84cb4d897898f0d55689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508444932089914226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,6 +1609,7 @@ GameObject:
   - component: {fileID: 7508444932277784582}
   - component: {fileID: 7508444932277784583}
   - component: {fileID: 7508444932277784580}
+  - component: {fileID: 4379365822471545752}
   m_Layer: 5
   m_Name: LightBlue
   m_TagString: Untagged
@@ -1676,6 +1729,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4379365822471545752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508444932277784578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7441adffc84cb4d897898f0d55689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508444932364110541
 GameObject:
   m_ObjectHideFlags: 0
