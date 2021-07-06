@@ -2,172 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aac9f79-8110-4839-b0c6-68bb690afce9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Button.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Button.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ButtonAnimation.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/ButtonAnimation.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuButtons.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/MenuButtons.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Panel.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Panel.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/PauseScreenAnimation.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/PauseScreenAnimation.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Start Game.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/Start Game.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/CancelHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/CancelHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InitializeLevel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/InitializeLevel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Inputs/Input Actions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Inputs/Input Actions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/GameMenuBackdrop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/GameMenuBackdrop.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/Gamelogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/Gamelogo.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/GoalPost.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/GoalPost.jpeg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/football_pitch_football_playground_152253_3840x2160.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/football_pitch_football_playground_152253_3840x2160.jpeg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/football_pitch_football_playground_152253_3840x2160.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Layers/football_pitch_football_playground_152253_3840x2160.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PlayerConfigurationManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PlayerConfigurationManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PlayerSetupMenuController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/PlayerSetupMenuController.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/3DEventSound.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/3DEventSound.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioEventManager.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/AudioEventManager.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Player 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Player 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerConfiguration.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerConfiguration.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerConfigurationManager.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerConfigurationManager.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerSetupMenu.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerSetupMenu.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameMenu.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameMenu.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameMenu_Profiles.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameMenu_Profiles/Main Camera Profile.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/GameMenu_Profiles/Main Camera Profile.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SetupGame.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/SetupGame.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/AudioEventManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/AudioEventManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/EventSound3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/EventSound3D.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/HitBallEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/HitBallEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/HitGoalEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/HitGoalEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/MusicManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/MusicManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/PunchBallEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AudioEventManager/PunchBallEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BallBehaviourScript.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/BallBehaviourScript.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonPause.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ButtonPause.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EventManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EventManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameQuitter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameQuitter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PauseMenuToggle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PauseMenuToggle.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SceneStart.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SceneStart.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/VelocityReporter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/VelocityReporter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/134934__ztrees1__punch.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/134934__ztrees1__punch.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 1 - SFX Producer.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 1 - SFX Producer.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 2 - SFX Producer.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 2 - SFX Producer.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 3 - SFX Producer.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ES_Soccer Ball Kick 3 - SFX Producer.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/Explosion+3.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/Explosion+3.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/The-Games_Looping.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/The-Games_Looping.mp3.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ball_punch.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/ball_punch.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/chanting-fadeaway.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/chanting-fadeaway.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-chanting-sports-crowd-433.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-chanting-sports-crowd-433.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-crowd-yelling-at-stadium-2110.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-crowd-yelling-at-stadium-2110.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-small-crowd-ovation-437.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sound/mixkit-small-crowd-ovation-437.wav.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SpawnPlayerSetupMenu.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/SpawnPlayerSetupMenu.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/ThaleahFat_TTF.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/ThaleahFat_TTF.ttf.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/ThaleahFat.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/ThaleahFat.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/ThaleahFat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/ThaleahFat.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/Thaleah_DemoBackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Materials/Thaleah_DemoBackground.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/ThaleahFat.fontsettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/ThaleahFat.fontsettings.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Thaleah_Demo.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Thaleah_Demo.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Thaleah_Readme.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Thaleah_PixelFont/Thaleah_Readme.pdf.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NightWalkers-Rocket-Football-Stadium/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/shade.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/shade.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_concrete.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_concrete.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_gates.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_gates.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_metal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CartStadiumPack/Materials/stadium_02_metal.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FinishAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FinishAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FinishAttack.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FinishAttack.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FpsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FpsCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FpsCounter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FpsCounter.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Globals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Globals.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Globals.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/Input Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/Input Actions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/Input Actions.inputactions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MatchController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MatchController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MatchController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Blue.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Green.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot LightBlue.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Green.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot LightBlue.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Pink.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Orange.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Pink.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Orange.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Red.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Red.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Characters/SciFi/LilRobot/Textures/LilRobot Red.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalBehaviourScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalBehaviourScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Astronaut/Character/Materials/Yellow_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Astronaut/Character/Materials/Yellow_Mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TeamScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TeamScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TeamScript.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TeamScript.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +30,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/2D/Renderer2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/Passes/SceneViewDepthCopy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.6.0/Runtime/External/LibTessDotNet/Sweep.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TeamScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TeamScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -205,6 +41,7 @@
       <option value="$PROJECT_DIR$/Assets/MatchController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scenes/Minigame.unity" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/TeamScript.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uldnbtZJ8wYIix44G6C9vhBzCu" />
@@ -253,7 +90,8 @@
       <option name="presentableId" value="Default" />
       <updated>1625244281440</updated>
       <workItem from="1625244288311" duration="2603000" />
-      <workItem from="1625541242121" duration="591000" />
+      <workItem from="1625541242121" duration="1372000" />
+      <workItem from="1625545865592" duration="563000" />
     </task>
     <servers />
   </component>

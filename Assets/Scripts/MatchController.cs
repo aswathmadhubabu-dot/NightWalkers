@@ -4,8 +4,6 @@ using TMPro;
 
 public class MatchController : MonoBehaviour
 {
-    public TextMeshProUGUI goalText;
-    public TextMeshProUGUI timeText;
     public int gameTimeInSecs;
 
     public GameObject ball;
@@ -72,12 +70,11 @@ public class MatchController : MonoBehaviour
     IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
     {
         recentGoal = true;
-        goalText.enabled = true;
         TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
 
         setAngry(angryTeam);
         setHappy(happyTeam);
-        
+
         yield return new WaitForSeconds(goalTimeout);
 
         ball.transform.position = ballSpawn.transform.position;

@@ -212,15 +212,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391859de6295fcb4cb69daa869bb27d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalText: {fileID: 0}
-  timeText: {fileID: 0}
   gameTimeInSecs: 300
   ball: {fileID: 1095241252}
   ballSpawn: {fileID: 1237519514}
   teamA: {fileID: 1223629855}
   teamB: {fileID: 1548663815288009082}
   recentGoal: 0
-  goalTimeout: 3
+  goalTimeout: 1
   timer: {fileID: 1713907325}
   goalScoredPanelController: {fileID: 173572996}
   timeEndedPanelController: {fileID: 360879493}
@@ -2174,7 +2172,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreBoardText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1194456802}
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: players.Array.size
@@ -4746,7 +4744,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreBoardText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1398684553}
     - target: {fileID: 2339022111481660551, guid: cf8f75888c414a948beb1f014d64734d,
         type: 3}
       propertyPath: players.Array.size
