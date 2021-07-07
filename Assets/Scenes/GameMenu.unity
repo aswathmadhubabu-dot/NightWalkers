@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -212,8 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391859de6295fcb4cb69daa869bb27d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalText: {fileID: 0}
-  timeText: {fileID: 0}
   gameTimeInSecs: 300
   ball: {fileID: 1095241252}
   ballSpawn: {fileID: 1237519514}
@@ -221,6 +219,9 @@ MonoBehaviour:
   teamB: {fileID: 1548663815288009082}
   recentGoal: 0
   goalTimeout: 2
+  timer: {fileID: 0}
+  goalScoredPanelController: {fileID: 0}
+  timeEndedPanelController: {fileID: 0}
 --- !u!1 &243709637
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,12 +785,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   forwardMaxSpeed: 10
-  cam: {fileID: 1405210652}
   spine: {fileID: 894365275}
   fallMultiplier: 3.5
   lowJumpMultiplier: 2.5
   attackDashStrength: 50
   dashForceDelay: 0.3
+  originalPosition: {fileID: 0}
 --- !u!114 &894365277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,6 +873,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444652, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
       propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 444652, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
+      propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 444652, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
@@ -1392,7 +1397,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e666210ed4c64df4c877b1bb44507756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1584774395}
+  offset: {x: 0, y: 0, z: 0}
+  targets: []
+  totalFieldSize: 0
+  maxZoom: 0
+  minZoom: 0
+  maxOffsetY: 0
+  minOffsetY: 0
+  minOffsetZ: 0
+  maxOffsetZ: 0
 --- !u!114 &1405210656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1720,12 +1733,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   forwardMaxSpeed: 10
-  cam: {fileID: 1405210652}
   spine: {fileID: 1584774400}
   fallMultiplier: 3.5
   lowJumpMultiplier: 2.5
   attackDashStrength: 50
   dashForceDelay: 0.3
+  originalPosition: {fileID: 0}
 --- !u!4 &1584774400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7151539099117079767, guid: 1e43e8655cb3ef74cb7d1389c536f3ec,
