@@ -45,16 +45,19 @@ public class InitializeLevel : MonoBehaviour
         {
             Transform spawn = GetSpawn("Blue", i);
             var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
-            
             PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
-            pai.InitializeAI(ball, goal_blue, "Team1");
-            //pc.originalPosition = spawn;
-            //pc.InitializePlayer(playerConfigs[i]);
-            //Initialize an AI on each slot
+            pai.InitializeAI(ball, goal_orange, "Team1");
             cam.GetComponent<CameraController>().targets.Add(AIplayer.transform);
             GameObject.Find("Team Blue").GetComponent<TeamScript>().players.Add(AIplayer);
-
-
+        }
+        for (var i = 0; i < availableSlotsOnOrange; i++)
+        {
+            Transform spawn = GetSpawn("Orange", i);
+            var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
+            PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
+            pai.InitializeAI(ball, goal_blue, "Team2");
+            cam.GetComponent<CameraController>().targets.Add(AIplayer.transform);
+            GameObject.Find("Team Orange").GetComponent<TeamScript>().players.Add(AIplayer);
         }
     }
     Transform GetSpawn(PlayerConfiguration pi)
