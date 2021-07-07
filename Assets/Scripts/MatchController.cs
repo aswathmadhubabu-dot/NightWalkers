@@ -95,8 +95,12 @@ public class MatchController : MonoBehaviour
         {
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            player.transform.position = player.GetComponent<PlayerController>().originalPosition.position;
-            player.transform.rotation = player.GetComponent<PlayerController>().originalPosition.rotation;
+            if(player.GetComponent<PlayerController>() != null){
+                player.transform.position = player.GetComponent<PlayerController>().originalPosition.position;
+                player.transform.rotation = player.GetComponent<PlayerController>().originalPosition.rotation;
+            } else {
+                    //TODO RESTART AIs
+            }
         }
     }
 

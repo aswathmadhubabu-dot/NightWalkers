@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028353, g: 0.2257137, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028381, g: 0.22571406, b: 0.30692294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 5b65e803641504e538cc03a714a96b25, type: 2}
 --- !u!1 &29044886
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216335937}
   - component: {fileID: 216335938}
+  - component: {fileID: 216335939}
   m_Layer: 0
   m_Name: LevelInitializer
   m_TagString: Untagged
@@ -520,9 +521,27 @@ MonoBehaviour:
   teamBluePlayerSpawns:
   - {fileID: 2108733617}
   - {fileID: 783419534}
+  ball: {fileID: 1095241252}
+  goal_blue: {fileID: 898649968}
+  goal_orange: {fileID: 898649967}
   playerPrefabs: {fileID: 231380171898691278, guid: c7f19e5a770fc234695c53bf27c4e87d,
     type: 3}
   cam: {fileID: 1405210650}
+  AIplayerPrefabs: {fileID: 231380171898691278, guid: de2a43bb2112e49c697bd8992010f62e,
+    type: 3}
+--- !u!114 &216335939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216335936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67deaa77e5ad4763938e958aabe7a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 1095241252}
 --- !u!1001 &283971114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -532,6 +551,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116176, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 116176, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
+      propertyPath: m_TagString
       value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
@@ -1192,7 +1215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770598483}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 0.75, z: -4}
+  m_LocalPosition: {x: 5, y: 0.09, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 216335937}
@@ -1466,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444652, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 444652, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1560,6 +1583,18 @@ PrefabInstance:
       objectReference: {fileID: 1095241252}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddaf598ffa14fd44d8bc708abc47fadc, type: 3}
+--- !u!1 &898649967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1008876530908141875, guid: ddaf598ffa14fd44d8bc708abc47fadc,
+    type: 3}
+  m_PrefabInstance: {fileID: 898649966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &898649968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3879572315963509923, guid: ddaf598ffa14fd44d8bc708abc47fadc,
+    type: 3}
+  m_PrefabInstance: {fileID: 898649966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900040322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,7 +2934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405210650}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 10, z: -10}
+  m_LocalPosition: {x: 12.96, y: 10, z: -4.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
