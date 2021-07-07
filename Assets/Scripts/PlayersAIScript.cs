@@ -11,6 +11,7 @@ public class PlayersAIScript : MonoBehaviour
     public int ballkickForce = 2;
     public float minimumAlignmentDistance = 4;
     public PlayerState playerState;
+    private SkinnedMeshRenderer playerMesh;
 
     private Vector3 startPosition;
     private VelocityReporter velocityReporter;
@@ -18,6 +19,7 @@ public class PlayersAIScript : MonoBehaviour
 
     private Rigidbody ballRigidBody;
     private Collider ballDetectorCollider;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,11 @@ public class PlayersAIScript : MonoBehaviour
         velocityReporter = GetComponent<VelocityReporter>();
         ballDetectorCollider = GetComponent<SphereCollider>();
     }
-
+    void Awake()
+    {
+        SkinnedMeshRenderer[] mrs = GetComponentsInChildren<SkinnedMeshRenderer>();
+        playerMesh = mrs[1];
+    }
     // Update is called once per frame
     void Update()
     {
@@ -122,10 +128,11 @@ public class PlayersAIScript : MonoBehaviour
     //        }
     //    }
     //}
-    public void InitializeAI(GameObject ball, GameObject goalLocation, string tag)
+    public void InitializeAI(GameObject ball, GameObject goalLocation, string tag, Material mat)
     {
         this.ball = ball;
         this.goalLocation = goalLocation;
         this.gameObject.tag = tag;
+        this.playerMesh.material = mat;
     }
 }

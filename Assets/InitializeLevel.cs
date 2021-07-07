@@ -19,6 +19,9 @@ public class InitializeLevel : MonoBehaviour
     int availableSlotsOnBlue = 2;
     int availableSlotsOnOrange = 2;
 
+    public Material orangeMaterial;
+    public Material blueMaterial;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,7 +49,7 @@ public class InitializeLevel : MonoBehaviour
             Transform spawn = GetSpawn("Blue", i);
             var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
             PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
-            pai.InitializeAI(ball, goal_orange, "Team1");
+            pai.InitializeAI(ball, goal_orange, "Team1", blueMaterial);
             cam.GetComponent<CameraController>().targets.Add(AIplayer.transform);
             GameObject.Find("Team Blue").GetComponent<TeamScript>().players.Add(AIplayer);
         }
@@ -55,7 +58,7 @@ public class InitializeLevel : MonoBehaviour
             Transform spawn = GetSpawn("Orange", i);
             var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
             PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
-            pai.InitializeAI(ball, goal_blue, "Team2");
+            pai.InitializeAI(ball, goal_blue, "Team2", orangeMaterial);
             cam.GetComponent<CameraController>().targets.Add(AIplayer.transform);
             GameObject.Find("Team Orange").GetComponent<TeamScript>().players.Add(AIplayer);
         }

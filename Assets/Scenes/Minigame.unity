@@ -529,6 +529,8 @@ MonoBehaviour:
   cam: {fileID: 1405210650}
   AIplayerPrefabs: {fileID: 231380171898691278, guid: de2a43bb2112e49c697bd8992010f62e,
     type: 3}
+  orangeMaterial: {fileID: 2100000, guid: 66970d1130826b0479bdfa9dc2933e42, type: 2}
+  blueMaterial: {fileID: 2100000, guid: 4f7b9fb87207c53448486cb0f0f354e1, type: 2}
 --- !u!114 &216335939
 MonoBehaviour:
   m_ObjectHideFlags: 0
