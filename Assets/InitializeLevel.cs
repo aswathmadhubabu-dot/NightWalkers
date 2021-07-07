@@ -8,22 +8,28 @@ public class InitializeLevel : MonoBehaviour
     private Transform[] teamOrangePlayerSpawns;
     [SerializeField]
     private Transform[] teamBluePlayerSpawns;
+    public GameObject ball;
+    public GameObject goal_blue;
+    public GameObject goal_orange;
 
     [SerializeField]
     private GameObject playerPrefabs;
     public GameObject cam;
+    public GameObject AIplayerPrefabs;
+    int availableSlotsOnBlue = 2;
+    int availableSlotsOnOrange = 2;
 
     // Start is called before the first frame update
     void Awake()
     {
         var playerConfigs = PlayerConfigurationManager.Instance.GetPlayerConfigs().ToArray();
         Debug.Log("Creating players: " + playerConfigs.Length);
-        for( var i = 0; i < playerConfigs.Length; i++)
+        for (var i = 0; i < playerConfigs.Length; i++)
         {
             Debug.Log("Creating player: " + playerConfigs.Length);
             Transform spawn = GetSpawn(playerConfigs[i]);
 
-            var player = Instantiate(playerPrefabs,  spawn.position, spawn.rotation, gameObject.transform);
+            var player = Instantiate(playerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
             PlayerController pc = player.GetComponent<PlayerController>();
             pc.originalPosition = spawn;
             pc.InitializePlayer(playerConfigs[i]);
@@ -34,13 +40,47 @@ public class InitializeLevel : MonoBehaviour
             Debug.Log("Added player to team: " + playerConfigs.Length);
 
         }
+
+        for (var i = 0; i < availableSlotsOnBlue; i++)
+        {
+            Transform spawn = GetSpawn("Blue", i);
+            var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
+            
+            PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
+            pai.InitializeAI(ball, goal_blue);
+            //pc.originalPosition = spawn;
+            //pc.InitializePlayer(playerConfigs[i]);
+            //Initialize an AI on each slot
+            cam.GetComponent<CameraController>().targets.Add(AIplayer.transform);
+            GameObject.Find("Team Blue").GetComponent<TeamScript>().players.Add(AIplayer);
+
+
+        }
     }
     Transform GetSpawn(PlayerConfiguration pi)
+ 
+
     {
-        if(pi.team == "Orange"){
+        if (pi.team == "Orange")
+        {
+            availableSlotsOnOrange--;
             return teamOrangePlayerSpawns[pi.teamPlayerIndex];
-        } else{
+        }
+        else
+        {
+            availableSlotsOnBlue--;
             return teamBluePlayerSpawns[pi.teamPlayerIndex];
         }
     }
+
+    Transform GetSpawn(string team, int pi)
+    {
+        if(team == "Orange"){
+            return teamOrangePlayerSpawns[1 - pi];
+        } else
+        {
+            return teamBluePlayerSpawns[1 - pi];
+        }
+    }
+
 }
