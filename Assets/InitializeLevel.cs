@@ -16,8 +16,8 @@ public class InitializeLevel : MonoBehaviour
     private GameObject playerPrefabs;
     public GameObject cam;
     public GameObject AIplayerPrefabs;
-    int availableSlotsOnBlue = 2;
-    int availableSlotsOnOrange = 2;
+    int availableSlotsOnBlue = 1;
+    int availableSlotsOnOrange = 1;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,7 +38,7 @@ public class InitializeLevel : MonoBehaviour
             Debug.Log("Added player to Camera: ");
             GameObject.Find("Team " + playerConfigs[i].team).GetComponent<TeamScript>().players.Add(player);
             Debug.Log("Added player to team: " + playerConfigs.Length);
-
+           
         }
 
         for (var i = 0; i < availableSlotsOnBlue; i++)
