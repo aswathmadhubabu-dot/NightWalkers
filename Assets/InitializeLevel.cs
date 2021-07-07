@@ -47,7 +47,7 @@ public class InitializeLevel : MonoBehaviour
             var AIplayer = Instantiate(AIplayerPrefabs, spawn.position, spawn.rotation, gameObject.transform);
             
             PlayersAIScript pai = AIplayer.GetComponent<PlayersAIScript>();
-            pai.InitializeAI(ball, goal_blue);
+            pai.InitializeAI(ball, goal_blue, "Team1");
             //pc.originalPosition = spawn;
             //pc.InitializePlayer(playerConfigs[i]);
             //Initialize an AI on each slot

@@ -16,7 +16,7 @@ public class VelocityReporter : MonoBehaviour
     }
 
     public float smoothingTimeFactor = 0.5f;
-    private Vector3 smoothingParamVel = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 smoothingParamVel;
 
     // Use this for initialization 
     void Start()
@@ -33,8 +33,11 @@ public class VelocityReporter : MonoBehaviour
         Debug.Log("Raw Velocity: " + rawVelocity.ToString());
         Debug.Log("Smoothing ParamVel: " + smoothingParamVel.ToString());
         Debug.Log("smooth time: " + smoothingTimeFactor.ToString());
-
-        velocity = Vector3.SmoothDamp(velocity, rawVelocity, ref smoothingParamVel, smoothingTimeFactor);
+        
+        Vector3 rv = Vector3.SmoothDamp(velocity, rawVelocity, ref smoothingParamVel, smoothingTimeFactor);
+        if(rv.x != float.NaN ){
+            velocity = rv;
+        }
         prevPos = this.transform.position;
     }
 }

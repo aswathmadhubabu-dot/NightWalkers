@@ -36,7 +36,7 @@ public class PlayersAIScript : MonoBehaviour
         if (playerState == PlayerState.Idle)
         {
             float distance = (this.transform.position - startPosition).magnitude;
-            Debug.Log("Start Position:  " + startPosition.ToString() + " Ball Position:  " + ball.transform.position.ToString() +  " Player Pos: " + this.transform.position);
+            //Debug.Log("Start Position:  " + startPosition.ToString() + " Ball Position:  " + ball.transform.position.ToString() +  " Player Pos: " + this.transform.position);
             //if (distance > 1)
             //{
             //    Debug.Log("Distance :  " + distance.ToString());
@@ -122,9 +122,10 @@ public class PlayersAIScript : MonoBehaviour
     //        }
     //    }
     //}
-    public void InitializeAI(GameObject ball, GameObject goalLocation)
+    public void InitializeAI(GameObject ball, GameObject goalLocation, string tag)
     {
         this.ball = ball;
         this.goalLocation = goalLocation;
+        this.gameObject.tag = tag;
     }
 }

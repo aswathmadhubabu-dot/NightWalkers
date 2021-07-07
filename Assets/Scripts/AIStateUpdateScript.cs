@@ -43,6 +43,7 @@ public class AIStateUpdateScript : MonoBehaviour
             PlayersAIScript minPlayerScript = minPlayer.GetComponent<PlayersAIScript>();
             if (minPlayerScript != null)
             {
+                //Debug.Log("SETTING ATTACKING");
                 minPlayerScript.playerState = PlayerState.Attacking;
             }
             foreach (GameObject member in members)

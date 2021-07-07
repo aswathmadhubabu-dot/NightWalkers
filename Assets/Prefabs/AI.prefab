@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   goalLocation: {fileID: 0}
-  ballkickForce: 2
+  ballkickForce: 1
   minimumAlignmentDistance: 4
   playerState: 0
 --- !u!114 &-9055807467921701537

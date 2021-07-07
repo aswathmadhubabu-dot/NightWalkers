@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028356, g: 0.22571364, b: 0.3069226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028381, g: 0.22571406, b: 0.30692294, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -477,6 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216335937}
   - component: {fileID: 216335938}
+  - component: {fileID: 216335939}
   m_Layer: 0
   m_Name: LevelInitializer
   m_TagString: Untagged
@@ -528,6 +529,19 @@ MonoBehaviour:
   cam: {fileID: 1405210650}
   AIplayerPrefabs: {fileID: 231380171898691278, guid: de2a43bb2112e49c697bd8992010f62e,
     type: 3}
+--- !u!114 &216335939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216335936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67deaa77e5ad4763938e958aabe7a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 1095241252}
 --- !u!1001 &283971114
 PrefabInstance:
   m_ObjectHideFlags: 0
