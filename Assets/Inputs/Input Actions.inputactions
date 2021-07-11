@@ -52,6 +52,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "PowerUps",
+                    "type": "Button",
+                    "id": "ea2d1a8d-c5fe-4f2c-8b02-16e4769ab3df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -224,7 +232,7 @@
                     "name": "",
                     "id": "482cb20f-896c-4d18-82ec-206e96cd6248",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Hold,Tap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "LeftAttack",
@@ -294,6 +302,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "970d3bbb-a7c4-4a67-a6a4-68faabbd009e",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PowerUps",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

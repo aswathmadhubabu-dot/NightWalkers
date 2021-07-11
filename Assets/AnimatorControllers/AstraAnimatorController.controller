@@ -669,7 +669,6 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101460428356268534}
-  - {fileID: 1341591069811139035}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 1
@@ -1052,8 +1051,7 @@ AnimatorState:
   m_Name: Blend Tree - ThrowBall
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 5179386011604335885}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

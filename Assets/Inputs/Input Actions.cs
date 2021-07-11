@@ -65,6 +65,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PowerUps"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea2d1a8d-c5fe-4f2c-8b02-16e4769ab3df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -237,7 +245,7 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""482cb20f-896c-4d18-82ec-206e96cd6248"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold,Tap"",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""LeftAttack"",
@@ -307,6 +315,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""970d3bbb-a7c4-4a67-a6a4-68faabbd009e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PowerUps"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -890,6 +909,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_RightAttack = m_Player.FindAction("RightAttack", throwIfNotFound: true);
         m_Player_YLook = m_Player.FindAction("YLook", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
+        m_Player_PowerUps = m_Player.FindAction("PowerUps", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -957,6 +977,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_RightAttack;
     private readonly InputAction m_Player_YLook;
     private readonly InputAction m_Player_Select;
+    private readonly InputAction m_Player_PowerUps;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -967,6 +988,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @RightAttack => m_Wrapper.m_Player_RightAttack;
         public InputAction @YLook => m_Wrapper.m_Player_YLook;
         public InputAction @Select => m_Wrapper.m_Player_Select;
+        public InputAction @PowerUps => m_Wrapper.m_Player_PowerUps;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -994,6 +1016,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @PowerUps.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
+                @PowerUps.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
+                @PowerUps.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1016,6 +1041,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @PowerUps.started += instance.OnPowerUps;
+                @PowerUps.performed += instance.OnPowerUps;
+                @PowerUps.canceled += instance.OnPowerUps;
             }
         }
     }
@@ -1178,6 +1206,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnRightAttack(InputAction.CallbackContext context);
         void OnYLook(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnPowerUps(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
