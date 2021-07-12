@@ -73,6 +73,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""854c5824-e42a-4475-8f15-94b0811368d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -326,6 +334,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""PowerUps"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55f61e0c-d27f-49f6-882b-1de81c5068a2"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Gamepad"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -910,6 +929,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_YLook = m_Player.FindAction("YLook", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_PowerUps = m_Player.FindAction("PowerUps", throwIfNotFound: true);
+        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -978,6 +998,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_YLook;
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_PowerUps;
+    private readonly InputAction m_Player_Look;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -989,6 +1010,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @YLook => m_Wrapper.m_Player_YLook;
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @PowerUps => m_Wrapper.m_Player_PowerUps;
+        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1019,6 +1041,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @PowerUps.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
                 @PowerUps.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
                 @PowerUps.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
+                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1044,6 +1069,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @PowerUps.started += instance.OnPowerUps;
                 @PowerUps.performed += instance.OnPowerUps;
                 @PowerUps.canceled += instance.OnPowerUps;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -1207,6 +1235,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnYLook(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnPowerUps(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

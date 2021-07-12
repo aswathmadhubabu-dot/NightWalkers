@@ -3,24 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+[RequireComponent(typeof(CharacterController))]
 public class PlayerControlScript : MonoBehaviour
 {
-    public float speed = 3;
+    public float speed = 3.0f;
+    private bool groundedPlayer;
+    private float jumpHeight = 2.0f;
+    private float gravityValue = -9.81f;
+
     public GameObject ball;
     public GameObject followCamera;
     public GameObject aimCamera;
     public GameObject ballHolder;
 
     private Animator anim;
+    private Collider collider;
     private float movementX = 0f;
     private float movementY = 0f;
     private bool hasBall = false;
+    private bool ballPosSet = false;
 
     private Rigidbody rb, ballRb;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool attemptJump;
     private bool slowTime = false;
+    private int jumpsRemaining = 2;
+    private InputManager inputManager;
+    private Transform cameraTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -29,56 +40,92 @@ public class PlayerControlScript : MonoBehaviour
         ballRb = ball.GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        collider = GetComponent<BoxCollider>();
+        inputManager = InputManager.Instance;
+        cameraTransform = Camera.main.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawLine(this.transform.position, this.transform.forward * 10, Color.red);
 
-        if (controller.isGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-            attemptJump = false;
-        }
+        MovePlayer();
 
-        Vector3 movementVector = new Vector3(movementX, 0.0f, movementY);
-        controller.Move(movementVector * Time.deltaTime * speed);
+        HandleJump();
+
+        Quaternion characterRotation = cameraTransform.rotation;
+        characterRotation.x = 0;
+        characterRotation.z = 0;
+        transform.rotation = characterRotation;
 
         if (hasBall)
         {
             ball.transform.position = ballHolder.transform.position;
-            ball.transform.rotation = ballHolder.transform.rotation;
+        }
+
+        if (inputManager.AttackedThisFrame())
+        {
+            ThrowBall();
+        }
+
+        if (inputManager.ZoomedThisFrame())
+        {
+            OnZoom();
+        }
+
+        if (inputManager.PowerUpTriggeredThisFrame())
+        {
+            SlowTime();
         }
     }
 
-    void OnMove(InputValue movementValue)
+    void MovePlayer()
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-        anim.SetFloat("velx", movementX);
-        anim.SetFloat("vely", movementY);
+        Vector2 move2d = inputManager.GetPlayerMovement();
+        Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
+        move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+        move.y = 0f;
+
+        controller.Move(move * Time.deltaTime * speed);
+        anim.SetFloat("velx", Mathf.Abs(move.x));
+        anim.SetFloat("vely", Mathf.Abs(move.z));
     }
 
-    void OnYLook(InputValue movementValue)
+    void HandleJump()
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+            if (jumpsRemaining != 2)
+            {
+                jumpsRemaining = 2;
+            }
+        }
+
+        if (inputManager.PlayerJumpedThisFrame() && (groundedPlayer || jumpsRemaining > 0))
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            jumpsRemaining -= 1;
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    void OnLeftAttack()
+    void ThrowBall()
     {
         if (hasBall)
         {
-            Vector3 forward = transform.forward;
-            forward.y = 1;
-            ballRb.AddForce(forward * 30, ForceMode.VelocityChange);
+            ballRb.isKinematic = false;
+            Vector3 forward = cameraTransform.forward;
+            forward.y = 0.1f;
+            ballRb.AddForce(forward * 7, ForceMode.Impulse);
             hasBall = false;
-            ballRb.detectCollisions = true;
         }
     }
 
-    void OnRightAttack()
+    void OnZoom()
     {
         if (aimCamera.active == false)
         {
@@ -92,7 +139,7 @@ public class PlayerControlScript : MonoBehaviour
         
     }
 
-    void OnPowerUps()
+    void SlowTime()
     {
         if (!slowTime)
         {
@@ -110,9 +157,9 @@ public class PlayerControlScript : MonoBehaviour
     {
         if (collider.CompareTag("Ball"))
         {
-            ballRb.detectCollisions = false;
             ballRb.velocity = Vector3.zero;
             ballRb.angularVelocity = Vector3.zero;
+            ballRb.isKinematic = true;
             hasBall = true;
         }
     }
