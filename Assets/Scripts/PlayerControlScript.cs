@@ -85,6 +85,11 @@ public class PlayerControlScript : MonoBehaviour
             SlowTime();
         }
                 
+        if (inputManager.PickupBallTriggeredThisFrame())
+        {
+            anim.SetTrigger("pickUpBall");
+            print("Pick up ball");
+        }
     }
 
     void MovePlayer()

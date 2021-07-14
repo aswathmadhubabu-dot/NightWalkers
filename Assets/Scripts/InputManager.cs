@@ -68,4 +68,9 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.Player.PowerUps.triggered;
     }
+    
+    public bool PickupBallTriggeredThisFrame()
+    {
+        return inputActions.Player.PickupBall.triggered;
+    }
 }

@@ -62,6 +62,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "PickupBall",
+                    "type": "Button",
+                    "id": "35c10e4c-fad1-4c9c-96f4-2164d7bb6281",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Look",
                     "type": "Button",
                     "id": "854c5824-e42a-4475-8f15-94b0811368d6",
@@ -332,6 +340,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dd4545e-cd34-45b9-a95b-3e81bc241c2d",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PickupBall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
