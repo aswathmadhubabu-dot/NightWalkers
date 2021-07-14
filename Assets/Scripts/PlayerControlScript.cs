@@ -57,6 +57,7 @@ public class PlayerControlScript : MonoBehaviour
         characterRotation.x = 0;
         characterRotation.z = 0;
         transform.rotation = characterRotation;
+        
 
         if (hasBall)
         {
@@ -65,7 +66,11 @@ public class PlayerControlScript : MonoBehaviour
 
         if (inputManager.AttackedThisFrame())
         {
-            ThrowBall();
+            if (hasBall)
+            {
+                anim.SetBool("carry", false);
+                anim.SetTrigger("throw");
+            }
         }
 
         if (inputManager.ZoomedThisFrame())
@@ -77,6 +82,7 @@ public class PlayerControlScript : MonoBehaviour
         {
             SlowTime();
         }
+                
     }
 
     void MovePlayer()
@@ -113,13 +119,14 @@ public class PlayerControlScript : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    void ThrowBall()
+    public void ThrowBall()
     {
         if (hasBall)
         {
             ballRb.isKinematic = false;
             Vector3 forward = cameraTransform.forward;
             forward.y = 0.1f;
+            print("Throwing ball");            
             ballRb.AddForce(forward * 7, ForceMode.Impulse);
             hasBall = false;
         }
@@ -161,6 +168,7 @@ public class PlayerControlScript : MonoBehaviour
             ballRb.angularVelocity = Vector3.zero;
             ballRb.isKinematic = true;
             hasBall = true;
+            anim.SetBool("carry", true);
         }
     }
 }
