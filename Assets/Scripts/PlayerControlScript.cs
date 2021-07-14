@@ -11,7 +11,9 @@ public class PlayerControlScript : MonoBehaviour
     private bool groundedPlayer;
     private float jumpHeight = 2.0f;
     private float gravityValue = -9.81f;
-
+    private float turnVel;
+    private float forwardVel;
+    
     public GameObject ball;
     public GameObject followCamera;
     public GameObject aimCamera;
@@ -52,12 +54,12 @@ public class PlayerControlScript : MonoBehaviour
         MovePlayer();
 
         HandleJump();
-
+        /*
         Quaternion characterRotation = cameraTransform.rotation;
         characterRotation.x = 0;
         characterRotation.z = 0;
         transform.rotation = characterRotation;
-        
+        */
 
         if (hasBall)
         {
@@ -89,12 +91,16 @@ public class PlayerControlScript : MonoBehaviour
     {
         Vector2 move2d = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
-        move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
+        forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
+
+        turnVel = Mathf.Lerp(turnVel, move.x, 
+            Time.deltaTime * 5);
+        //move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
 
-        controller.Move(move * Time.deltaTime * speed);
-        anim.SetFloat("velx", Mathf.Abs(move.x));
-        anim.SetFloat("vely", Mathf.Abs(move.z));
+        //controller.Move(move * Time.deltaTime * speed);
+        anim.SetFloat("velx", turnVel);
+        anim.SetFloat("vely", forwardVel);
     }
 
     void HandleJump()
