@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,7 @@ public class PlayerControlScript : MonoBehaviour
     private float gravityValue = -9.81f;
     private float turnVel;
     private float forwardVel;
-    
+
     public GameObject ball;
     public GameObject followCamera;
     public GameObject aimCamera;
@@ -35,6 +36,9 @@ public class PlayerControlScript : MonoBehaviour
     private InputManager inputManager;
     private Transform cameraTransform;
 
+    public float ballCloseEnoughForPickDistance = 2f;
+    double ballCloseEnoughForPickAngleDegree = 0.2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +54,6 @@ public class PlayerControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         MovePlayer();
 
         HandleJump();
@@ -84,9 +87,24 @@ public class PlayerControlScript : MonoBehaviour
         {
             SlowTime();
         }
-                
-        if (inputManager.PickupBallTriggeredThisFrame())
+
+        float ballDistanceFromPlayer = float.MaxValue;
+
+
+        var ballPosition = ball.transform.position;
+        var characterPosition = transform.position;
+
+        ballDistanceFromPlayer = Vector3.Distance(characterPosition, ballPosition);
+
+        Vector3 dir = (ballPosition - characterPosition).normalized;
+        float dot = Vector3.Dot(dir, transform.forward);
+
+        var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
+
+        if (inputManager.PickupBallTriggeredThisFrame() && ballDistanceFromPlayer <= ballCloseEnoughForPickDistance
+                                                        && isFacingBall)
         {
+            print(Math.Abs(dot - 1.0) < 0);
             anim.SetTrigger("pickUpBall");
             print("Pick up ball");
         }
@@ -98,7 +116,7 @@ public class PlayerControlScript : MonoBehaviour
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
         forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
 
-        turnVel = Mathf.Lerp(turnVel, move.x, 
+        turnVel = Mathf.Lerp(turnVel, move.x,
             Time.deltaTime * 5);
         //move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
@@ -137,7 +155,7 @@ public class PlayerControlScript : MonoBehaviour
             ballRb.isKinematic = false;
             Vector3 forward = cameraTransform.forward;
             forward.y = 0.1f;
-            print("Throwing ball");            
+            print("Throwing ball");
             ballRb.AddForce(forward * 7, ForceMode.Impulse);
             hasBall = false;
         }
@@ -149,12 +167,12 @@ public class PlayerControlScript : MonoBehaviour
         {
             followCamera.SetActive(false);
             aimCamera.SetActive(true);
-        } else
+        }
+        else
         {
             followCamera.SetActive(true);
             aimCamera.SetActive(false);
         }
-        
     }
 
     void SlowTime()
@@ -173,13 +191,13 @@ public class PlayerControlScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Ball"))
-        {
-            ballRb.velocity = Vector3.zero;
-            ballRb.angularVelocity = Vector3.zero;
-            ballRb.isKinematic = true;
-            hasBall = true;
-            anim.SetBool("carry", true);
-        }
+        // if (collider.CompareTag("Ball"))
+        // {
+        //     ballRb.velocity = Vector3.zero;
+        //     ballRb.angularVelocity = Vector3.zero;
+        //     ballRb.isKinematic = true;
+        //     hasBall = true;
+        //     anim.SetBool("carry", true);
+        // }
     }
 }
