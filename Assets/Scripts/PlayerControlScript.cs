@@ -105,11 +105,17 @@ public class PlayerControlScript : MonoBehaviour
 
         var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
 
-        if (inputManager.PickupBallTriggeredThisFrame() && ballDistanceFromPlayer <= ballCloseEnoughForPickDistance
+        // Use this is we need to click P button and manually pick up the ball - inputManager.PickupBallTriggeredThisFrame() 
+        if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance
                                                         && isFacingBall)
         {
             anim.SetTrigger("pickUpBall");
             print("Pick up ball");
+            ballRb.velocity = Vector3.zero;
+            ballRb.angularVelocity = Vector3.zero;
+            ballRb.isKinematic = true;
+            hasBall = true;
+            anim.SetBool("carry", true);
         }
     }
 
@@ -194,13 +200,13 @@ public class PlayerControlScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Ball"))
-        {
-            ballRb.velocity = Vector3.zero;
-            ballRb.angularVelocity = Vector3.zero;
-            ballRb.isKinematic = true;
-            hasBall = true;
-            anim.SetBool("carry", true);
-        }
+        // if (collider.CompareTag("Ball"))
+        // {
+        //     ballRb.velocity = Vector3.zero;
+        //     ballRb.angularVelocity = Vector3.zero;
+        //     ballRb.isKinematic = true;
+        //     hasBall = true;
+        //     anim.SetBool("carry", true);
+        // }
     }
 }
