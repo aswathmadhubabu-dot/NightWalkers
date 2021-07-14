@@ -66,7 +66,11 @@ public class PlayerControlScript : MonoBehaviour
 
         if (hasBall)
         {
-            ball.transform.position = ballHolder.transform.position;
+            ball.transform.parent = transform;
+            ball.transform.localPosition = Vector3.zero + Vector3.up * 1.1f +  Vector3.forward * 0.5f;
+            ball.transform.localRotation = Quaternion.identity;
+            
+            // ball.transform.position = ballHolder.transform.position;
         }
 
         if (inputManager.AttackedThisFrame())
@@ -104,7 +108,6 @@ public class PlayerControlScript : MonoBehaviour
         if (inputManager.PickupBallTriggeredThisFrame() && ballDistanceFromPlayer <= ballCloseEnoughForPickDistance
                                                         && isFacingBall)
         {
-            print(Math.Abs(dot - 1.0) < 0);
             anim.SetTrigger("pickUpBall");
             print("Pick up ball");
         }
@@ -191,13 +194,13 @@ public class PlayerControlScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        // if (collider.CompareTag("Ball"))
-        // {
-        //     ballRb.velocity = Vector3.zero;
-        //     ballRb.angularVelocity = Vector3.zero;
-        //     ballRb.isKinematic = true;
-        //     hasBall = true;
-        //     anim.SetBool("carry", true);
-        // }
+        if (collider.CompareTag("Ball"))
+        {
+            ballRb.velocity = Vector3.zero;
+            ballRb.angularVelocity = Vector3.zero;
+            ballRb.isKinematic = true;
+            hasBall = true;
+            anim.SetBool("carry", true);
+        }
     }
 }
