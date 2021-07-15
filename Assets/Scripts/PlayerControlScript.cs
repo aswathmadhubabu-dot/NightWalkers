@@ -2,38 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControlScript : MonoBehaviour
 {
     public float speed = 3.0f;
+    public float followCameraDistance = 3.5f;
+    public float aimCameraDistance = 1.1f;
+    public GameObject ball;
+    public GameObject ballHolder;
+    public CinemachineVirtualCamera camera;
+    private Cinemachine3rdPersonFollow thirdPersonFollowCamera;
+
+    private InputManager inputManager;
     private bool groundedPlayer;
     private float jumpHeight = 2.0f;
     private float gravityValue = -9.81f;
     private float turnVel;
     private float forwardVel;
-    
-    public GameObject ball;
-    public GameObject followCamera;
-    public GameObject aimCamera;
-    public GameObject ballHolder;
 
     private Animator anim;
-    private Collider collider;
-    private float movementX = 0f;
-    private float movementY = 0f;
-    private bool hasBall = false;
-    private bool ballPosSet = false;
+    private Collider detectCollider;
 
     private Rigidbody rb, ballRb;
     private CharacterController controller;
     private Vector3 playerVelocity;
-    private bool attemptJump;
+
+    private bool hasBall = false;
     private bool slowTime = false;
     private int jumpsRemaining = 2;
-    private InputManager inputManager;
-    private Transform cameraTransform;
+    private bool isAiming = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +42,9 @@ public class PlayerControlScript : MonoBehaviour
         ballRb = ball.GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider>();
+        detectCollider = GetComponent<BoxCollider>();
         inputManager = InputManager.Instance;
-        cameraTransform = Camera.main.transform;
+        thirdPersonFollowCamera = camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
     }
 
     // Update is called once per frame
@@ -84,11 +84,19 @@ public class PlayerControlScript : MonoBehaviour
         {
             SlowTime();
         }
-                
     }
 
     void MovePlayer()
     {
+        //if (isAiming)
+        //{
+        //    float xvel = anim.GetFloat("velx") - (2 * Time.deltaTime);
+        //    float yvel = anim.GetFloat("vely") - (2 * Time.deltaTime);
+        //    anim.SetFloat("velx", Mathf.Max(0, xvel));
+        //    anim.SetFloat("vely", Mathf.Max(0, yvel));
+        //    return;
+        //}
+
         Vector2 move2d = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
         forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
@@ -130,26 +138,26 @@ public class PlayerControlScript : MonoBehaviour
         if (hasBall)
         {
             ballRb.isKinematic = false;
-            Vector3 forward = cameraTransform.forward;
+            Vector3 forward = this.transform.forward;
             forward.y = 0.1f;
-            print("Throwing ball");            
-            ballRb.AddForce(forward * 7, ForceMode.Impulse);
+            ballRb.AddForce(forward * 10, ForceMode.Impulse);
             hasBall = false;
         }
     }
 
     void OnZoom()
     {
-        if (aimCamera.active == false)
+        if (!isAiming)
         {
-            followCamera.SetActive(false);
-            aimCamera.SetActive(true);
-        } else
-        {
-            followCamera.SetActive(true);
-            aimCamera.SetActive(false);
+            isAiming = true;
+            thirdPersonFollowCamera.CameraDistance = 1.1f;
         }
-        
+        else
+        {
+            isAiming = false;
+            thirdPersonFollowCamera.CameraDistance = 3.5f;
+        }
+
     }
 
     void SlowTime()
@@ -175,6 +183,7 @@ public class PlayerControlScript : MonoBehaviour
             ballRb.isKinematic = true;
             hasBall = true;
             anim.SetBool("carry", true);
+            detectCollider.enabled = false;
         }
     }
 }
