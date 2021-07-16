@@ -35,6 +35,9 @@ public class PlayerControlScript : MonoBehaviour
     private int jumpsRemaining = 2;
     private bool isAiming = false;
 
+    private GameObject rightHand;
+    private GameObject leftHand;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,8 @@ public class PlayerControlScript : MonoBehaviour
         detectCollider = GetComponent<BoxCollider>();
         inputManager = InputManager.Instance;
         thirdPersonFollowCamera = camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+        rightHand = GameObject.FindWithTag("rightHand");
+        leftHand = GameObject.FindWithTag("leftHand");
     }
 
     // Update is called once per frame
@@ -63,7 +68,9 @@ public class PlayerControlScript : MonoBehaviour
 
         if (hasBall)
         {
-            ball.transform.position = ballHolder.transform.position;
+            // ball.transform.position = ballHolder.transform.position;
+            ball.transform.position = (rightHand.transform.position + leftHand.transform.position) /2;
+            ball.transform.parent = rightHand.transform;            
         }
 
         if (inputManager.AttackedThisFrame())
@@ -142,6 +149,7 @@ public class PlayerControlScript : MonoBehaviour
             forward.y = 0.1f;
             ballRb.AddForce(forward * 10, ForceMode.Impulse);
             hasBall = false;
+            ball.transform.parent = null;
         }
     }
 
