@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using System;
 using Cinemachine;
-
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControlScript : MonoBehaviour
@@ -24,7 +21,6 @@ public class PlayerControlScript : MonoBehaviour
     private float forwardVel;
 
     private Animator anim;
-    private Collider detectCollider;
 
     private Rigidbody rb, ballRb;
     private CharacterController controller;
@@ -38,6 +34,9 @@ public class PlayerControlScript : MonoBehaviour
     private GameObject rightHand;
     private GameObject leftHand;
 
+    public float ballCloseEnoughForPickDistance = 2f;
+    double ballCloseEnoughForPickAngleDegree = 0.2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +44,6 @@ public class PlayerControlScript : MonoBehaviour
         ballRb = ball.GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        detectCollider = GetComponent<BoxCollider>();
         inputManager = InputManager.Instance;
         thirdPersonFollowCamera = camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
         rightHand = GameObject.FindWithTag("rightHand");
@@ -68,8 +66,8 @@ public class PlayerControlScript : MonoBehaviour
         if (hasBall)
         {
             // ball.transform.position = ballHolder.transform.position;
-            ball.transform.position = (rightHand.transform.position + leftHand.transform.position) /2;
-            ball.transform.parent = rightHand.transform;            
+            ball.transform.position = (rightHand.transform.position + leftHand.transform.position) / 2;
+            ball.transform.parent = rightHand.transform;
         }
 
         if (inputManager.AttackedThisFrame())
@@ -90,6 +88,37 @@ public class PlayerControlScript : MonoBehaviour
         {
             SlowTime();
         }
+
+        float ballDistanceFromPlayer = float.MaxValue;
+
+
+        var ballPosition = ball.transform.position;
+        var characterPosition = transform.position;
+
+        ballDistanceFromPlayer = Vector3.Distance(characterPosition, ballPosition);
+
+        Vector3 dir = (ballPosition - characterPosition).normalized;
+        float dot = Vector3.Dot(dir, transform.forward);
+
+        var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
+
+        // Use this is we need to click P button and manually pick up the ball - inputManager.PickupBallTriggeredThisFrame() 
+
+        if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance && isFacingBall)
+        {
+            pickUpBall();
+        }
+    }
+
+    void pickUpBall()
+    {
+        anim.SetTrigger("pickUpBall");
+        print("Pick up ball");
+        ballRb.velocity = Vector3.zero;
+        ballRb.angularVelocity = Vector3.zero;
+        ballRb.isKinematic = true;
+        hasBall = true;
+        anim.SetBool("carry", true);
     }
 
     void MovePlayer()
@@ -107,7 +136,7 @@ public class PlayerControlScript : MonoBehaviour
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
         forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
 
-        turnVel = Mathf.Lerp(turnVel, move.x, 
+        turnVel = Mathf.Lerp(turnVel, move.x,
             Time.deltaTime * 5);
         //move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
@@ -138,7 +167,6 @@ public class PlayerControlScript : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        
     }
 
     public void ThrowBall()
@@ -166,7 +194,6 @@ public class PlayerControlScript : MonoBehaviour
             isAiming = false;
             thirdPersonFollowCamera.CameraDistance = 3.5f;
         }
-
     }
 
     void SlowTime()
@@ -180,19 +207,6 @@ public class PlayerControlScript : MonoBehaviour
         {
             Time.timeScale = 1f;
             slowTime = false;
-        }
-    }
-
-    public void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Ball"))
-        {
-            ballRb.velocity = Vector3.zero;
-            ballRb.angularVelocity = Vector3.zero;
-            ballRb.isKinematic = true;
-            hasBall = true;
-            anim.SetBool("carry", true);
-            detectCollider.enabled = false;
         }
     }
 }

@@ -75,6 +75,14 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""PickUpBall"",
+                    ""type"": ""Button"",
+                    ""id"": ""a95685fa-2e0c-4467-8696-553348b83196"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Look"",
                     ""type"": ""Button"",
                     ""id"": ""854c5824-e42a-4475-8f15-94b0811368d6"",
@@ -345,6 +353,17 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad"",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a120e6c-e9fa-499f-9fa7-ce2674525e62"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PickUpBall"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -929,6 +948,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_Player_YLook = m_Player.FindAction("YLook", throwIfNotFound: true);
         m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
         m_Player_PowerUps = m_Player.FindAction("PowerUps", throwIfNotFound: true);
+        m_Player_PickUpBall = m_Player.FindAction("PickUpBall", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -998,6 +1018,7 @@ public class @InputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_YLook;
     private readonly InputAction m_Player_Select;
     private readonly InputAction m_Player_PowerUps;
+    private readonly InputAction m_Player_PickUpBall;
     private readonly InputAction m_Player_Look;
     public struct PlayerActions
     {
@@ -1010,6 +1031,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         public InputAction @YLook => m_Wrapper.m_Player_YLook;
         public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputAction @PowerUps => m_Wrapper.m_Player_PowerUps;
+        public InputAction @PickUpBall => m_Wrapper.m_Player_PickUpBall;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1041,6 +1063,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @PowerUps.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
                 @PowerUps.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
                 @PowerUps.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerUps;
+                @PickUpBall.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpBall;
+                @PickUpBall.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpBall;
+                @PickUpBall.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPickUpBall;
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
@@ -1069,6 +1094,9 @@ public class @InputActions : IInputActionCollection, IDisposable
                 @PowerUps.started += instance.OnPowerUps;
                 @PowerUps.performed += instance.OnPowerUps;
                 @PowerUps.canceled += instance.OnPowerUps;
+                @PickUpBall.started += instance.OnPickUpBall;
+                @PickUpBall.performed += instance.OnPickUpBall;
+                @PickUpBall.canceled += instance.OnPickUpBall;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
@@ -1235,6 +1263,7 @@ public class @InputActions : IInputActionCollection, IDisposable
         void OnYLook(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnPowerUps(InputAction.CallbackContext context);
+        void OnPickUpBall(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
