@@ -123,23 +123,27 @@ public class PlayerControlScript : MonoBehaviour
 
         if (inputManager.DropUpBallTriggeredThisFrame())
         {
-            dropBall();
+            DropBall();
         }
     }
 
-    void dropBall()
+    void DropBall()
     {
         print("Drop ball");
         if (hasBall)
         {
             print("Dropping ball");
-            // ballRb.velocity = Vector3.zero;
-            // ballRb.angularVelocity = Vector3.zero;
-            ballRb.isKinematic = false;
-            hasBall = false;
             anim.SetBool("carry", false);
+            DisableBallKinematics();
+            Vector3 forward = this.transform.forward;
+            forward.y = 0.1f;
+            ballRb.AddForce(forward * 0, ForceMode.Impulse);
+            hasBall = false;
+            ball.transform.parent = null;
         }
     }
+
+    private void DisableBallKinematics() => ballRb.isKinematic = false;
 
     void pickUpBall()
     {
@@ -210,7 +214,7 @@ public class PlayerControlScript : MonoBehaviour
     {
         if (hasBall)
         {
-            ballRb.isKinematic = false;
+            DisableBallKinematics();
             Vector3 forward = this.transform.forward;
             forward.y = 0.1f;
             ballRb.AddForce(forward * 10, ForceMode.Impulse);
