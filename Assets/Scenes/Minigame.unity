@@ -3385,8 +3385,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492622245}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 46.96}
-  m_LocalScale: {x: 16, y: 8, z: 8}
+  m_LocalPosition: {x: 0, y: 2, z: 44}
+  m_LocalScale: {x: 12, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -4687,6 +4687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoalKeeper (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e6dd4ebbda742a48c30e8c2eb7233f, type: 3}
 --- !u!4 &2043961989 stripped
@@ -4725,7 +4730,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.18
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
@@ -4735,7 +4740,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
@@ -4781,6 +4786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GoalKeeper
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e6dd4ebbda742a48c30e8c2eb7233f, type: 3}
