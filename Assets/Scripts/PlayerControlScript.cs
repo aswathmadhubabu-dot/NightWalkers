@@ -55,7 +55,6 @@ public class PlayerControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         MovePlayer();
 
         HandleJump();
@@ -132,12 +131,14 @@ public class PlayerControlScript : MonoBehaviour
 
         if (inputManager.PlayerJumpedThisFrame() && (groundedPlayer || jumpsRemaining > 0))
         {
+            anim.SetTrigger("isJumping");
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             jumpsRemaining -= 1;
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+        
     }
 
     public void ThrowBall()

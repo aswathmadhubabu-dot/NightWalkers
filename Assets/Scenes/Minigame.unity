@@ -3097,7 +3097,6 @@ MonoBehaviour:
   ball: {fileID: 1095241252}
   ballHolder: {fileID: 1726088786}
   camera: {fileID: 1669851620}
-  ballScript: {fileID: 0}
 --- !u!114 &1448844079
 MonoBehaviour:
   m_ObjectHideFlags: 0
