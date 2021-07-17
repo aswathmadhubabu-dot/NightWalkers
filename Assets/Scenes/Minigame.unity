@@ -664,15 +664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -680,11 +680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1921,7 +1921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953756950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: -6}
+  m_LocalPosition: {x: 0, y: 0, z: 3.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1448844083}
@@ -2845,7 +2845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405210650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 1.6, z: -9.3}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: 0.4100001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3080,9 +3080,11 @@ MonoBehaviour:
   speed: 5
   followCameraDistance: 3.5
   aimCameraDistance: 1.1
+  throwBallForce: 7
   ball: {fileID: 1095241252}
   ballHolder: {fileID: 1726088786}
   camera: {fileID: 1669851620}
+  hasBall: 0
   ballCloseEnoughForPickDistance: 2
 --- !u!114 &1448844079
 MonoBehaviour:
@@ -3282,6 +3284,21 @@ MonoBehaviour:
       m_RecenteringTime: 0
       m_LegacyHeadingDefinition: 0
       m_LegacyVelocityFilterStrength: 0
+--- !u!114 &1448844086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448844077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84cc6490916cd54b89710355ef168c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetTimer: 3.5
+  ball: {fileID: 1095241252}
+  player: {fileID: 1448844077}
 --- !u!1 &1492622245
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669851618}
   m_LocalRotation: {x: -0.2342389, y: 0.09518103, z: -0.02305795, w: -0.9672338}
-  m_LocalPosition: {x: 0.5, y: 1.5, z: -3.3000002}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: -3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1074333290}

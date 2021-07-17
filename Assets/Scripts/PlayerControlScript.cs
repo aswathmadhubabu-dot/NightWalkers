@@ -8,27 +8,32 @@ public class PlayerControlScript : MonoBehaviour
     public float speed = 3.0f;
     public float followCameraDistance = 3.5f;
     public float aimCameraDistance = 1.1f;
+    public float throwBallForce = 7f;
+
     public GameObject ball;
     public GameObject ballHolder;
     public CinemachineVirtualCamera camera;
     private Cinemachine3rdPersonFollow thirdPersonFollowCamera;
+    private Animator anim;
 
     private InputManager inputManager;
+
+    // Jumping stuff
     private bool groundedPlayer;
     private float jumpHeight = 2.0f;
     private float gravityValue = -9.81f;
     private float turnVel;
     private float forwardVel;
+    private int jumpsRemaining = 2;
 
-    private Animator anim;
 
     private Rigidbody rb, ballRb;
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    private bool hasBall = false;
+    [HideInInspector]
+    public bool hasBall = false;
     private bool slowTime = false;
-    private int jumpsRemaining = 2;
     private bool isAiming = false;
 
     private GameObject rightHand;
@@ -217,7 +222,7 @@ public class PlayerControlScript : MonoBehaviour
             DisableBallKinematics();
             Vector3 forward = this.transform.forward;
             forward.y = 0.1f;
-            ballRb.AddForce(forward * 10, ForceMode.Impulse);
+            ballRb.AddForce(forward * throwBallForce, ForceMode.Impulse);
             hasBall = false;
             ball.transform.parent = null;
         }

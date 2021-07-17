@@ -47,22 +47,22 @@ public class MatchController : MonoBehaviour
     {
         recentGoal = true;
         goalText.enabled = true;
-        TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
+        //TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
 
-        setAngry(angryTeam);
-        setHappy(happyTeam);
+        //setAngry(angryTeam);
+        //setHappy(happyTeam);
 
 
         yield return new WaitForSeconds(goalTimeout);
 
-        ball.transform.position = ballSpawn.transform.position;
-        ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        //ball.transform.position = ballSpawn.transform.position;
+        //ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
-        resetPlayerPos(teamA);
-        resetPlayerPos(teamB);
-        setNormal(teamA);
-        setNormal(teamB);
+        //resetPlayerPos(teamA);
+        //resetPlayerPos(teamB);
+        //setNormal(teamA);
+        //setNormal(teamB);
 
         goalText.enabled = false;
         recentGoal = false;
