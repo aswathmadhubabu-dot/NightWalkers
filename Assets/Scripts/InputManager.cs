@@ -10,10 +10,7 @@ public class InputManager : MonoBehaviour
 
     public static InputManager Instance
     {
-        get
-        {
-            return _instance;
-        }
+        get { return _instance; }
     }
 
     void Awake()
@@ -23,12 +20,13 @@ public class InputManager : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             Destroy(_instance);
-        } else
+        }
+        else
         {
             _instance = this;
         }
     }
-       
+
     private void OnEnable()
     {
         inputActions.Enable();

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControlScript : MonoBehaviour
 {
-    public float speed = 3.0f;
+    public float speed = 10.0f;
     private bool groundedPlayer;
     private float jumpHeight = 2.0f;
     private float gravityValue = -9.81f;
@@ -91,7 +91,7 @@ public class PlayerControlScript : MonoBehaviour
     {
         Vector2 move2d = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
-        forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
+        forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 10);
 
         turnVel = Mathf.Lerp(turnVel, move.x, 
             Time.deltaTime * 5);
