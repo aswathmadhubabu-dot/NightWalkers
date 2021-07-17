@@ -37,6 +37,10 @@ public class PlayerControlScript : MonoBehaviour
     public float ballCloseEnoughForPickDistance = 2f;
     double ballCloseEnoughForPickAngleDegree = 0.2;
 
+    private Vector3 initialBallVelocity;
+    private Vector3 initialBallAngularVelocity;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,8 @@ public class PlayerControlScript : MonoBehaviour
         thirdPersonFollowCamera = camera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
         rightHand = GameObject.FindWithTag("rightHand");
         leftHand = GameObject.FindWithTag("leftHand");
+        initialBallVelocity = ballRb.velocity;
+        initialBallAngularVelocity = ballRb.angularVelocity;
     }
 
     // Update is called once per frame
@@ -102,11 +108,36 @@ public class PlayerControlScript : MonoBehaviour
 
         var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
 
-        // Use this is we need to click P button and manually pick up the ball - inputManager.PickupBallTriggeredThisFrame() 
+        // Use this is we need to click P button and manually pick up the ball - inputManager.PickUpBallTriggeredThisFrame() 
 
-        if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance && isFacingBall)
+        // if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance && isFacingBall)
+        // {
+        //     pickUpBall();
+        // }
+
+        if (inputManager.PickUpBallTriggeredThisFrame() && ballDistanceFromPlayer <= ballCloseEnoughForPickDistance &&
+            isFacingBall)
         {
             pickUpBall();
+        }
+
+        if (inputManager.DropUpBallTriggeredThisFrame())
+        {
+            dropBall();
+        }
+    }
+
+    void dropBall()
+    {
+        print("Drop ball");
+        if (hasBall)
+        {
+            print("Dropping ball");
+            // ballRb.velocity = Vector3.zero;
+            // ballRb.angularVelocity = Vector3.zero;
+            ballRb.isKinematic = false;
+            hasBall = false;
+            anim.SetBool("carry", false);
         }
     }
 
@@ -148,25 +179,31 @@ public class PlayerControlScript : MonoBehaviour
 
     void HandleJump()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-            if (jumpsRemaining != 2)
-            {
-                jumpsRemaining = 2;
-            }
-        }
+        // groundedPlayer = controller.isGrounded;
+        // if (groundedPlayer && playerVelocity.y < 0)
+        // {
+        //     playerVelocity.y = 0f;
+        //     if (jumpsRemaining != 2)
+        //     {
+        //         jumpsRemaining = 2;
+        //     }
+        // }
+        //
+        // if (inputManager.PlayerJumpedThisFrame() && (groundedPlayer || jumpsRemaining > 0))
+        // {
+        //     anim.SetTrigger("isJumping");
+        //     playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        //     jumpsRemaining -= 1;
+        // }
+        //
+        // playerVelocity.y += gravityValue * Time.deltaTime;
+        // controller.Move(playerVelocity * Time.deltaTime);
 
-        if (inputManager.PlayerJumpedThisFrame() && (groundedPlayer || jumpsRemaining > 0))
+        if (inputManager.PlayerJumpedThisFrame())
         {
-            anim.SetTrigger("isJumping");
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            jumpsRemaining -= 1;
+            print("Jumping");
+            anim.SetTrigger("jump");
         }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     public void ThrowBall()
