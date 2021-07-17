@@ -223,6 +223,7 @@ public class PlayerControlScript : MonoBehaviour
             Vector3 forward = this.transform.forward;
             forward.y = 0.1f;
             ballRb.AddForce(forward * throwBallForce, ForceMode.Impulse);
+            EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
             hasBall = false;
             ball.transform.parent = null;
         }

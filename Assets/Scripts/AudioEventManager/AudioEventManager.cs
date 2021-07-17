@@ -14,17 +14,23 @@ public class AudioEventManager : MonoBehaviour
     public AudioClip ovationAudio1;
     public AudioClip ovationAudio2;
     public AudioClip ovationAudio3;
+    public AudioClip throwBallAudio;
 
     private UnityAction<Vector3> hitGoalEventListener;
 
+    private UnityAction<Vector3> throwBallEventListener;
+
     private UnityAction<Vector3, float> hitBallEventListener;
 
+ 
     private UnityAction<Vector3, float> punchBallEventListener;
 
     void Awake()
     {
 
         hitGoalEventListener = new UnityAction<Vector3>(hitGoalEventHandler);
+
+        throwBallEventListener = new UnityAction<Vector3>(throwBallEventHandler);
 
         hitBallEventListener = new UnityAction<Vector3, float>(hitBallEventHandler);
 
@@ -44,6 +50,7 @@ public class AudioEventManager : MonoBehaviour
     void OnEnable()
     {
         EventManager.StartListening<HitGoalEvent, Vector3>(hitGoalEventListener);
+        EventManager.StartListening<ThrowBallEvent, Vector3>(throwBallEventListener);
         EventManager.StartListening<HitBallEvent, Vector3, float>(hitBallEventListener);
         EventManager.StartListening<PunchBallEvent, Vector3, float>(punchBallEventListener);
     }
@@ -51,6 +58,7 @@ public class AudioEventManager : MonoBehaviour
     void OnDisable()
     {
         EventManager.StopListening<HitGoalEvent, Vector3>(hitGoalEventListener);
+        EventManager.StopListening<ThrowBallEvent, Vector3>(throwBallEventListener);
         EventManager.StopListening<HitBallEvent, Vector3, float>(hitBallEventListener);
         EventManager.StopListening<PunchBallEvent, Vector3, float>(punchBallEventListener);
     }
@@ -107,7 +115,19 @@ public class AudioEventManager : MonoBehaviour
         snd5.audioSrc.PlayDelayed(0.1f);
     }
 
+    void throwBallEventHandler(Vector3 worldPos)
+    {
+        //AudioSource.PlayClipAtPoint(this.boxAudio, worldPos);
 
+        EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+        snd.audioSrc.clip = this.throwBallAudio;
+
+        snd.audioSrc.minDistance = 10f;
+        snd.audioSrc.maxDistance = 500f;
+
+        snd.audioSrc.Play();
+    }
     void hitBallEventHandler(Vector3 worldPos, float impactForce)
     {
         //AudioSource.PlayClipAtPoint(this.boxAudio, worldPos);

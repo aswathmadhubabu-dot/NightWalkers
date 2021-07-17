@@ -5143,6 +5143,11 @@ PrefabInstance:
       propertyPath: hitBallAudio
       value: 
       objectReference: {fileID: 8300000, guid: d577308ab6dc2e74ab018219ea1861ad, type: 3}
+    - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
+        type: 3}
+      propertyPath: throwBallAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: f7df2ad7385b1794fbb7ef20607b06cb, type: 3}
     - target: {fileID: 6339647933519021549, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
         type: 3}
       propertyPath: m_Name
