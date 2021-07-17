@@ -73,4 +73,9 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.Player.PickUpBall.triggered;
     }
+    
+    public bool DropUpBallTriggeredThisFrame()
+    {
+        return inputActions.Player.DropBall.triggered;
+    }
 }
