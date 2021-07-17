@@ -3934,7 +3934,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5a8fdd566579a43d88c1ede6259b22e2, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -4630,7 +4630,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
@@ -4640,7 +4640,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.49
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
@@ -4690,7 +4690,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 34e6dd4ebbda742a48c30e8c2eb7233f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34e6dd4ebbda742a48c30e8c2eb7233f, type: 3}
@@ -4848,7 +4848,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 040b8b19af10d46d78a27936185bc414, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
