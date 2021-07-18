@@ -17,11 +17,24 @@ public class MatchController : MonoBehaviour
     public bool recentGoal;
     public int goalTimeout;
 
+    [SerializeField] public Timer timer;
+
     void Start()
     {
         remainingTime = gameTimeInSecs;
         goalText.enabled = false;
         recentGoal = false;
+        StartTimer(60);
+    }
+
+    void StartTimer(int duration)
+    {
+        timer
+            .SetDuration(duration)
+            .OnBegin(() => Debug.Log("Timer began"))
+            .OnChange(progress => Debug.Log("On Timer change"))
+            .OnEnd(() => Debug.Log("Timer ended"))
+            .Begin();
     }
 
     // Update is called once per frame
