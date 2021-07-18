@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391859de6295fcb4cb69daa869bb27d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimeInSecs: 25
+  gameTimeInSecs: 5
   ball: {fileID: 1095241252}
   ballSpawn: {fileID: 1237519514}
   teamA: {fileID: 1223629855}
@@ -295,6 +295,7 @@ MonoBehaviour:
   goalTimeout: 2
   timer: {fileID: 1041274303}
   goalMessage: {fileID: 1231002149}
+  playerControlScript: {fileID: 1448844078}
 --- !u!1 &202959586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4592,6 +4593,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3964edee805e94c2ca573fec3b058bbf, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 81856ee704a214f46be14001bb1d862e,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6380008277799756434, guid: 81856ee704a214f46be14001bb1d862e,
         type: 3}
       propertyPath: m_Layer

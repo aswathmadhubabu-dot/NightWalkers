@@ -132,6 +132,16 @@ public class PlayerControlScript : MonoBehaviour
         }
     }
 
+    public void MakePlayerDance()
+    {
+        anim.SetTrigger("dance");
+    }
+
+    public void MakePlayerDefeated()
+    {
+        anim.SetTrigger("defeated");
+    }
+    
     void DropBall()
     {
         print("Drop ball");

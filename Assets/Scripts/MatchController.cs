@@ -18,6 +18,8 @@ public class MatchController : MonoBehaviour
 
     [SerializeField] public MessageUI goalMessage;
 
+    [SerializeField] public PlayerControlScript playerControlScript;
+
     void Start()
     {
         recentGoal = false;
@@ -48,8 +50,21 @@ public class MatchController : MonoBehaviour
     {
     }
 
+    void endCurrentLevel()
+    {
+        if (teamA.score > 0)
+        {
+            playerControlScript.MakePlayerDance();
+        }
+        else
+        {
+            playerControlScript.MakePlayerDefeated();
+        }
+    }
+
     void OnTimerEnded()
     {
+        endCurrentLevel();
         Debug.Log("Timer ended");
     }
 
