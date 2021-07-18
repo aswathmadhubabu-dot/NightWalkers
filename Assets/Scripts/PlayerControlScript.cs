@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
@@ -238,6 +240,7 @@ public class PlayerControlScript : MonoBehaviour
     {
         if (hasBall)
         {
+            // anim.SetTrigger("throw");
             DisableBallKinematics();
             Vector3 forward = this.transform.forward;
             forward.y = 0.1f;
@@ -245,7 +248,24 @@ public class PlayerControlScript : MonoBehaviour
             EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
             hasBall = false;
             ball.transform.parent = null;
+            
+            StartCoroutine(ExecuteAfterTime(0.3f, () =>
+            {            
+                ball.GetComponent<Collider>().isTrigger = false;
+            }));
         }
+    }
+
+    private Boolean isCoroutineExecuting = false;
+    
+    IEnumerator ExecuteAfterTime(float time, Action task)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+        isCoroutineExecuting = true;
+        yield return new WaitForSeconds(time);
+        task();
+        isCoroutineExecuting = false;
     }
 
     void OnZoom()

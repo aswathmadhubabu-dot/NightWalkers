@@ -47,10 +47,10 @@ namespace HutongGames.PlayMaker.Actions
         {
             DoSetVelocity();
 
-            if (!everyFrame)
-            {
-                Finish();
-            }
+            // if (!everyFrame)
+            // {
+            //     Finish();
+            // }
         }
 
         public override void OnFixedUpdate()
@@ -63,32 +63,32 @@ namespace HutongGames.PlayMaker.Actions
 
         void DoSetVelocity()
         {
-            var go = Fsm.GetOwnerDefaultTarget(gameObject);
-            if (!UpdateCache(go))
-            {
-                return;
-            }
-
-            // init position
-
-            Vector3 velocity;
-
-            if (vector.IsNone)
-            {
-                velocity = space == Space.World
-                    ? rigidbody.velocity
-                    : go.transform.InverseTransformDirection(rigidbody.velocity);
-            }
-            else
-            {
-                velocity = vector.Value;
-            }
-
-            // override any axis
-
-            if (!x.IsNone) velocity.x = x.Value;
-            if (!y.IsNone) velocity.y = y.Value;
-            if (!z.IsNone) velocity.z = z.Value;
+            // var go = Fsm.GetOwnerDefaultTarget(gameObject);
+            // if (!UpdateCache(go))
+            // {
+            //     return;
+            // }
+            //
+            // // init position
+            //
+            // Vector3 velocity;
+            //
+            // if (vector.IsNone)
+            // {
+            //     velocity = space == Space.World
+            //         ? rigidbody.velocity
+            //         : go.transform.InverseTransformDirection(rigidbody.velocity);
+            // }
+            // else
+            // {
+            //     velocity = vector.Value;
+            // }
+            //
+            // // override any axis
+            //
+            // if (!x.IsNone) velocity.x = x.Value;
+            // if (!y.IsNone) velocity.y = y.Value;
+            // if (!z.IsNone) velocity.z = z.Value;
 
             // apply
 
