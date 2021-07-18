@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public class Timer : MonoBehaviour
     [Header("Timer UI references :")] [SerializeField]
     private Image uiFillImage;
 
-    [SerializeField] private Text uiText;
+    [SerializeField] private BlinkingText uiText;
 
     public int Duration { get; private set; }
 
@@ -29,9 +30,8 @@ public class Timer : MonoBehaviour
 
     private void ResetTimer()
     {
-        uiText.text = "00:00";
+        uiText.showText("00:00");
         uiFillImage.fillAmount = 0f;
-
         Duration = remainingDuration = 0;
 
         onTimerBeginAction = null;
@@ -40,6 +40,18 @@ public class Timer : MonoBehaviour
         onTimerPauseAction = null;
 
         IsPaused = false;
+    }
+
+    public void toggleBlinking(Boolean blink)
+    {
+        if (blink)
+        {
+            uiText.StartBlinking();
+        }
+        else
+        {
+            uiText.StopBlinking();
+        }
     }
 
     public void SetPaused(bool paused)
@@ -113,7 +125,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateUI(int seconds)
     {
-        uiText.text = string.Format("{0:D2}:{1:D2}", seconds / 60, seconds % 60);
+        uiText.showText(string.Format("{0:D2}:{1:D2}", seconds / 60, seconds % 60));
         uiFillImage.fillAmount = Mathf.InverseLerp(0, Duration, seconds);
     }
 

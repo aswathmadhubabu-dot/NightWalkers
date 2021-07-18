@@ -1,14 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MatchController : MonoBehaviour
 {
-    public TextMeshProUGUI goalText;
-    public TextMeshProUGUI timeText;
     public int gameTimeInSecs;
-    private float remainingTime;
     public GameObject ball;
     public GameObject ballSpawn;
     public TeamScript teamA;
@@ -19,12 +16,13 @@ public class MatchController : MonoBehaviour
 
     [SerializeField] public Timer timer;
 
+    [SerializeField] public MessageUI goalMessage;
+
     void Start()
     {
-        remainingTime = gameTimeInSecs;
-        goalText.enabled = false;
         recentGoal = false;
-        StartTimer(60);
+        StartTimer(gameTimeInSecs);
+        goalMessage.toggleVisibility(false);
     }
 
     void StartTimer(int duration)
@@ -32,34 +30,38 @@ public class MatchController : MonoBehaviour
         timer
             .SetDuration(duration)
             .OnBegin(() => Debug.Log("Timer began"))
-            .OnChange(progress => Debug.Log("On Timer change"))
-            .OnEnd(() => Debug.Log("Timer ended"))
+            .OnChange(progress =>
+            {
+                if (progress < 20)
+                {
+                    timer.toggleBlinking(true);
+                }
+
+                Debug.Log("On Timer change");
+            })
+            .OnEnd(OnTimerEnded)
             .Begin();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (remainingTime > 0)
-        {
-            remainingTime -= Time.deltaTime;
-        }
+    }
 
-        float minutes = Mathf.FloorToInt(remainingTime / 60);
-        float seconds = Mathf.FloorToInt(remainingTime % 60);
-        timeText.text = minutes.ToString() + " : " + seconds.ToString();
+    void OnTimerEnded()
+    {
+        Debug.Log("Timer ended");
     }
 
     public void NewGoal(TeamScript happyTeam)
     {
-        goalText.text = "" + happyTeam.teamName + " Goal!";
+        goalMessage.toggleVisibility(true);
         StartCoroutine(ResetPlayersAndBall(happyTeam));
     }
 
     IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
     {
         recentGoal = true;
-        goalText.enabled = true;
         //TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
 
         //setAngry(angryTeam);
@@ -67,6 +69,7 @@ public class MatchController : MonoBehaviour
 
 
         yield return new WaitForSeconds(goalTimeout);
+        goalMessage.toggleVisibility(false);
 
         //ball.transform.position = ballSpawn.transform.position;
         //ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -77,7 +80,6 @@ public class MatchController : MonoBehaviour
         //setNormal(teamA);
         //setNormal(teamB);
 
-        goalText.enabled = false;
         recentGoal = false;
     }
 

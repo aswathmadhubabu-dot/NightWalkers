@@ -7,7 +7,8 @@ public class TeamScript : MonoBehaviour
 {
     public int score;
     public string teamName;
-    public TextMeshProUGUI scoreBoardText;
+
+    [SerializeField] public MessageUI scoreBoard;
 
     public MatchController match;
 
@@ -18,6 +19,7 @@ public class TeamScript : MonoBehaviour
     {
         score = 0;
         match = GameObject.Find("Match").GetComponent<MatchController>();
+        scoreBoard.toggleVisibility(true);
     }
 
     public void ScoreGoal()
@@ -27,5 +29,15 @@ public class TeamScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() => scoreBoardText.text = score.ToString();
+    void Update()
+    {
+        if (score == 1)
+        {
+            scoreBoard.showMessage(score + " Goal scored");
+        }
+        else
+        {
+            scoreBoard.showMessage(score + " Goals scored");
+        }
+    }
 }
