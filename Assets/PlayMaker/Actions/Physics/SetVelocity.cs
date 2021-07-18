@@ -26,6 +26,7 @@ namespace HutongGames.PlayMaker.Actions
 
         public override void Reset()
         {
+            player = null;
             gameObject = null;
             vector = null;
             // default axis to variable dropdown with None selected.
@@ -93,9 +94,12 @@ namespace HutongGames.PlayMaker.Actions
 
             // rigidbody.velocity = space == Space.World ? velocity : go.transform.TransformDirection(velocity);
 
-            Vector3 forward = player.transform.forward;
-            forward.y = 0.1f;
-            rigidbody.AddForce(forward * 7f, ForceMode.Impulse);
+            // Vector3 forward = player.transform.forward;
+            // forward.y = 0.1f;
+            // rigidbody.AddForce(forward * 10f, ForceMode.Impulse);
+            // go.transform.parent = null;
+            player.hasBall = true;
+            player.ThrowBall();
         }
     }
 }
