@@ -1,32 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GoalBehaviourScript : MonoBehaviour
 {
     public GameObject ball;
-    public GameObject ballSpawn;
-    public TeamScript team;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ball = new GameObject();
-    }
+    public MatchController match;
 
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == ball /* and recentgoal = false*/)
+        if (other.gameObject == ball && match != null && !match.recentGoal)
         {
             //Goal!
-            team.ScoreGoal();
+            match.NewGoal();
             EventManager.TriggerEvent<HitGoalEvent, Vector3>(other.transform.position);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

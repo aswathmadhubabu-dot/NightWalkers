@@ -4,11 +4,6 @@ using UnityEngine;
 public class MatchController : MonoBehaviour
 {
     public int gameTimeInSecs;
-    public GameObject ball;
-    public GameObject ballSpawn;
-    public TeamScript teamA;
-
-    public TeamScript teamB;
     public bool recentGoal;
     public int goalTimeout;
 
@@ -32,10 +27,11 @@ public class MatchController : MonoBehaviour
     void setInitialGameParams()
     {
         playerControlScript.EnablePlayer(true);
+        goalsScored = 0;
         recentGoal = false;
         StartTimer(gameTimeInSecs);
-        goalMessage.toggleVisibility(false);
 
+        goalMessage.toggleVisibility(false);
         exitPanel.gameObject.SetActive(false);
         exitPanel.enabled = false;
     }
@@ -53,8 +49,6 @@ public class MatchController : MonoBehaviour
                     {
                         timer.toggleBlinking(true);
                     }
-
-                    Debug.Log("On Timer change");
                 })
                 .OnEnd(OnTimerEnded)
                 .Begin();
@@ -74,16 +68,21 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    void endCurrentLevel()
-    {
-    }
-
     void OnTimerEnded()
     {
         Debug.Log("Timer ended");
 
         playerControlScript.EnablePlayer(false);
         exitPanel.gameObject.SetActive(true);
+
+        if (goalsScored == 1)
+        {
+            exitPanel.setScoreMessage(goalsScored + " Goal scored");
+        }
+        else
+        {
+            exitPanel.setScoreMessage(goalsScored + " Goals scored");
+        }
 
         if (goalsScored > 0)
         {
@@ -95,7 +94,7 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    public void NewGoal(TeamScript happyTeam)
+    public void NewGoal()
     {
         goalsScored += 1;
         goalMessage.toggleVisibility(true);
@@ -168,6 +167,7 @@ public class MatchController : MonoBehaviour
 
     public void OnUserClickedRestart()
     {
+        playerControlScript.
         StartCoroutine(ResetPlayersAndBall());
         setInitialGameParams();
     }

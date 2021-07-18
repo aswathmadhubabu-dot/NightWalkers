@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391859de6295fcb4cb69daa869bb27d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTimeInSecs: 60
+  gameTimeInSecs: 30
   ball: {fileID: 1095241252}
   ballSpawn: {fileID: 1237519514}
   teamA: {fileID: 1223629855}
@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6285ee2265541dfb1f675f08f49769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreBoard: {fileID: 1800554566}
 --- !u!1 &202959586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,8 +2877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1095241252}
-  ballSpawn: {fileID: 1237519514}
-  team: {fileID: 1223629855}
+  match: {fileID: 167947869}
 --- !u!65 &1228484549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3619,8 +3619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1095241252}
-  ballSpawn: {fileID: 1095241252}
-  team: {fileID: 1548663815288009082}
+  match: {fileID: 167947869}
 --- !u!65 &1492622247
 BoxCollider:
   m_ObjectHideFlags: 0
