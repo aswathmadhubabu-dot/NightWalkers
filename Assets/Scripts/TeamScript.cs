@@ -14,13 +14,8 @@ public class TeamScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
         match = GameObject.Find("Match").GetComponent<MatchController>();
     }
 
-    public void ScoreGoal()
-    {
-        score += 1;
-        match.NewGoal(this);
-    }
+
 }
