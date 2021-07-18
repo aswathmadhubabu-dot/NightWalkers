@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour
 {
-    public void StartGame() => SceneManager.LoadScene("SetupGame");
+    public void StartGame() => SceneManager.LoadScene("Minigame");
 
     public void LoadGame()
     {

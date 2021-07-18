@@ -39,8 +39,8 @@ public class PlayerControlScript : MonoBehaviour
     private GameObject rightHand;
     private GameObject leftHand;
 
-    public float ballCloseEnoughForPickDistance = 2f;
-    double ballCloseEnoughForPickAngleDegree = 0.2;
+    public float ballCloseEnoughForPickDistance = 8f;
+    double ballCloseEnoughForPickAngleDegree = 0.8;
 
     private Vector3 initialBallVelocity;
     private Vector3 initialBallAngularVelocity;
