@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class TeamScript : MonoBehaviour
 {
     public int score;
     public string teamName;
-    public TextMeshProUGUI scoreBoardText;
+
 
     public MatchController match;
 
@@ -25,7 +23,4 @@ public class TeamScript : MonoBehaviour
         score += 1;
         match.NewGoal(this);
     }
-
-    // Update is called once per frame
-    void Update() => scoreBoardText.text = score.ToString();
 }

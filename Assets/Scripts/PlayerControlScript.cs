@@ -31,8 +31,7 @@ public class PlayerControlScript : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
 
-    [HideInInspector]
-    public bool hasBall = false;
+    [HideInInspector] public bool hasBall = false;
     private bool slowTime = false;
     private bool isAiming = false;
 
@@ -45,6 +44,12 @@ public class PlayerControlScript : MonoBehaviour
     private Vector3 initialBallVelocity;
     private Vector3 initialBallAngularVelocity;
 
+    private Boolean enablePlayer = true;
+
+    public void EnablePlayer(Boolean enable)
+    {
+        enablePlayer = enable;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -64,72 +69,86 @@ public class PlayerControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-
-        HandleJump();
-        /*
-        Quaternion characterRotation = cameraTransform.rotation;
-        characterRotation.x = 0;
-        characterRotation.z = 0;
-        transform.rotation = characterRotation;
-        */
-
-        if (hasBall)
+        if (enablePlayer)
         {
-            // ball.transform.position = ballHolder.transform.position;
-            ball.transform.position = (rightHand.transform.position + leftHand.transform.position) / 2;
-            ball.transform.parent = rightHand.transform;
-        }
+            MovePlayer();
 
-        if (inputManager.AttackedThisFrame())
-        {
+            HandleJump();
+            /*
+            Quaternion characterRotation = cameraTransform.rotation;
+            characterRotation.x = 0;
+            characterRotation.z = 0;
+            transform.rotation = characterRotation;
+            */
+
             if (hasBall)
             {
-                anim.SetBool("carry", false);
-                anim.SetTrigger("throw");
+                // ball.transform.position = ballHolder.transform.position;
+                ball.transform.position = (rightHand.transform.position + leftHand.transform.position) / 2;
+                ball.transform.parent = rightHand.transform;
+            }
+
+            if (inputManager.AttackedThisFrame())
+            {
+                if (hasBall)
+                {
+                    anim.SetBool("carry", false);
+                    anim.SetTrigger("throw");
+                }
+            }
+
+            if (inputManager.ZoomedThisFrame())
+            {
+                OnZoom();
+            }
+
+            if (inputManager.PowerUpTriggeredThisFrame())
+            {
+                SlowTime();
+            }
+
+            float ballDistanceFromPlayer = float.MaxValue;
+
+
+            var ballPosition = ball.transform.position;
+            var characterPosition = transform.position;
+
+            ballDistanceFromPlayer = Vector3.Distance(characterPosition, ballPosition);
+
+            Vector3 dir = (ballPosition - characterPosition).normalized;
+            float dot = Vector3.Dot(dir, transform.forward);
+
+            var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
+
+            // Use this is we need to click P button and manually pick up the ball - inputManager.PickUpBallTriggeredThisFrame() 
+
+            // if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance && isFacingBall)
+            // {
+            //     pickUpBall();
+            // }
+
+            if (inputManager.PickUpBallTriggeredThisFrame() &&
+                ballDistanceFromPlayer <= ballCloseEnoughForPickDistance &&
+                isFacingBall)
+            {
+                pickUpBall();
+            }
+
+            if (inputManager.DropUpBallTriggeredThisFrame())
+            {
+                DropBall();
             }
         }
+    }
 
-        if (inputManager.ZoomedThisFrame())
-        {
-            OnZoom();
-        }
+    public void MakePlayerDance()
+    {
+        anim.SetTrigger("dance");
+    }
 
-        if (inputManager.PowerUpTriggeredThisFrame())
-        {
-            SlowTime();
-        }
-
-        float ballDistanceFromPlayer = float.MaxValue;
-
-
-        var ballPosition = ball.transform.position;
-        var characterPosition = transform.position;
-
-        ballDistanceFromPlayer = Vector3.Distance(characterPosition, ballPosition);
-
-        Vector3 dir = (ballPosition - characterPosition).normalized;
-        float dot = Vector3.Dot(dir, transform.forward);
-
-        var isFacingBall = Math.Abs(dot - 1.0) < ballCloseEnoughForPickAngleDegree;
-
-        // Use this is we need to click P button and manually pick up the ball - inputManager.PickUpBallTriggeredThisFrame() 
-
-        // if (ballDistanceFromPlayer <= ballCloseEnoughForPickDistance && isFacingBall)
-        // {
-        //     pickUpBall();
-        // }
-
-        if (inputManager.PickUpBallTriggeredThisFrame() && ballDistanceFromPlayer <= ballCloseEnoughForPickDistance &&
-            isFacingBall)
-        {
-            pickUpBall();
-        }
-
-        if (inputManager.DropUpBallTriggeredThisFrame())
-        {
-            DropBall();
-        }
+    public void MakePlayerDefeated()
+    {
+        anim.SetTrigger("defeated");
     }
 
     void DropBall()

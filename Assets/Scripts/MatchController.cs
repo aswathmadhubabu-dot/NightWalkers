@@ -1,14 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class MatchController : MonoBehaviour
 {
-    public TextMeshProUGUI goalText;
-    public TextMeshProUGUI timeText;
     public int gameTimeInSecs;
-    private float remainingTime;
     public GameObject ball;
     public GameObject ballSpawn;
     public TeamScript teamA;
@@ -17,36 +12,99 @@ public class MatchController : MonoBehaviour
     public bool recentGoal;
     public int goalTimeout;
 
+    [SerializeField] public Timer timer;
+
+    [SerializeField] public MessageUI goalMessage;
+
+    [SerializeField] public PlayerControlScript playerControlScript;
+
+    [SerializeField] public ExitPanelUI exitPanel;
+
+    [SerializeField] public MessageUI scoreBoard;
+
+    private int goalsScored = 0;
+
     void Start()
     {
-        remainingTime = gameTimeInSecs;
-        goalText.enabled = false;
+        setInitialGameParams();
+    }
+
+    void setInitialGameParams()
+    {
+        playerControlScript.EnablePlayer(true);
         recentGoal = false;
+        StartTimer(gameTimeInSecs);
+        goalMessage.toggleVisibility(false);
+
+        exitPanel.gameObject.SetActive(false);
+        exitPanel.enabled = false;
+    }
+
+    void StartTimer(int duration)
+    {
+        if (timer != null)
+        {
+            timer
+                .SetDuration(duration)
+                .OnBegin(() => Debug.Log("Timer began"))
+                .OnChange(progress =>
+                {
+                    if (progress < 20)
+                    {
+                        timer.toggleBlinking(true);
+                    }
+
+                    Debug.Log("On Timer change");
+                })
+                .OnEnd(OnTimerEnded)
+                .Begin();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (remainingTime > 0)
+        if (goalsScored == 1)
         {
-            remainingTime -= Time.deltaTime;
+            scoreBoard.showMessage(goalsScored + " Goal scored");
         }
+        else
+        {
+            scoreBoard.showMessage(goalsScored + " Goals scored");
+        }
+    }
 
-        float minutes = Mathf.FloorToInt(remainingTime / 60);
-        float seconds = Mathf.FloorToInt(remainingTime % 60);
-        timeText.text = minutes.ToString() + " : " + seconds.ToString();
+    void endCurrentLevel()
+    {
+    }
+
+    void OnTimerEnded()
+    {
+        Debug.Log("Timer ended");
+
+        playerControlScript.EnablePlayer(false);
+        exitPanel.gameObject.SetActive(true);
+
+        if (goalsScored > 0)
+        {
+            playerControlScript.MakePlayerDance();
+        }
+        else
+        {
+            playerControlScript.MakePlayerDefeated();
+        }
     }
 
     public void NewGoal(TeamScript happyTeam)
     {
-        goalText.text = "" + happyTeam.teamName + " Goal!";
-        StartCoroutine(ResetPlayersAndBall(happyTeam));
+        goalsScored += 1;
+        goalMessage.toggleVisibility(true);
+        StartCoroutine(ResetPlayersAndBall());
     }
 
-    IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
+    IEnumerator ResetPlayersAndBall()
     {
         recentGoal = true;
-        goalText.enabled = true;
         //TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
 
         //setAngry(angryTeam);
@@ -54,6 +112,7 @@ public class MatchController : MonoBehaviour
 
 
         yield return new WaitForSeconds(goalTimeout);
+        goalMessage.toggleVisibility(false);
 
         //ball.transform.position = ballSpawn.transform.position;
         //ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -64,7 +123,6 @@ public class MatchController : MonoBehaviour
         //setNormal(teamA);
         //setNormal(teamB);
 
-        goalText.enabled = false;
         recentGoal = false;
     }
 
@@ -101,5 +159,16 @@ public class MatchController : MonoBehaviour
         {
             player.GetComponent<Animator>().SetInteger("Emotion", 0);
         }
+    }
+
+    public void OnUserClickedExit()
+    {
+        Debug.Log("ON User Ext");
+    }
+
+    public void OnUserClickedRestart()
+    {
+        StartCoroutine(ResetPlayersAndBall());
+        setInitialGameParams();
     }
 }
