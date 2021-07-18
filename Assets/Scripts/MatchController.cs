@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MatchController : MonoBehaviour
 {
@@ -20,39 +18,74 @@ public class MatchController : MonoBehaviour
 
     [SerializeField] public PlayerControlScript playerControlScript;
 
+    [SerializeField] public ExitPanelUI exitPanel;
+
+    [SerializeField] public MessageUI scoreBoard;
+
+    private int goalsScored = 0;
+
     void Start()
     {
+        setInitialGameParams();
+    }
+
+    void setInitialGameParams()
+    {
+        playerControlScript.EnablePlayer(true);
         recentGoal = false;
         StartTimer(gameTimeInSecs);
         goalMessage.toggleVisibility(false);
+
+        exitPanel.gameObject.SetActive(false);
+        exitPanel.enabled = false;
     }
 
     void StartTimer(int duration)
     {
-        timer
-            .SetDuration(duration)
-            .OnBegin(() => Debug.Log("Timer began"))
-            .OnChange(progress =>
-            {
-                if (progress < 20)
+        if (timer != null)
+        {
+            timer
+                .SetDuration(duration)
+                .OnBegin(() => Debug.Log("Timer began"))
+                .OnChange(progress =>
                 {
-                    timer.toggleBlinking(true);
-                }
+                    if (progress < 20)
+                    {
+                        timer.toggleBlinking(true);
+                    }
 
-                Debug.Log("On Timer change");
-            })
-            .OnEnd(OnTimerEnded)
-            .Begin();
+                    Debug.Log("On Timer change");
+                })
+                .OnEnd(OnTimerEnded)
+                .Begin();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (goalsScored == 1)
+        {
+            scoreBoard.showMessage(goalsScored + " Goal scored");
+        }
+        else
+        {
+            scoreBoard.showMessage(goalsScored + " Goals scored");
+        }
     }
 
     void endCurrentLevel()
     {
-        if (teamA.score > 0)
+    }
+
+    void OnTimerEnded()
+    {
+        Debug.Log("Timer ended");
+
+        playerControlScript.EnablePlayer(false);
+        exitPanel.gameObject.SetActive(true);
+
+        if (goalsScored > 0)
         {
             playerControlScript.MakePlayerDance();
         }
@@ -62,19 +95,14 @@ public class MatchController : MonoBehaviour
         }
     }
 
-    void OnTimerEnded()
-    {
-        endCurrentLevel();
-        Debug.Log("Timer ended");
-    }
-
     public void NewGoal(TeamScript happyTeam)
     {
+        goalsScored += 1;
         goalMessage.toggleVisibility(true);
-        StartCoroutine(ResetPlayersAndBall(happyTeam));
+        StartCoroutine(ResetPlayersAndBall());
     }
 
-    IEnumerator ResetPlayersAndBall(TeamScript happyTeam)
+    IEnumerator ResetPlayersAndBall()
     {
         recentGoal = true;
         //TeamScript angryTeam = (teamA.name == happyTeam.name) ? teamB : teamA;
@@ -131,5 +159,16 @@ public class MatchController : MonoBehaviour
         {
             player.GetComponent<Animator>().SetInteger("Emotion", 0);
         }
+    }
+
+    public void OnUserClickedExit()
+    {
+        Debug.Log("ON User Ext");
+    }
+
+    public void OnUserClickedRestart()
+    {
+        StartCoroutine(ResetPlayersAndBall());
+        setInitialGameParams();
     }
 }
