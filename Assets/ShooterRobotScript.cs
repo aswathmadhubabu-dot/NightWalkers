@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-
 public class ShooterRobotScript : MonoBehaviour
 {
     private UnityEngine.AI.NavMeshAgent navmesh;
@@ -20,12 +18,12 @@ public class ShooterRobotScript : MonoBehaviour
     private Vector3 worldDeltaPosition;
     private Vector2 groundDeltaPosition;
     private Vector2 velocity = Vector2.zero;
-    private float spotArrivalTime; 
+    private float spotArrivalTime;
 
     public float timeInSpots = 15;
     private float turnVel;
     private float forwardVel;
-    
+
     public Transform raycastOrigin;
     public Ray ray;
     public RaycastHit hitInfo;
@@ -42,8 +40,8 @@ public class ShooterRobotScript : MonoBehaviour
     Vector3 finalPosition;
     void Start()
     {
-        navmesh = GetComponent<UnityEngine.AI.NavMeshAgent>();  
-        anim  = GetComponent<Animator>();
+        navmesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         vr = target.GetComponent<VelocityReporter>();
         navmesh.updatePosition = false;
@@ -52,7 +50,9 @@ public class ShooterRobotScript : MonoBehaviour
         //anim.applyRootMotion = true;
         
     }
-    void setNextWaypoint(){
+
+    void setNextWaypoint()
+    {
         Debug.Log("Bored here, moving to new point");
         navmesh.stoppingDistance = 1;
         NavMeshHit hit;
@@ -74,6 +74,7 @@ public class ShooterRobotScript : MonoBehaviour
     {
         this.transform.position = navmesh.nextPosition;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -87,7 +88,7 @@ public class ShooterRobotScript : MonoBehaviour
                 }
                 MoveRootMotionRobot(true);
                 CheckIfRobotSeesPlayer(dist);
-            break;
+                break;
             case AIState.Wandering:
                 Debug.Log("wandering ");
 
@@ -96,20 +97,25 @@ public class ShooterRobotScript : MonoBehaviour
                     stopping = true;
                     //Keep wandering around
                 }
+
                 MoveRootMotionRobot(stopping);
-                if(navmesh.remainingDistance < 1 && !navmesh.pathPending){
+                if (navmesh.remainingDistance < 1 && !navmesh.pathPending)
+                {
                     StopRobot();
                     StayOnSpot();
                 }
+
                 CheckIfRobotSeesPlayer(dist);
-            break; 
+                break;
             case AIState.ChasingPlayer:
-                
+
                 CalculateDistanceAndChasePlayer(dist);
                 stopping = false;
-                if(navmesh.remainingDistance < 10){
+                if (navmesh.remainingDistance < 10)
+                {
                     stopping = true;
                 }
+
                 MoveRootMotionRobot(stopping);
                 
                 if(isPlayerInSight()){
@@ -118,13 +124,16 @@ public class ShooterRobotScript : MonoBehaviour
                         StopRobot();
                         aiState = AIState.InRangeOfPlayer;
                     }
-                } else {
+                }
+                else
+                {
                     //Lost Player from Sight.
                     Debug.Log("Lost Player, staying here");
                     StopRobot();
                     StayOnSpot();
                 }
-            break;
+
+                break;
             case AIState.InRangeOfPlayer:
                 anim.SetBool("aiming", true);
                 MoveRootMotionRobot(true);
@@ -152,10 +161,11 @@ public class ShooterRobotScript : MonoBehaviour
     void CalculateDistanceAndChasePlayer(Vector3 dist){
         navmesh.stoppingDistance = 10;
         float lookaheadDt = dist.magnitude / vr.maxVelocity.magnitude;
-        lookaheadDt = Mathf.Clamp(lookaheadDt, 0.01f, 1.0f);                
+        lookaheadDt = Mathf.Clamp(lookaheadDt, 0.01f, 1.0f);
         Vector3 futurePos = target.transform.position + vr.velocity * lookaheadDt;
         navmesh.SetDestination(futurePos);
     }
+
     IEnumerator WaitAndFire()
     {
         firing = true;
@@ -200,8 +210,11 @@ public class ShooterRobotScript : MonoBehaviour
             Debug.Log("Missed!");
         }
     }
-    void CheckIfRobotSeesPlayer(Vector3 dist){
-        if(dist.magnitude < 35 && isPlayerInSight()){
+
+    void CheckIfRobotSeesPlayer(Vector3 dist)
+    {
+        if (dist.magnitude < 35 && isPlayerInSight())
+        {
             //Can see the player, lets chase him!
             aiState = AIState.ChasingPlayer;
             // Play sound here probably
@@ -212,15 +225,21 @@ public class ShooterRobotScript : MonoBehaviour
             }
         }
     }
-    void StayOnSpot(){
+
+    void StayOnSpot()
+    {
         aiState = AIState.OnASpot;
         spotArrivalTime = Time.time;
     }
-    void SetWandering(){
+
+    void SetWandering()
+    {
         StopRobot();
         aiState = AIState.Wandering;
     }
-    void StopRobot(){
+
+    void StopRobot()
+    {
         navmesh.isStopped = true;
         navmesh.ResetPath();
     }
@@ -237,22 +256,28 @@ public class ShooterRobotScript : MonoBehaviour
         worldDeltaPosition = navmesh.nextPosition - transform.position;
         groundDeltaPosition.x = Vector3.Dot(transform.right, worldDeltaPosition);
         groundDeltaPosition.y = Vector3.Dot(transform.forward, worldDeltaPosition);
-        velocity = (Time.deltaTime > 1e-5f ) ? groundDeltaPosition / Time.deltaTime : Vector2.zero;
+        velocity = (Time.deltaTime > 1e-5f) ? groundDeltaPosition / Time.deltaTime : Vector2.zero;
         bool moving = velocity.magnitude > 0.025f && navmesh.remainingDistance > navmesh.radius;
- 
 
-        if(stopping){
+
+        if (stopping)
+        {
             forwardVel = Mathf.Lerp(forwardVel, 0, Time.deltaTime * 10);
-            turnVel = Mathf.Lerp(turnVel,  0, Time.deltaTime * 10);
-            if(forwardVel < 0.05){
+            turnVel = Mathf.Lerp(turnVel, 0, Time.deltaTime * 10);
+            if (forwardVel < 0.05)
+            {
                 forwardVel = 0;
                 //Debug.Log("SET0");
 
             }
-            if(turnVel < 0.05){
+
+            if (turnVel < 0.05)
+            {
                 turnVel = 0;
             }
-        } else {
+        }
+        else
+        {
             forwardVel = velocity.y;
             turnVel = velocity.x;
         }
@@ -262,6 +287,7 @@ public class ShooterRobotScript : MonoBehaviour
         anim.SetFloat("vely", forwardVel);
         anim.SetFloat("velx", turnVel);
     }
+
     bool isPlayerInSight()
     {
         Vector3 targetDir = target.transform.position - transform.position;
@@ -315,12 +341,12 @@ public class ShooterRobotScript : MonoBehaviour
         }
         return false;
     }
-    public enum AIState
+
+    private enum AIState
     {
         ChasingPlayer,
         Wandering,
         OnASpot,
         InRangeOfPlayer
     };
-
 }
