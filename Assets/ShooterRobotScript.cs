@@ -225,13 +225,6 @@ public class ShooterRobotScript : MonoBehaviour
         navmesh.ResetPath();
     }
     void RotateToTarget(){
-        /*
-        worldDeltaPosition = navmesh.nextPosition - transform.position;
-        groundDeltaPosition.x = Vector3.Dot(transform.right, worldDeltaPosition);
-        groundDeltaPosition.y = Vector3.Dot(transform.forward, worldDeltaPosition);
-        velocity = (Time.deltaTime > 1e-5f ) ? groundDeltaPosition / Time.deltaTime : Vector2.zero;
-        */
-
         Vector3 targetDir = target.transform.position - transform.position;
         float angleToPlayer = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
 
@@ -263,8 +256,8 @@ public class ShooterRobotScript : MonoBehaviour
             forwardVel = velocity.y;
             turnVel = velocity.x;
         }
-        //Debug.Log(forwardVel);
-
+        
+        //TODO play footsteps
         anim.SetBool("moving", moving);
         anim.SetFloat("vely", forwardVel);
         anim.SetFloat("velx", turnVel);
