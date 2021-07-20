@@ -46,11 +46,13 @@ public class PlayerControlScript : MonoBehaviour
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
     }
+    
+    //TODO COPIAR
+    
 
     // Update is called once per frame
     void Update()
     {
-
         MovePlayer();
 
         HandleJump();

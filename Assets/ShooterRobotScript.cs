@@ -46,9 +46,7 @@ public class ShooterRobotScript : MonoBehaviour
         vr = target.GetComponent<VelocityReporter>();
         navmesh.updatePosition = false;
         setNextWaypoint();
-        firing = false;
-        //anim.applyRootMotion = true;
-        
+        firing = false;        
     }
 
     void setNextWaypoint()
@@ -201,7 +199,7 @@ public class ShooterRobotScript : MonoBehaviour
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
             if(hitInfo.collider.gameObject == target){
                 Debug.Log("Hit Player!");
-                //drop ball
+                target.GetComponent<HealthController>().TakeDamage(10);
             } else {
                 Debug.Log("Missed!");
             }
