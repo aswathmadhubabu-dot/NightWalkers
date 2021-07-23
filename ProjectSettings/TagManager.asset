@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - Ball
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - PostProcessing
   - Projectile
   - Player
-  - 
+  - FireLayer
   - 
   - 
   - 

@@ -19,6 +19,7 @@ public class ShooterRobotScript : MonoBehaviour
     private Vector2 groundDeltaPosition;
     private Vector2 velocity = Vector2.zero;
     private float spotArrivalTime;
+    public ParticleSystem hitEffect;
 
     public float timeInSpots = 15;
     private float turnVel;
@@ -27,6 +28,9 @@ public class ShooterRobotScript : MonoBehaviour
     public Transform raycastOrigin;
     public Ray ray;
     public RaycastHit hitInfo;
+
+    public TrailRenderer tracer;
+    public LineRenderer lineRenderer;
     public TrailRenderer tracerEffect;
     public bool firing;
     public Transform visionOrigin;
@@ -34,7 +38,11 @@ public class ShooterRobotScript : MonoBehaviour
     public ParticleSystem muzzleFlash;
     private float lastSeenPlayer = -9999f;
 
-    private
+    private Vector3 laserFinishPoint;
+
+    public bool debug = true;
+
+    private bool laserOn = false;
     //Distance to target
     Vector3 dist;
     Vector3 finalPosition;
@@ -47,11 +55,14 @@ public class ShooterRobotScript : MonoBehaviour
         navmesh.updatePosition = false;
         setNextWaypoint();
         firing = false;        
+        lineRenderer = GetComponent<LineRenderer>();
+        hitEffect = GameObject.Find("BulletImpactMetalEffect").GetComponent<ParticleSystem>();
     }
-
     void setNextWaypoint()
     {
-        Debug.Log("Bored here, moving to new point");
+        if(debug){
+            Debug.Log("Bored here, moving to new point");
+        }
         navmesh.stoppingDistance = 1;
         NavMeshHit hit;
         float walkRadius = 10f;
@@ -79,8 +90,12 @@ public class ShooterRobotScript : MonoBehaviour
         this.dist = target.transform.position - this.transform.position;
         bool stopping;
         switch (aiState) {
+            case AIState.Dead:
+            break;
             case AIState.OnASpot:
-                Debug.Log("Stayin on spot");
+                if(debug){
+                    Debug.Log("Stayin on spot");
+                }
                 if(Time.time - spotArrivalTime  > timeInSpots){
                     setNextWaypoint();
                 }
@@ -88,8 +103,9 @@ public class ShooterRobotScript : MonoBehaviour
                 CheckIfRobotSeesPlayer(dist);
                 break;
             case AIState.Wandering:
-                Debug.Log("wandering ");
-
+                if(debug){
+                    Debug.Log("wandering ");
+                }
                 stopping = false;
                 if(navmesh.remainingDistance < 1){
                     stopping = true;
@@ -126,24 +142,34 @@ public class ShooterRobotScript : MonoBehaviour
                 else
                 {
                     //Lost Player from Sight.
-                    Debug.Log("Lost Player, staying here");
+                    if(debug){
+                        Debug.Log("Lost Player, staying here");
+                    }
                     StopRobot();
                     StayOnSpot();
                 }
 
                 break;
             case AIState.InRangeOfPlayer:
-                anim.SetBool("aiming", true);
                 MoveRootMotionRobot(true);
                 Debug.Log("Close to player!");
-
-                if(aimingAtTarget()){
-                    if(!firing){
+                if(laserOn){
+                    ray.origin = raycastOrigin.position;
+                    ray.direction = laserFinishPoint - ray.origin;
+                    if(Physics.Raycast(ray, out hitInfo)) {
+                        //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+                        lineRenderer.SetPosition(1, hitInfo.point);
+                    }
+                }
+                if(!firing){
+                    if(aimingAtTarget()){
                         Debug.Log("Aiming, Shooting! " + navmesh.remainingDistance.ToString());
                         StartCoroutine(WaitAndFire());
+                    } else{
+                        RotateToTarget();
                     }
                 } else{
-                    RotateToTarget();
+
                 }
             break;
         }
@@ -153,7 +179,8 @@ public class ShooterRobotScript : MonoBehaviour
     bool aimingAtTarget(){
         Vector3 targetDir = target.transform.position - transform.position;
         float angleToPlayer = (Vector3.Angle(targetDir, transform.forward));
-        return (angleToPlayer < 10);
+        Debug.Log("ANGLE " + angleToPlayer);
+        return (angleToPlayer < 5);
     }
 
     void CalculateDistanceAndChasePlayer(Vector3 dist){
@@ -163,43 +190,88 @@ public class ShooterRobotScript : MonoBehaviour
         Vector3 futurePos = target.transform.position + vr.velocity * lookaheadDt;
         navmesh.SetDestination(futurePos);
     }
+    void OnTriggerEnter(Collider other){
+            if(other.gameObject == GameObject.Find("Ball")){
+            Die();
+        }
+    }
+    void Die(){
+        Debug.Log("I'm Dyin!");
+        aiState = AIState.Dead;
+        navmesh.enabled = false;
+        anim.SetTrigger("die");
+        anim.SetBool("aiming", false);
 
+    }
     IEnumerator WaitAndFire()
     {
+        laserFinishPoint = target.transform.position + new Vector3(0f,1.5f,0f);
+
         firing = true;
         //Print the time of when the function is first called.
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(0.3f);
-        Aim();
-        yield return new WaitForSeconds(1);
-        Fire();
+        anim.SetBool("aiming", true);
+        yield return new WaitForSeconds(0.5f);
+        if(aiState != AIState.Dead){
+            Aim();
+        } else {
+            firing = false;
+            yield return 0;
+        }
+        yield return new WaitForSeconds(0.5f);
+        laserOn = false;
+        lineRenderer.positionCount = 0;
+
+        if(aiState != AIState.Dead){
+            Fire();
+        } else {
+            firing = false;
+            yield return 0;
+        }
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         yield return new WaitForSeconds(1);
-        firing = false;
-        aiState = AIState.ChasingPlayer;
-    }
-    void Aim(){
-        ray.origin = raycastOrigin.position;
-        //ray.direction = raycastOrigin.forward;
+        anim.SetBool("aiming", false);
 
-        var tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
-        tracer.AddPosition(ray.origin);
-        ray.direction = target.transform.position + new Vector3(0f,1.5f,0f) - ray.origin;
-        if(Physics.Raycast(ray, out hitInfo)) {
-            //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
-            tracer.transform.position = hitInfo.point;
+        firing = false;
+        if(aiState != AIState.Dead){
+            aiState = AIState.ChasingPlayer;
         }
     }
+    void Aim(){
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, raycastOrigin.position);
+        laserOn = true;
+                    
+        /*
+        ray.origin = raycastOrigin.position;
+        tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
+        Vector3 pos = target.transform.position + new Vector3(0f,1.5f,0f);
+        ray.direction = pos - ray.origin;
+        tracer.AddPosition(ray.origin);
+                    if(Physics.Raycast(ray, out hitInfo)) {
+                //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+                tracer.transform.position = hitInfo.point;
+            }
+        */
+    }
+
     void Fire(){
         muzzleFlash.Emit(200);
+        tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
+
+        tracer.AddPosition(ray.origin);
         if(Physics.Raycast(ray, out hitInfo)) {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+            tracer.transform.position = hitInfo.point;
+            hitEffect.transform.position = hitInfo.point;
+            hitEffect.transform.forward = hitInfo.normal;
+            hitEffect.Emit(1);
             if(hitInfo.collider.gameObject == target){
                 Debug.Log("Hit Player!");
-                target.GetComponent<HealthController>().TakeDamage(10);
+                target.GetComponent<HealthController>().TakeDamage(10, this.gameObject);
             } else {
                 Debug.Log("Missed!");
             }
@@ -244,11 +316,11 @@ public class ShooterRobotScript : MonoBehaviour
     void RotateToTarget(){
         Vector3 targetDir = target.transform.position - transform.position;
         float angleToPlayer = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
-
-        //Debug.Log("ROTATING " + angleToPlayer);
-        this.transform.Rotate(new Vector3(0, -angleToPlayer * Time.deltaTime, 0));
+        Debug.Log("ROTATING " + angleToPlayer);
+        
+        this.transform.Rotate(new Vector3(0, -angleToPlayer * Time.deltaTime * 2f, 0));
         anim.SetBool("moving",true);
-        anim.SetFloat("velx", 0.3f);
+        anim.SetFloat("velx", 0.4f);
     }
     void MoveRootMotionRobot(bool stopping){
         worldDeltaPosition = navmesh.nextPosition - transform.position;
@@ -345,6 +417,7 @@ public class ShooterRobotScript : MonoBehaviour
         ChasingPlayer,
         Wandering,
         OnASpot,
-        InRangeOfPlayer
+        InRangeOfPlayer,
+        Dead
     };
 }
