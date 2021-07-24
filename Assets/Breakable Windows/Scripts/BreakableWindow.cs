@@ -10,9 +10,9 @@ public class BreakableWindow : MonoBehaviour {
     [Tooltip("Layer should be TransparentFX or your own layer for breakable windows.")]
     public LayerMask layer;
     [Range(2,25)]
-    public int partsX = 5;
+    public int partsX = 8;
     [Range(2, 25)]
-    public int partsY = 5;
+    public int partsY = 8;
 
     [Space]
     public bool preCalculate = true;
@@ -20,7 +20,7 @@ public class BreakableWindow : MonoBehaviour {
     public bool hideSplintersInHierarchy = true;
     public bool useCollision = true;
     [Tooltip("Use 0 for breaking immediately if a collision is detected.")]
-    public float health = 0;
+    public float health = 3;
 
     [Space]
     [Space]
@@ -47,6 +47,10 @@ public class BreakableWindow : MonoBehaviour {
     private GameObject splinterParent;
     int[] tris;
 
+    private List<GameObject> windowDamages = new List<GameObject>();
+
+    public GameObject damPrefab;    
+    public GameObject ball;    
     void Start()
     {
         if (preCalculate == true && allreadyCalculated == false)
@@ -164,7 +168,8 @@ public class BreakableWindow : MonoBehaviour {
     }
 
     private void bakeSplinters()
-    {
+    {   
+        Debug.Log("BAKING SPLITTERS");
         int[] t = new int[3];
         splinters = new List<GameObject>();
         splinterParent = new GameObject("Splinters");
@@ -215,11 +220,13 @@ public class BreakableWindow : MonoBehaviour {
                 bakeVertices();
                 bakeSplinters();
             }
-
             Physics.IgnoreLayerCollision(layer.value, layer.value, true);
             Destroy(GetComponent<Collider>());
             Destroy(GetComponent<MeshRenderer>());
             Destroy(GetComponent<MeshFilter>());
+            foreach(var dam in windowDamages){
+                Destroy(dam);
+            }
 
             isBroken = true;            
         }
@@ -232,16 +239,23 @@ public class BreakableWindow : MonoBehaviour {
 
         return splinters.ToArray();
     }
-
+    void RenderWindowDamage(Vector3 position){
+        GameObject dam = Instantiate(damPrefab, position, Quaternion.identity);
+        windowDamages.Add(dam);
+    }
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log("Entered collision");
         if (useCollision == true)
         {
             if (health > 0)
             {
-                health -= col.impulse.magnitude;
-                if (health < 0)
+                //health -= col.impulse.magnitude;
+                health -= 1;
+                RenderWindowDamage(col.transform.position);
+                ball.GetComponent<BallBehaviourScript>().Reset();
+                if (health <= 0)
                 {
                     health = 0;
                     breakWindow();

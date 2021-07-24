@@ -3,7 +3,10 @@
 public class BallBehaviourScript : MonoBehaviour
 {
     [SerializeField] float hitPower = 1f;
-
+    public Transform ballSpawn;
+    void Awake(){
+        ballSpawn = GameObject.Find("BallSpawn").transform;
+    }
     // Start is called before the first frame update
     void OnCollisionEnter(Collision c)
     {
@@ -55,5 +58,12 @@ public class BallBehaviourScript : MonoBehaviour
                 EventManager.TriggerEvent<HitBallEvent, Vector3, float>(c.contacts[0].point, c.impulse.magnitude);
             }
         }
+    }
+
+    public void Reset(){
+        this.transform.position = ballSpawn.position;
+        this.transform.rotation = Quaternion.identity;
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
     }
 }
