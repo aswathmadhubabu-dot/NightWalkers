@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class ThirdPersonCameraMilestones : MonoBehaviour
 {
@@ -9,9 +8,9 @@ public class ThirdPersonCameraMilestones : MonoBehaviour
     public float rotationMaxSpeed = 50f;
 	public Transform desiredPose;			// the desired pose for the camera, specified by a transform in the game
     public Transform target;
-	
-    protected Vector3 currentPositionCorrectionVelocity;
-    protected Quaternion quaternionDeriv;
+
+    private Vector3 currentPositionCorrectionVelocity;
+    private Quaternion quaternionDeriv;
 
     protected float angle;
     

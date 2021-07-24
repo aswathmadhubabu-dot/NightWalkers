@@ -1,23 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class FpsCounter : MonoBehaviour
 {
 
-    [SerializeField] public TextMeshProUGUI _fpsText;
-    [SerializeField] private float _hudRefreshRate = 1f;
+    [FormerlySerializedAs("_fpsText")] [SerializeField] public TextMeshProUGUI fpsText;
+    [FormerlySerializedAs("_hudRefreshRate")] [SerializeField] private float hudRefreshRate = 1f;
  
-    private float _timer;
+    private float timer;
  
     private void Update()
     {
-        if (Time.unscaledTime > _timer)
+        if (Time.unscaledTime > timer)
         {
             int fps = (int)(1f / Time.unscaledDeltaTime);
-            _fpsText.text = "FPS: " + fps;
-            _timer = Time.unscaledTime + _hudRefreshRate;
+            fpsText.text = "FPS: " + fps;
+            timer = Time.unscaledTime + hudRefreshRate;
         }
     }
 }

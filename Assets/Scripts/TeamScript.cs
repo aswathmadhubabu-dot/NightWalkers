@@ -12,10 +12,5 @@ public class TeamScript : MonoBehaviour
     public List<GameObject> players;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        match = GameObject.Find("Match").GetComponent<MatchController>();
-    }
-
-
+    void Start() => match = GameObject.Find("Match").GetComponent<MatchController>();
 }
