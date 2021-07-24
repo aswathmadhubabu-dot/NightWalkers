@@ -25,6 +25,7 @@ public class HealthController : MonoBehaviour
         Vignette vignette;
         currentHealth -= damage;
         if(currentHealth <= 0){
+            currentHealth = 0;
             Die(source);
         }
         float currentHealthPct = (float) currentHealth / (float) maxHealth;

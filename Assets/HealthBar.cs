@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         GetComponentInParent<HealthController>().OnHealthPctChanged += HandleHealthChanged;
-        healthText.text = maxHealth.ToString() + "/" + maxHealth.ToString(); 
+        healthText.text = maxHealth.ToString() + " / " + maxHealth.ToString(); 
     }
 
     private IEnumerator ChangeToPct(float pct){
