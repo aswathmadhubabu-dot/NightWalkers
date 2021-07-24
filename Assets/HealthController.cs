@@ -75,7 +75,9 @@ public class HealthController : MonoBehaviour
         float lerp = Mathf.Clamp01( blinkTimer / blinkDuration);
         float intensity = (lerp * blinkIntensity) + 1.0f;
         foreach( var smr in skinnedMeshRenderer){
-            smr.material.color = Color.white * intensity;
+            foreach( var mat in smr.materials){
+                mat.color = Color.white * intensity;
+            }
         }
     }
 }
