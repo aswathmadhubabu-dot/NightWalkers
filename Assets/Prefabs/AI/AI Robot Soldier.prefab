@@ -775,7 +775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   lookAheadTime: 2
-  hitEffect: {fileID: 0}
+  hitEffectPrefab: {fileID: 2456685924745065898, guid: 2d998d4bd0bd72445b419768b2282163,
+    type: 3}
   timeInSpots: 10
   raycastOrigin: {fileID: 8029033069295766988}
   tracer: {fileID: 0}

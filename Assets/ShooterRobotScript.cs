@@ -19,7 +19,7 @@ public class ShooterRobotScript : MonoBehaviour
     private Vector2 groundDeltaPosition;
     private Vector2 velocity = Vector2.zero;
     private float spotArrivalTime;
-    public ParticleSystem hitEffect;
+    public ParticleSystem hitEffectPrefab;
 
     public float timeInSpots = 15;
     private float turnVel;
@@ -56,7 +56,6 @@ public class ShooterRobotScript : MonoBehaviour
         setNextWaypoint();
         firing = false;        
         lineRenderer = GetComponent<LineRenderer>();
-        hitEffect = GameObject.Find("BulletImpactMetalEffect").GetComponent<ParticleSystem>();
     }
     void setNextWaypoint()
     {
@@ -265,8 +264,9 @@ public class ShooterRobotScript : MonoBehaviour
         tracer.AddPosition(ray.origin);
         if(Physics.Raycast(ray, out hitInfo)) {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+            ParticleSystem hitEffect = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.identity);
+
             tracer.transform.position = hitInfo.point;
-            hitEffect.transform.position = hitInfo.point;
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
             if(hitInfo.collider.gameObject == target){
