@@ -982,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c08c3930ab8926478bd35e5a119b739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fpsText: {fileID: 424973089}
-  _hudRefreshRate: 0.1
+  fpsText: {fileID: 424973089}
+  hudRefreshRate: 0.1
 --- !u!4 &31784916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 432826, guid: 3f6d5a55a145f4f40bebd7d054c548f0,
@@ -46420,8 +46420,8 @@ GameObject:
   - component: {fileID: 1405210652}
   - component: {fileID: 1405210651}
   - component: {fileID: 1405210654}
-  - component: {fileID: 1405210655}
   - component: {fileID: 1405210656}
+  - component: {fileID: 1405210655}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -46489,7 +46489,7 @@ Transform:
   m_GameObject: {fileID: 1405210650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 6, z: -2.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -46537,12 +46537,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7da195324f1914eb1fae4c75c3fa7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionSmoothTime: 0.01
+  positionSmoothTime: 0.5
   rotationSmoothTime: 0.25
   positionMaxSpeed: 1000
   rotationMaxSpeed: 1000
   desiredPose: {fileID: 728927452}
-  target: {fileID: 0}
+  target: {fileID: 953756952}
 --- !u!114 &1405210656
 MonoBehaviour:
   m_ObjectHideFlags: 0
