@@ -11,7 +11,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     private Rigidbody rb;
 
-    public GameObject target;
+    private GameObject target;
     private VelocityReporter vr;
     public float lookAheadTime = 2;
 
@@ -47,7 +47,8 @@ public class ShooterRobotScript : MonoBehaviour
     Vector3 dist;
     Vector3 finalPosition;
     void Start()
-    {
+    {   
+        target = GameObject.Find("AstraHumanoid");
         navmesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
