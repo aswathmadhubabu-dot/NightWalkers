@@ -15,6 +15,7 @@ public class HealthController : MonoBehaviour
     public float blinkIntensity;
     public float blinkDuration;
     float blinkTimer;
+    bool isDead = false;
 
     CameraManager cameraManager;
     SkinnedMeshRenderer[] skinnedMeshRenderer;
@@ -25,20 +26,33 @@ public class HealthController : MonoBehaviour
     {
         Vignette vignette;
         currentHealth -= damage;
+
         if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            Die(source);
+        {   
+            if(!isDead){
+                isDead = true;
+                currentHealth = 0;
+                Die(source);
+                float currentHealthPct = (float) currentHealth / (float) maxHealth;
+                if (postProcessing.TryGet(out vignette))
+                {
+                    vignette.intensity.value = (1 - currentHealthPct) * 0.5f;
+                }
+
+                blinkTimer = blinkDuration;
+                OnHealthPctChanged(currentHealthPct);
+            }
+        } else {
+            float currentHealthPct = (float) currentHealth / (float) maxHealth;
+            if (postProcessing.TryGet(out vignette))
+            {
+                vignette.intensity.value = (1 - currentHealthPct) * 0.5f;
+            }
+
+            blinkTimer = blinkDuration;
+            OnHealthPctChanged(currentHealthPct);
         }
 
-        float currentHealthPct = (float) currentHealth / (float) maxHealth;
-        if (postProcessing.TryGet(out vignette))
-        {
-            vignette.intensity.value = (1 - currentHealthPct) * 0.5f;
-        }
-
-        blinkTimer = blinkDuration;
-        OnHealthPctChanged(currentHealthPct);
     }
 
     // Start is called before the first frame update
@@ -55,6 +69,9 @@ public class HealthController : MonoBehaviour
     void Die(GameObject source)
     {
         ragdoll.ActivateRagdoll();
+        Rigidbody rb = this.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
         CinemachineTargetGroup tg = cameraManager.GetComponentInChildren<CinemachineTargetGroup>();
         Cinemachine.CinemachineTargetGroup.Target target;
         target.target = source.transform;

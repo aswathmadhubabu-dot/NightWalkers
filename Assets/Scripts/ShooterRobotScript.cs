@@ -87,6 +87,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     void OnAnimatorMove()
     {
+        //RECHECK
         this.transform.position = navmesh.nextPosition;
     }
 
@@ -211,9 +212,10 @@ public class ShooterRobotScript : MonoBehaviour
 
     void CalculateDistanceAndChasePlayer(Vector3 dist)
     {
-        navmesh.stoppingDistance = 10;
+        navmesh.stoppingDistance = 10 * sizeMultiplier;
         float lookaheadDt = dist.magnitude / vr.maxVelocity.magnitude;
         lookaheadDt = Mathf.Clamp(lookaheadDt, 0.01f, 1.0f);
+        //RECHECK
         Vector3 futurePos = target.transform.position + vr.velocity * lookaheadDt;
         navmesh.SetDestination(futurePos);
     }
@@ -237,7 +239,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     IEnumerator WaitAndFire()
     {
-        laserFinishPoint = target.transform.position + new Vector3(0f, 1.5f, 0f);
+        laserFinishPoint = target.transform.position + new Vector3(0f, 1.5f * sizeMultiplier, 0f);
 
         firing = true;
         //Print the time of when the function is first called.
@@ -333,7 +335,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     void CheckIfRobotSeesPlayer(Vector3 dist)
     {
-        if (dist.magnitude < 35 && isPlayerInSight())
+        if (dist.magnitude < 35 *sizeMultiplier && isPlayerInSight())
         {
             //Can see the player, lets chase him!
             aiState = AIState.ChasingPlayer;
@@ -372,7 +374,7 @@ public class ShooterRobotScript : MonoBehaviour
         Vector3 targetDir = target.transform.position - transform.position;
         float angleToPlayer = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
         Debug.Log("ROTATING " + angleToPlayer);
-
+        //RECHECK
         this.transform.Rotate(new Vector3(0, -angleToPlayer * Time.deltaTime * 2f, 0));
         anim.SetBool("moving", true);
         anim.SetFloat("velx", 0.4f);
@@ -383,12 +385,14 @@ public class ShooterRobotScript : MonoBehaviour
         worldDeltaPosition = navmesh.nextPosition - transform.position;
         groundDeltaPosition.x = Vector3.Dot(transform.right, worldDeltaPosition);
         groundDeltaPosition.y = Vector3.Dot(transform.forward, worldDeltaPosition);
+        //RECHECK
         velocity = (Time.deltaTime > 1e-5f) ? groundDeltaPosition / Time.deltaTime : Vector2.zero;
         bool moving = velocity.magnitude > 0.025f && navmesh.remainingDistance > navmesh.radius;
 
 
         if (stopping)
         {
+            //RECHECK
             forwardVel = Mathf.Lerp(forwardVel, 0, Time.deltaTime * 10);
             turnVel = Mathf.Lerp(turnVel, 0, Time.deltaTime * 10);
             if (forwardVel < 0.05)
@@ -464,14 +468,14 @@ public class ShooterRobotScript : MonoBehaviour
         //Debug.DrawLine(visionOrigin.transform.position, dir, Color.green);
 
         //Debug.Log("")
-        Vector3 rayor = this.transform.position + new Vector3(0f, 1.5f, 0f);
-        Debug.DrawRay(rayor, this.transform.forward * 30f, Color.red);
+        Vector3 rayor = this.transform.position + new Vector3(0f, 1.5f * sizeMultiplier, 0f);
+        Debug.DrawRay(rayor, this.transform.forward * 30f * sizeMultiplier, Color.red);
         Ray vision = new Ray(rayor, dir);
         if (Physics.Raycast(vision, out hit))
         {
             //Physics.cast
             Color color = Color.blue;
-            Debug.DrawRay(rayor, dir * 30f, color);
+            Debug.DrawRay(rayor, dir * 30f * sizeMultiplier, color);
             if (hit.collider.gameObject == target)
             {
                 return true;
