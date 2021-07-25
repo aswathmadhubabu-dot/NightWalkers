@@ -88,7 +88,10 @@ public class HealthController : MonoBehaviour
         cameraManager.EnableKillCam();
         GameObject dm = GameObject.Find("DeathMenuContainer").transform.GetChild(0).gameObject;
         dm.SetActive(true);
+        //TODO STOP TIMER
+        Destroy(GameObject.Find("TimerUI"));
     }
+
 
     void Update()
     {
