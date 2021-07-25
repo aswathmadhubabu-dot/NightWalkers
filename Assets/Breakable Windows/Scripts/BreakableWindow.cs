@@ -254,6 +254,7 @@ public class BreakableWindow : MonoBehaviour {
                 //health -= col.impulse.magnitude;
                 health -= 1;
                 RenderWindowDamage(col.transform.position);
+                EventManager.TriggerEvent<HitGlassEvent, Vector3>(col.transform.position);
                 ball.GetComponent<BallBehaviourScript>().Reset();
                 if (health <= 0)
                 {

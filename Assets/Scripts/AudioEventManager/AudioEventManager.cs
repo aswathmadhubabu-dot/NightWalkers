@@ -141,7 +141,7 @@ public class AudioEventManager : MonoBehaviour
 
         EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
 
-        snd.audioSrc.clip = this.throwBallAudio;
+        snd.audioSrc.clip = this.hitGlassAudio;
 
         snd.audioSrc.minDistance = 10f;
         snd.audioSrc.maxDistance = 500f;
