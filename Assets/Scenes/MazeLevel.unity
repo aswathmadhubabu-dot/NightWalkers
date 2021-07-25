@@ -16871,7 +16871,7 @@ PrefabInstance:
     - target: {fileID: 3395147416195096930, guid: 08149b50bf473334184d454562dc1fb9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -13
+      value: -12.999939
       objectReference: {fileID: 0}
     - target: {fileID: 3395147416195096930, guid: 08149b50bf473334184d454562dc1fb9,
         type: 3}
@@ -23766,6 +23766,22 @@ PrefabInstance:
     - target: {fileID: 4354704724864926, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
       propertyPath: m_Name
       value: CameraManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354705265346921, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8804763
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354705265346921, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.27984813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354705265346921, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.36470523
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354705265346921, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.11591689
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 800fec67ba7155d4da619c94747fb0f9, type: 3}
@@ -45189,7 +45205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previewOnGUI: 1
   enableGUILayout: 1
-  drawStateLabels: 0
+  drawStateLabels: 1
   enableStateLabelsInBuilds: 0
   GUITextureStateLabels: 0
   GUITextStateLabels: 0
@@ -79680,6 +79696,11 @@ PrefabInstance:
       propertyPath: hitBallAudio
       value: 
       objectReference: {fileID: 8300000, guid: d577308ab6dc2e74ab018219ea1861ad, type: 3}
+    - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
+        type: 3}
+      propertyPath: hitGlassAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bee370d781a99f4c8481206fdf1d8d0, type: 3}
     - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
         type: 3}
       propertyPath: throwBallAudio
