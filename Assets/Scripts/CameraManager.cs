@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public Cinemachine.CinemachineVirtualCameraBase killCam;
+
     // Start is called before the first frame update
-    public void EnableKillCam(){
+    public void EnableKillCam()
+    {
         killCam.Priority = 100;
     }
-    
 }

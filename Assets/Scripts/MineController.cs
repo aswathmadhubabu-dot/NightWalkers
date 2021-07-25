@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MineController : MonoBehaviour
@@ -8,19 +7,27 @@ public class MineController : MonoBehaviour
     public ParticleSystem explosion;
     private bool enabled = true;
 
-    void Start(){
+    void Start()
+    {
         //explosion = GetComponent<>();
     }
-    IEnumerator SelfDestruct(){
+
+    IEnumerator SelfDestruct()
+    {
         yield return new WaitForSeconds(1.3f);
         this.gameObject.SetActive(false);
     }
-    void OnTriggerEnter(Collider other){
+
+    void OnTriggerEnter(Collider other)
+    {
         //Hack to prevent it from exploding TWICE
-        if(!enabled){
+        if (!enabled)
+        {
             return;
         }
-        if(other.gameObject.tag == "Player"){
+
+        if (other.gameObject.tag == "Player")
+        {
             enabled = false;
             Debug.Log("Stepped on mine!");
             //Explode
