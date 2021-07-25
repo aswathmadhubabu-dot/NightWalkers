@@ -26,7 +26,7 @@ public class MineController : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             enabled = false;
             Debug.Log("Stepped on mine!");
