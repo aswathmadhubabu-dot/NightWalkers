@@ -2919,7 +2919,6 @@ Transform:
   - {fileID: 2691990787000703182}
   - {fileID: 1907130837743113865}
   - {fileID: 3493338115819318026}
-  - {fileID: 8901502186219605868}
   - {fileID: 8901502187501979107}
   - {fileID: 8901502187349246447}
   m_Father: {fileID: 8901502186527141544}
@@ -2940,145 +2939,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: '
-
-    Transform ''mixamorig1:LeftToeBase'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftFoot'' has been deleted
-
-    Transform ''mixamorig1:LeftLeg''
-    has been deleted
-
-    Transform ''mixamorig1:LeftUpLeg'' has been deleted
-
-    Transform
-    ''mixamorig1:RightToeBase'' has been deleted
-
-    Transform ''mixamorig1:RightFoot''
-    has been deleted
-
-    Transform ''mixamorig1:RightLeg'' has been deleted
-
-    Transform
-    ''mixamorig1:RightUpLeg'' has been deleted
-
-    Transform ''mixamorig1:LeftHandIndex3''
-    has been deleted
-
-    Transform ''mixamorig1:LeftHandIndex2'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftHandIndex1'' has been deleted
-
-    Transform ''mixamorig1:LeftHandMiddle3''
-    has been deleted
-
-    Transform ''mixamorig1:LeftHandMiddle2'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftHandMiddle1'' has been deleted
-
-    Transform ''mixamorig1:LeftHandPinky3''
-    has been deleted
-
-    Transform ''mixamorig1:LeftHandPinky2'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftHandPinky1'' has been deleted
-
-    Transform ''mixamorig1:LeftHandRing3''
-    has been deleted
-
-    Transform ''mixamorig1:LeftHandRing2'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftHandRing1'' has been deleted
-
-    Transform ''mixamorig1:LeftHandThumb3''
-    has been deleted
-
-    Transform ''mixamorig1:LeftHandThumb2'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftHandThumb1'' has been deleted
-
-    Transform ''mixamorig1:LeftHand''
-    has been deleted
-
-    Transform ''mixamorig1:LeftForeArm'' has been deleted
-
-    Transform
-    ''mixamorig1:LeftArm'' has been deleted
-
-    Transform ''mixamorig1:LeftShoulder''
-    has been deleted
-
-    Transform ''mixamorig1:Head'' has been deleted
-
-    Transform
-    ''mixamorig1:Neck'' has been deleted
-
-    Transform ''mixamorig1:RightHandIndex3''
-    has been deleted
-
-    Transform ''mixamorig1:RightHandIndex2'' has been deleted
-
-    Transform
-    ''mixamorig1:RightHandIndex1'' has been deleted
-
-    Transform ''mixamorig1:RightHandMiddle3''
-    has been deleted
-
-    Transform ''mixamorig1:RightHandMiddle2'' has been deleted
-
-    Transform
-    ''mixamorig1:RightHandMiddle1'' has been deleted
-
-    Transform ''mixamorig1:RightHandPinky3''
-    has been deleted
-
-    Transform ''mixamorig1:RightHandPinky2'' has been deleted
-
-    Transform
-    ''mixamorig1:RightHandPinky1'' has been deleted
-
-    Transform ''mixamorig1:RightHandRing3''
-    has been deleted
-
-    Transform ''mixamorig1:RightHandRing2'' has been deleted
-
-    Transform
-    ''mixamorig1:RightHandRing1'' has been deleted
-
-    Transform ''mixamorig1:RightHandThumb3''
-    has been deleted
-
-    Transform ''mixamorig1:RightHandThumb2'' has been deleted
-
-    Transform
-    ''mixamorig1:RightHandThumb1'' has been deleted
-
-    Transform ''mixamorig1:RightHand''
-    has been deleted
-
-    Transform ''mixamorig1:RightForeArm'' has been deleted
-
-    Transform
-    ''mixamorig1:RightArm'' has been deleted
-
-    Transform ''mixamorig1:RightShoulder''
-    has been deleted
-
-    Transform ''mixamorig1:Spine2'' has been deleted
-
-    Transform
-    ''mixamorig1:Spine1'' has been deleted
-
-    Transform ''mixamorig1:Spine'' has
-    been deleted
-
-    Transform ''mixamorig1:Hips'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3145,7 +3006,7 @@ MonoBehaviour:
   followCameraDistance: 15
   aimCameraDistance: 3.5
   throwBallForce: 7
-  ball: {fileID: 0}
+  ball: {fileID: 5148072549782342186, guid: db55214f4f9bdc5449e8ffd559b617b6, type: 3}
   ballHolder: {fileID: 8901502187501979106}
   camera: {fileID: 8901502187412056660}
   hasBall: 0
@@ -3321,7 +3182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetTimer: 3.5
-  ball: {fileID: 0}
+  ball: {fileID: 5148072549782342186, guid: db55214f4f9bdc5449e8ffd559b617b6, type: 3}
   player: {fileID: 8595424188188888110}
 --- !u!114 &8901502188314073223
 MonoBehaviour:
@@ -3488,36 +3349,6 @@ Transform:
   - {fileID: 4631326657528140174}
   m_Father: {fileID: 1187799146417782377}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8901502186219605867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8901502186219605868}
-  m_Layer: 10
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8901502186219605868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8901502186219605867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 1.423, z: -3.47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8935920590275794580}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8901502186527141542
 GameObject:
@@ -5787,7 +5618,7 @@ Transform:
   - {fileID: 8901502188036561390}
   - {fileID: 8901502187412056659}
   m_Father: {fileID: 8935920590275794580}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!895512359 &8901502187349246416
 AimConstraint:
@@ -5821,6 +5652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8901502187412056659}
   - component: {fileID: 8901502187412056660}
+  - component: {fileID: 5469857664148374931}
   m_Layer: 0
   m_Name: CM Main Cam
   m_TagString: Untagged
@@ -5835,7 +5667,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8901502187412056658}
-  m_LocalRotation: {x: -0.2342389, y: 0.09518103, z: -0.02305795, w: -0.9672338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.125, y: 1.5, z: -3.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5861,7 +5693,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 8901502188036561390}
   m_Follow: {fileID: 8901502188036561390}
   m_Lens:
     FieldOfView: 50
@@ -5878,6 +5710,36 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8901502188006671834}
+--- !u!114 &5469857664148374931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901502187412056658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 1
+  m_Damping: 3
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &8901502187501979106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5907,7 +5769,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8935920590275794580}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8901502188006671833
 GameObject:

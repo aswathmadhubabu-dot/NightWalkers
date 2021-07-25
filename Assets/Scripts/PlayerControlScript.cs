@@ -80,12 +80,6 @@ public class PlayerControlScript : MonoBehaviour
             MovePlayer();
 
             HandleJump();
-            /*
-            Quaternion characterRotation = cameraTransform.rotation;
-            characterRotation.x = 0;
-            characterRotation.z = 0;
-            transform.rotation = characterRotation;
-            */
 
             if (hasBall)
             {
@@ -161,7 +155,7 @@ public class PlayerControlScript : MonoBehaviour
     {
         if (hasBall && isAiming)
         {
-            ballProjectionPredictor.predictBallPath(throwBallForce);
+            //ballProjectionPredictor.predictBallPath(throwBallForce);
         }
     }
 
@@ -196,51 +190,20 @@ public class PlayerControlScript : MonoBehaviour
 
     void MovePlayer()
     {
-        //if (isAiming)
-        //{
-        //    float xvel = anim.GetFloat("velx") - (2 * Time.deltaTime);
-        //    float yvel = anim.GetFloat("vely") - (2 * Time.deltaTime);
-        //    anim.SetFloat("velx", Mathf.Max(0, xvel));
-        //    anim.SetFloat("vely", Mathf.Max(0, yvel));
-        //    return;
-        //}
-
         Vector2 move2d = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(move2d.x, 0.0f, move2d.y);
         forwardVel = Mathf.Lerp(forwardVel, move.z, Time.deltaTime * 5);
 
         turnVel = Mathf.Lerp(turnVel, move.x,
             Time.deltaTime * 5);
-        //move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
 
-        //controller.Move(move * Time.deltaTime * speed);
         anim.SetFloat("velx", turnVel);
         anim.SetFloat("vely", forwardVel);
     }
 
     void HandleJump()
     {
-        // groundedPlayer = controller.isGrounded;
-        // if (groundedPlayer && playerVelocity.y < 0)
-        // {
-        //     playerVelocity.y = 0f;
-        //     if (jumpsRemaining != 2)
-        //     {
-        //         jumpsRemaining = 2;
-        //     }
-        // }
-        //
-        // if (inputManager.PlayerJumpedThisFrame() && (groundedPlayer || jumpsRemaining > 0))
-        // {
-        //     anim.SetTrigger("isJumping");
-        //     playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        //     jumpsRemaining -= 1;
-        // }
-        //
-        // playerVelocity.y += gravityValue * Time.deltaTime;
-        // controller.Move(playerVelocity * Time.deltaTime);
-
         if (inputManager.PlayerJumpedThisFrame())
         {
             print("Jumping");
@@ -293,7 +256,7 @@ public class PlayerControlScript : MonoBehaviour
             isAiming = false;
             thirdPersonFollowCamera.CameraDistance = followCameraDistance;
             thirdPersonFollowCamera.ShoulderOffset.x = 0;
-            ballProjectionPredictor.reset();
+            //ballProjectionPredictor.reset();
         }
     }
 
