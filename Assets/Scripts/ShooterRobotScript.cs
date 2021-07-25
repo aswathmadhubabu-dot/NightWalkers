@@ -10,8 +10,9 @@ public class ShooterRobotScript : MonoBehaviour
     private AIState aiState;
 
     private Rigidbody rb;
+    public float sizeMultiplier = 4f;
 
-    public GameObject target;
+    private GameObject target;
     private VelocityReporter vr;
     public float lookAheadTime = 2;
 
@@ -49,7 +50,8 @@ public class ShooterRobotScript : MonoBehaviour
     Vector3 finalPosition;
 
     void Start()
-    {
+    {   
+        target = GameObject.Find("AstraHumanoid");
         navmesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -66,10 +68,9 @@ public class ShooterRobotScript : MonoBehaviour
         {
             Debug.Log("Bored here, moving to new point");
         }
-
-        navmesh.stoppingDistance = 1;
+        navmesh.stoppingDistance = 1 * sizeMultiplier;
         NavMeshHit hit;
-        float walkRadius = 10f;
+        float walkRadius = 10f * sizeMultiplier;
         Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
         NavMesh.SamplePosition(this.transform.position + randomDirection, out hit, walkRadius, 1);
         finalPosition = hit.position;
@@ -119,14 +120,13 @@ public class ShooterRobotScript : MonoBehaviour
                 }
 
                 stopping = false;
-                if (navmesh.remainingDistance < 1)
-                {
+                if(navmesh.remainingDistance < 1 * sizeMultiplier){
                     stopping = true;
                     //Keep wandering around
                 }
 
                 MoveRootMotionRobot(stopping);
-                if (navmesh.remainingDistance < 1 && !navmesh.pathPending)
+                if (navmesh.remainingDistance < 1 * sizeMultiplier && !navmesh.pathPending)
                 {
                     StopRobot();
                     StayOnSpot();
@@ -138,7 +138,7 @@ public class ShooterRobotScript : MonoBehaviour
 
                 CalculateDistanceAndChasePlayer(dist);
                 stopping = false;
-                if (navmesh.remainingDistance < 10)
+                if (navmesh.remainingDistance < 10 * sizeMultiplier)
                 {
                     stopping = true;
                 }
@@ -148,8 +148,7 @@ public class ShooterRobotScript : MonoBehaviour
                 if (isPlayerInSight())
                 {
                     //Check if should rotate
-                    if (navmesh.remainingDistance < 10 && !navmesh.pathPending)
-                    {
+                    if(navmesh.remainingDistance < 10 * sizeMultiplier && !navmesh.pathPending){
                         StopRobot();
                         aiState = AIState.InRangeOfPlayer;
                     }

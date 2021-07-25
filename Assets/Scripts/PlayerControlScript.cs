@@ -15,6 +15,9 @@ public class PlayerControlScript : MonoBehaviour
     public GameObject ballHolder;
     public CinemachineVirtualCamera camera;
     private Cinemachine3rdPersonFollow thirdPersonFollowCamera;
+    private Camera mainCamera;
+    private BallPredictionScript ballProjectionPredictor;
+
     private Animator anim;
 
     private InputManager inputManager;
@@ -34,7 +37,7 @@ public class PlayerControlScript : MonoBehaviour
 
     [HideInInspector] public bool hasBall = false;
     private bool slowTime = false;
-    private bool isAiming = false;
+    [HideInInspector] public bool isAiming = false;
 
     private GameObject rightHand;
     private GameObject leftHand;
@@ -65,6 +68,8 @@ public class PlayerControlScript : MonoBehaviour
         leftHand = GameObject.FindWithTag("leftHand");
         initialBallVelocity = ballRb.velocity;
         initialBallAngularVelocity = ballRb.angularVelocity;
+        mainCamera = Camera.main;
+        ballProjectionPredictor = GetComponent<BallPredictionScript>();
     }
 
     // Update is called once per frame
@@ -150,6 +155,14 @@ public class PlayerControlScript : MonoBehaviour
     public void MakePlayerDefeated()
     {
         anim.SetTrigger("defeated");
+    }
+
+    void FixedUpdate()
+    {
+        if (hasBall && isAiming)
+        {
+            ballProjectionPredictor.predictBallPath(throwBallForce);
+        }
     }
 
     void DropBall()
@@ -272,12 +285,15 @@ public class PlayerControlScript : MonoBehaviour
         if (!isAiming)
         {
             isAiming = true;
-            thirdPersonFollowCamera.CameraDistance = 1.1f;
+            thirdPersonFollowCamera.CameraDistance = aimCameraDistance;
+            thirdPersonFollowCamera.ShoulderOffset.x = 1.5f;
         }
         else
         {
             isAiming = false;
-            thirdPersonFollowCamera.CameraDistance = 3.5f;
+            thirdPersonFollowCamera.CameraDistance = followCameraDistance;
+            thirdPersonFollowCamera.ShoulderOffset.x = 0;
+            ballProjectionPredictor.reset();
         }
     }
 
