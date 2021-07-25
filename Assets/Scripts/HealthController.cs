@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using System;
 using Cinemachine;
+
 public class HealthController : MonoBehaviour
 {
     float currentHealth;
     public float maxHealth = 100f;
     Ragdoll ragdoll;
 
-    public  event Action<float> OnHealthPctChanged = delegate{};
+    public event Action<float> OnHealthPctChanged = delegate { };
 
     public float blinkIntensity;
     public float blinkDuration;
@@ -21,15 +20,20 @@ public class HealthController : MonoBehaviour
     SkinnedMeshRenderer[] skinnedMeshRenderer;
 
     VolumeProfile postProcessing;
-    public void TakeDamage(float damage, GameObject source){
+
+    public void TakeDamage(float damage, GameObject source)
+    {
         Vignette vignette;
         currentHealth -= damage;
-        if(currentHealth <= 0){
+        if (currentHealth <= 0)
+        {
             currentHealth = 0;
             Die(source);
         }
+
         float currentHealthPct = (float) currentHealth / (float) maxHealth;
-        if(postProcessing.TryGet(out vignette)){
+        if (postProcessing.TryGet(out vignette))
+        {
             vignette.intensity.value = (1 - currentHealthPct) * 0.5f;
         }
 
@@ -61,21 +65,23 @@ public class HealthController : MonoBehaviour
         player.target = GameObject.Find("mixamorig1:Hips").transform;
         player.weight = 1f;
         player.radius = 2f;
-        tg.m_Targets =  new CinemachineTargetGroup.Target[2];
+        tg.m_Targets = new CinemachineTargetGroup.Target[2];
         tg.m_Targets[0] = player;
         tg.m_Targets[1] = target;
         cameraManager.EnableKillCam();
         GameObject dm = GameObject.Find("DeathMenuContainer").transform.GetChild(0).gameObject;
         dm.SetActive(true);
-
     }
 
-    void Update(){
+    void Update()
+    {
         blinkTimer -= Time.deltaTime;
-        float lerp = Mathf.Clamp01( blinkTimer / blinkDuration);
+        float lerp = Mathf.Clamp01(blinkTimer / blinkDuration);
         float intensity = (lerp * blinkIntensity) + 1.0f;
-        foreach( var smr in skinnedMeshRenderer){
-            foreach( var mat in smr.materials){
+        foreach (var smr in skinnedMeshRenderer)
+        {
+            foreach (var mat in smr.materials)
+            {
                 mat.color = Color.white * intensity;
             }
         }

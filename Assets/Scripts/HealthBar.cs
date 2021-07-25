@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 public class HealthBar : MonoBehaviour
 {
     public Image foregroundImage;
@@ -14,32 +13,35 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         GetComponentInParent<HealthController>().OnHealthPctChanged += HandleHealthChanged;
-        healthText.text = maxHealth.ToString() + " / " + maxHealth.ToString(); 
+        healthText.text = maxHealth.ToString() + " / " + maxHealth.ToString();
     }
 
-    private IEnumerator ChangeToPct(float pct){
+    private IEnumerator ChangeToPct(float pct)
+    {
         Debug.Log("New health %" + pct);
         float preChangePct = foregroundImage.fillAmount;
         float elapsed = 0f;
-        healthText.text = (pct * maxHealth).ToString() + "/" + maxHealth.ToString(); 
-        while (elapsed < updateSpeedSeconds){
+        healthText.text = (pct * maxHealth).ToString() + "/" + maxHealth.ToString();
+        while (elapsed < updateSpeedSeconds)
+        {
             elapsed += Time.deltaTime;
-            foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds );
+            foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds);
             yield return null;
-        } 
+        }
     }
-    
+
     private void LateUpdate()
     {
         //Rotation if needed
     }
+
     void HandleHealthChanged(float pct)
     {
         StartCoroutine(ChangeToPct(pct));
     }
+
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
