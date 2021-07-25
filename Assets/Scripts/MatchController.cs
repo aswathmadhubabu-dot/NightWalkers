@@ -31,7 +31,6 @@ public class MatchController : MonoBehaviour
         recentGoal = false;
         StartTimer(gameTimeInSecs);
 
-        goalMessage.toggleVisibility(false);
         exitPanel.gameObject.SetActive(false);
         exitPanel.enabled = false;
     }
@@ -56,18 +55,6 @@ public class MatchController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (goalsScored == 1)
-        {
-            scoreBoard.showMessage(goalsScored + " Goal scored");
-        }
-        else
-        {
-            scoreBoard.showMessage(goalsScored + " Goals scored");
-        }
-    }
-
     void OnTimerEnded()
     {
         Debug.Log("Timer ended");
