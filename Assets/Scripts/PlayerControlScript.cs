@@ -148,7 +148,7 @@ public class PlayerControlScript : MonoBehaviour
 
     public void MakePlayerDefeated()
     {
-        anim.SetTrigger("defeated");
+        //anim.SetTrigger("defeated");
     }
 
     void FixedUpdate()

@@ -117,7 +117,7 @@ public class ShooterRobotScript : MonoBehaviour
             case AIState.Wandering:
                 if (debug)
                 {
-                    Debug.Log("wandering ");
+                   // Debug.Log("wandering ");
                 }
 
                 stopping = false;
@@ -159,7 +159,7 @@ public class ShooterRobotScript : MonoBehaviour
                     //Lost Player from Sight.
                     if (debug)
                     {
-                        Debug.Log("Lost Player, staying here");
+                        //Debug.Log("Lost Player, staying here");
                     }
 
                     StopRobot();

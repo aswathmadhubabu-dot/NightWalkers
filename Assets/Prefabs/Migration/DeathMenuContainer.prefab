@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6768657239963166608}
   - component: {fileID: 8962844785830326929}
   - component: {fileID: 5865355539426925970}
+  - component: {fileID: 1086748275601429833}
   m_Layer: 5
   m_Name: TryAgain
   m_TagString: Untagged
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnUserClickedExit
+      - m_Target: {fileID: 1086748275601429833}
+        m_MethodName: RestartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -130,6 +131,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1086748275601429833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2383209929649216692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1689b03cfa84e0b428f3496a469d64f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5021347181648325762
 GameObject:
   m_ObjectHideFlags: 0

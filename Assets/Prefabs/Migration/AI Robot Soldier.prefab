@@ -2542,8 +2542,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 12
-  m_Acceleration: 8
+  m_Speed: 15
+  m_Acceleration: 32
   avoidancePriority: 50
   m_AngularSpeed: 140
   m_StoppingDistance: 0
@@ -2566,11 +2566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe909a2912a341040ada458076bb4bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeMultiplier: 4
+  sizeMultiplier: 3
   lookAheadTime: 2
   hitEffectPrefab: {fileID: 2456685924745065898, guid: 2d998d4bd0bd72445b419768b2282163,
     type: 3}
-  timeInSpots: 10
+  timeInSpots: 20
   raycastOrigin: {fileID: 2542854748200335842}
   tracer: {fileID: 0}
   lineRenderer: {fileID: 0}
