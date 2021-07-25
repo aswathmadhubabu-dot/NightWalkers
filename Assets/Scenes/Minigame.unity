@@ -1975,6 +1975,7 @@ MonoBehaviour:
   viewDistance: 8
   isInsight: 0
   roamRadius: 7
+  minDistance: 2.7
 --- !u!136 &566821941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1986,7 +1987,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.5
+  m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0.3}
 --- !u!23 &566821942
@@ -3073,6 +3074,7 @@ MonoBehaviour:
   viewDistance: 8
   isInsight: 0
   roamRadius: 7
+  minDistance: 0
 --- !u!136 &1115540604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4508,6 +4510,7 @@ MonoBehaviour:
   viewDistance: 8
   isInsight: 0
   roamRadius: 7
+  minDistance: 0
 --- !u!136 &1455674375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5047,6 +5050,7 @@ MonoBehaviour:
   viewDistance: 8
   isInsight: 0
   roamRadius: 7
+  minDistance: 0
 --- !u!136 &1620834586
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5411,6 +5415,7 @@ MonoBehaviour:
   viewDistance: 8
   isInsight: 0
   roamRadius: 7
+  minDistance: 0
 --- !u!136 &1702872568
 CapsuleCollider:
   m_ObjectHideFlags: 0
