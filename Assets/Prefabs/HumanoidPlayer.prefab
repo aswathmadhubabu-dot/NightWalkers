@@ -2940,7 +2940,145 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: '
+
+    Transform ''mixamorig1:LeftToeBase'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftFoot'' has been deleted
+
+    Transform ''mixamorig1:LeftLeg''
+    has been deleted
+
+    Transform ''mixamorig1:LeftUpLeg'' has been deleted
+
+    Transform
+    ''mixamorig1:RightToeBase'' has been deleted
+
+    Transform ''mixamorig1:RightFoot''
+    has been deleted
+
+    Transform ''mixamorig1:RightLeg'' has been deleted
+
+    Transform
+    ''mixamorig1:RightUpLeg'' has been deleted
+
+    Transform ''mixamorig1:LeftHandIndex3''
+    has been deleted
+
+    Transform ''mixamorig1:LeftHandIndex2'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftHandIndex1'' has been deleted
+
+    Transform ''mixamorig1:LeftHandMiddle3''
+    has been deleted
+
+    Transform ''mixamorig1:LeftHandMiddle2'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftHandMiddle1'' has been deleted
+
+    Transform ''mixamorig1:LeftHandPinky3''
+    has been deleted
+
+    Transform ''mixamorig1:LeftHandPinky2'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftHandPinky1'' has been deleted
+
+    Transform ''mixamorig1:LeftHandRing3''
+    has been deleted
+
+    Transform ''mixamorig1:LeftHandRing2'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftHandRing1'' has been deleted
+
+    Transform ''mixamorig1:LeftHandThumb3''
+    has been deleted
+
+    Transform ''mixamorig1:LeftHandThumb2'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftHandThumb1'' has been deleted
+
+    Transform ''mixamorig1:LeftHand''
+    has been deleted
+
+    Transform ''mixamorig1:LeftForeArm'' has been deleted
+
+    Transform
+    ''mixamorig1:LeftArm'' has been deleted
+
+    Transform ''mixamorig1:LeftShoulder''
+    has been deleted
+
+    Transform ''mixamorig1:Head'' has been deleted
+
+    Transform
+    ''mixamorig1:Neck'' has been deleted
+
+    Transform ''mixamorig1:RightHandIndex3''
+    has been deleted
+
+    Transform ''mixamorig1:RightHandIndex2'' has been deleted
+
+    Transform
+    ''mixamorig1:RightHandIndex1'' has been deleted
+
+    Transform ''mixamorig1:RightHandMiddle3''
+    has been deleted
+
+    Transform ''mixamorig1:RightHandMiddle2'' has been deleted
+
+    Transform
+    ''mixamorig1:RightHandMiddle1'' has been deleted
+
+    Transform ''mixamorig1:RightHandPinky3''
+    has been deleted
+
+    Transform ''mixamorig1:RightHandPinky2'' has been deleted
+
+    Transform
+    ''mixamorig1:RightHandPinky1'' has been deleted
+
+    Transform ''mixamorig1:RightHandRing3''
+    has been deleted
+
+    Transform ''mixamorig1:RightHandRing2'' has been deleted
+
+    Transform
+    ''mixamorig1:RightHandRing1'' has been deleted
+
+    Transform ''mixamorig1:RightHandThumb3''
+    has been deleted
+
+    Transform ''mixamorig1:RightHandThumb2'' has been deleted
+
+    Transform
+    ''mixamorig1:RightHandThumb1'' has been deleted
+
+    Transform ''mixamorig1:RightHand''
+    has been deleted
+
+    Transform ''mixamorig1:RightForeArm'' has been deleted
+
+    Transform
+    ''mixamorig1:RightArm'' has been deleted
+
+    Transform ''mixamorig1:RightShoulder''
+    has been deleted
+
+    Transform ''mixamorig1:Spine2'' has been deleted
+
+    Transform
+    ''mixamorig1:Spine1'' has been deleted
+
+    Transform ''mixamorig1:Spine'' has
+    been deleted
+
+    Transform ''mixamorig1:Hips'' has been deleted'
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
