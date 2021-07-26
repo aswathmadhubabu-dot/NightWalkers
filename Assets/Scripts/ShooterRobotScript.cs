@@ -169,6 +169,10 @@ public class ShooterRobotScript : MonoBehaviour
                 break;
             case AIState.InRangeOfPlayer:
                 MoveRootMotionRobot(true);
+                if(target.GetComponent<HealthController>().isDead){
+                    StayOnSpot();
+                    return;
+                }
                 Debug.Log("Close to player!");
                 if (laserOn)
                 {
@@ -335,6 +339,9 @@ public class ShooterRobotScript : MonoBehaviour
 
     void CheckIfRobotSeesPlayer(Vector3 dist)
     {
+        if(target.GetComponent<HealthController>().isDead){
+            return;
+        }
         if (dist.magnitude < 35 *sizeMultiplier && isPlayerInSight2())
         {
             //Can see the player, lets chase him!

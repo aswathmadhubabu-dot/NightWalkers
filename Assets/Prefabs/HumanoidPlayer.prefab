@@ -5521,7 +5521,7 @@ MonoBehaviour:
     - fsmEvent:
         name: RESET
         isSystemEvent: 0
-        isGlobal: 0
+        isGlobal: 1
       toState: Wait
       linkStyle: 0
       linkConstraint: 0
@@ -5529,7 +5529,7 @@ MonoBehaviour:
     - fsmEvent:
         name: START PICK
         isSystemEvent: 0
-        isGlobal: 0
+        isGlobal: 1
       toState: Start Trigger Event
       linkStyle: 0
       linkConstraint: 0

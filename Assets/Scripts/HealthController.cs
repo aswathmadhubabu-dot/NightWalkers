@@ -15,7 +15,7 @@ public class HealthController : MonoBehaviour
     public float blinkIntensity;
     public float blinkDuration;
     float blinkTimer;
-    bool isDead = false;
+    public bool isDead = false;
 
     CameraManager cameraManager;
     SkinnedMeshRenderer[] skinnedMeshRenderer;
