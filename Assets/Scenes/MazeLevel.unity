@@ -82215,6 +82215,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
         type: 3}
+      propertyPath: aimAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 071cbf704feee924c89b4676d15a5eb6, type: 3}
+    - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
+        type: 3}
       propertyPath: shootAudio
       value: 
       objectReference: {fileID: 8300000, guid: 168a8aa65f7319543a0216743c0de6a0, type: 3}

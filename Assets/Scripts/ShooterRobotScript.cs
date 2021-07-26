@@ -293,6 +293,7 @@ public class ShooterRobotScript : MonoBehaviour
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, raycastOrigin.position);
         laserOn = true;
+        EventManager.TriggerEvent<AimEvent, Vector3>(transform.position);
 
         /*
         ray.origin = raycastOrigin.position;
