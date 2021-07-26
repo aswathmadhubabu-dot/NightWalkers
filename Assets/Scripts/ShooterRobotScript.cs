@@ -293,6 +293,7 @@ public class ShooterRobotScript : MonoBehaviour
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, raycastOrigin.position);
         laserOn = true;
+        EventManager.TriggerEvent<AimEvent, Vector3>(transform.position);
 
         /*
         ray.origin = raycastOrigin.position;
@@ -321,6 +322,8 @@ public class ShooterRobotScript : MonoBehaviour
             tracer.transform.position = hitInfo.point;
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
+            EventManager.TriggerEvent<ShootEvent, Vector3>(transform.position);
+
             if (hitInfo.collider.gameObject == target)
             {
                 Debug.Log("Hit Player!");

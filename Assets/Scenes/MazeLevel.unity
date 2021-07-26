@@ -17124,7 +17124,7 @@ PrefabInstance:
     - target: {fileID: 3395147416195096930, guid: 08149b50bf473334184d454562dc1fb9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -12.999878
+      value: -12.999817
       objectReference: {fileID: 0}
     - target: {fileID: 3395147416195096930, guid: 08149b50bf473334184d454562dc1fb9,
         type: 3}
@@ -55572,6 +55572,7 @@ MonoBehaviour:
   maxHealth: 100
   blinkIntensity: 100
   blinkDuration: 0.1
+  isDead: 0
 --- !u!114 &1448844089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82212,6 +82213,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
+        type: 3}
+      propertyPath: aimAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 071cbf704feee924c89b4676d15a5eb6, type: 3}
+    - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
+        type: 3}
+      propertyPath: shootAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 168a8aa65f7319543a0216743c0de6a0, type: 3}
     - target: {fileID: 6339647933519021548, guid: 92fe32709c76d450094d1a1b3dcfc9b9,
         type: 3}
       propertyPath: hitBallAudio
