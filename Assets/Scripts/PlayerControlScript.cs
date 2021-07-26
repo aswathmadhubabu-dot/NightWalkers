@@ -202,15 +202,6 @@ public class PlayerControlScript : MonoBehaviour
         anim.SetFloat("vely", forwardVel);
     }
 
-    void HandleJump()
-    {
-        if (inputManager.PlayerJumpedThisFrame())
-        {
-            print("Jumping");
-            anim.SetTrigger("jump");
-        }
-    }
-
     public void ThrowBall()
     {
         if (hasBall)

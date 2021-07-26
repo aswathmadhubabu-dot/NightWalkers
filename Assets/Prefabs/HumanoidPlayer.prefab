@@ -3124,7 +3124,7 @@ MonoBehaviour:
   xAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 200
+    m_MaxSpeed: 125
     m_AccelTime: 0.02
     m_DecelTime: 0.02
     m_InputAxisName: Mouse X
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   yAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 200
+    m_MaxSpeed: 125
     m_AccelTime: 0.02
     m_DecelTime: 0.02
     m_InputAxisName: Mouse Y
@@ -3212,6 +3212,7 @@ MonoBehaviour:
   maxHealth: 100
   blinkIntensity: 100
   blinkDuration: 0.1
+  isDead: 0
 --- !u!114 &8901502188314073225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5764,7 +5765,7 @@ MonoBehaviour:
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
   m_CameraRadius: 0.1
-  m_Strategy: 1
+  m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 1
   m_Damping: 3
