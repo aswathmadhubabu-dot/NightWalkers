@@ -146,7 +146,7 @@ public class ShooterRobotScript : MonoBehaviour
 
                 MoveRootMotionRobot(stopping);
 
-                if (isPlayerInSight())
+                if (isPlayerInSight2())
                 {
                     //Check if should rotate
                     if(navmesh.remainingDistance < 10 * sizeMultiplier && !navmesh.pathPending){
@@ -335,7 +335,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     void CheckIfRobotSeesPlayer(Vector3 dist)
     {
-        if (dist.magnitude < 35 *sizeMultiplier && isPlayerInSight())
+        if (dist.magnitude < 35 *sizeMultiplier && isPlayerInSight2())
         {
             //Can see the player, lets chase him!
             aiState = AIState.ChasingPlayer;
@@ -438,6 +438,41 @@ public class ShooterRobotScript : MonoBehaviour
             {
                 seenPlayer = ViewForAngle(i) || seenPlayer;
             }
+        }
+
+        if (seenPlayer)
+        {
+            lastSeenPlayer = Time.time;
+        }
+
+        //IF seen player in the last 5 seconds, then chase
+        float currentLastSeen = lastSeenPlayer + 5;
+        if (currentLastSeen > Time.time)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    bool isPlayerInSight2()
+    {
+        Vector3 targetDir = target.transform.position - transform.position;
+        float angleToPlayer = (Vector3.SignedAngle(targetDir, transform.forward, Vector3.up));
+        bool seenPlayer = false;
+        if (angleToPlayer >= -70 && angleToPlayer <= 70)
+        {
+            Vector3 headForward = visionOrigin.transform.forward;
+            Vector3 newHeadForward = new Vector3(this.transform.forward.x, 0f, this.transform.forward.z);
+
+            Vector3 rayor = this.transform.position + new Vector3(0f, 1.5f * sizeMultiplier, 0f);
+            LayerMask lm = LayerMask.GetMask("Player");
+            if (Physics.Linecast(rayor, target.transform.position + new Vector3(0f, 1.0f * sizeMultiplier, 0f), lm))
+            {
+                seenPlayer = true;
+            } else {
+                seenPlayer = false;
+            }
+
         }
 
         if (seenPlayer)

@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4207261819152345694}
+  - {fileID: 749740939515295565}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flamesPrefab: {fileID: 8046485263150222923, guid: 16702c43d4f907949aa9af7b7c943d2b,
     type: 3}
+  flames: {fileID: 0}
+  flameOrigin: {fileID: 749740939515295565}
 --- !u!65 &2760439634619049892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75,6 +78,36 @@ CapsuleCollider:
   m_Height: 20.11063
   m_Direction: 2
   m_Center: {x: -3.2861395e-14, y: 0, z: 10.312413}
+--- !u!1 &8621849832562715149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749740939515295565}
+  m_Layer: 11
+  m_Name: FlameOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749740939515295565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621849832562715149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2760439634619049894}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4207261819152486746
 PrefabInstance:
   m_ObjectHideFlags: 0

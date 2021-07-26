@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 public class FlameController : MonoBehaviour
 {
     public GameObject flamesPrefab;
 
     private bool dealDamage = false;
+    private bool stillColliding = false;
 
     // Start is called before the first frame update
     private HealthController objectBurning;
-    GameObject flames;
+    public GameObject flames = null;
+    public Transform flameOrigin;
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,9 +18,21 @@ public class FlameController : MonoBehaviour
         {
             Debug.Log("START BURNING");
             objectBurning = other.gameObject.GetComponent<HealthController>();
-            dealDamage = true;
-            flames = Instantiate(flamesPrefab, this.transform.position - new Vector3(0, 0, 3f),
+            stillColliding = true;
+            if(flames == null){
+                StartCoroutine(WaitForDamage());
+            } else {
+                dealDamage = true;
+            }
+            flames = Instantiate(flamesPrefab, flameOrigin.position,
                 this.transform.rotation);
+        }
+    }
+    
+    IEnumerator WaitForDamage(){
+        yield return new WaitForSeconds(0.4f);
+        if(stillColliding){
+            dealDamage = true;
         }
     }
 
@@ -28,6 +42,7 @@ public class FlameController : MonoBehaviour
         {
             Debug.Log("STOP BURNING");
             dealDamage = false;
+            stillColliding = false;
         }
     }
 
