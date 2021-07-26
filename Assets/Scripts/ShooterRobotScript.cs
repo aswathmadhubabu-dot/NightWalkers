@@ -321,6 +321,8 @@ public class ShooterRobotScript : MonoBehaviour
             tracer.transform.position = hitInfo.point;
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
+            EventManager.TriggerEvent<ShootEvent, Vector3>(transform.position);
+
             if (hitInfo.collider.gameObject == target)
             {
                 Debug.Log("Hit Player!");
