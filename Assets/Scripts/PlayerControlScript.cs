@@ -79,8 +79,6 @@ public class PlayerControlScript : MonoBehaviour
         {
             MovePlayer();
 
-            HandleJump();
-
             if (hasBall)
             {
                 // ball.transform.position = ballHolder.transform.position;
