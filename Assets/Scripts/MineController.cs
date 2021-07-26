@@ -35,6 +35,7 @@ public class MineController : MonoBehaviour
             other.gameObject.GetComponent<HealthController>().TakeDamage(30f, this.gameObject);
             //GameObject particle = Instantiate(explosiveParticle, transform.position, Quaternion.identity); 
             explosion.Emit(20);
+            EventManager.TriggerEvent<MineExplodeEvent, Vector3>(transform.position);
             StartCoroutine(SelfDestruct());
 //            ParticleEffect pe = particle.GetComponent<ParticleEffect>();
 //            pe.looping = false;

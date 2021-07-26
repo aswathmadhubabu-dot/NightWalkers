@@ -18,8 +18,11 @@ public class AudioEventManager : MonoBehaviour
     public AudioClip hitGlassAudio;
     public AudioClip shootAudio;
     public AudioClip aimAudio;
+    public AudioClip explodeAudio;
 
     private UnityAction<Vector3> hitGoalEventListener;
+
+    private UnityAction<Vector3> explodeEventListener;
 
     private UnityAction<Vector3> throwBallEventListener;
 
@@ -36,7 +39,7 @@ public class AudioEventManager : MonoBehaviour
     void Awake()
     {
         hitGlassEventListener = new UnityAction<Vector3>(hitGlassEventHandler);
-
+        explodeEventListener = new UnityAction<Vector3>(explodeEventHandler);
         shootEventListener = new UnityAction<Vector3>(shootEventHandler);
         aimEventListener = new UnityAction<Vector3>(aimEventHandler);
 
@@ -61,6 +64,7 @@ public class AudioEventManager : MonoBehaviour
 
     void OnEnable()
     {
+        EventManager.StartListening<MineExplodeEvent, Vector3>(explodeEventListener); 
         EventManager.StartListening<AimEvent, Vector3>(aimEventListener);
         EventManager.StartListening<ShootEvent, Vector3>(shootEventListener); 
         EventManager.StartListening<HitGlassEvent, Vector3>(hitGlassEventListener);
@@ -72,6 +76,7 @@ public class AudioEventManager : MonoBehaviour
 
     void OnDisable()
     {
+        EventManager.StopListening<MineExplodeEvent, Vector3>(explodeEventListener); 
         EventManager.StopListening<AimEvent, Vector3>(aimEventListener);
         EventManager.StopListening<ShootEvent, Vector3>(shootEventListener); 
         EventManager.StopListening<HitGlassEvent, Vector3>(hitGlassEventListener);
@@ -217,4 +222,17 @@ public class AudioEventManager : MonoBehaviour
         snd.audioSrc.Play();
     }
 
+    void explodeEventHandler(Vector3 worldPos)
+    {
+        //AudioSource.PlayClipAtPoint(this.boxAudio, worldPos);
+
+        EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+        snd.audioSrc.clip = this.explodeAudio;
+
+        snd.audioSrc.minDistance = 10f;
+        snd.audioSrc.maxDistance = 500f;
+
+        snd.audioSrc.Play();
+    }
 }
