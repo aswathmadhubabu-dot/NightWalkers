@@ -22,13 +22,10 @@ public class CameraAimScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (playerControlScript.isAiming)
-        {
-            xAxis.Update(Time.deltaTime);
-            yAxis.Update(Time.deltaTime);
+        xAxis.Update(Time.deltaTime);
+        yAxis.Update(Time.deltaTime);
 
-            cameraLookAt.eulerAngles = new Vector3(yAxis.Value, xAxis.Value, 0.0f);
-        }
+        cameraLookAt.eulerAngles = new Vector3(yAxis.Value, xAxis.Value, 0.0f);
     }
 
     void FixedUpdate()

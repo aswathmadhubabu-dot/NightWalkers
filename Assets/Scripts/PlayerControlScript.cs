@@ -79,8 +79,6 @@ public class PlayerControlScript : MonoBehaviour
         {
             MovePlayer();
 
-            HandleJump();
-
             if (hasBall)
             {
                 // ball.transform.position = ballHolder.transform.position;
@@ -200,15 +198,6 @@ public class PlayerControlScript : MonoBehaviour
 
         anim.SetFloat("velx", turnVel);
         anim.SetFloat("vely", forwardVel);
-    }
-
-    void HandleJump()
-    {
-        if (inputManager.PlayerJumpedThisFrame())
-        {
-            print("Jumping");
-            anim.SetTrigger("jump");
-        }
     }
 
     public void ThrowBall()
