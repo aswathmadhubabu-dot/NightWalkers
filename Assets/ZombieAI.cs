@@ -24,7 +24,7 @@ public class ZombieAI : MonoBehaviour
     public float roamRadius = 7f;
     private Animator animator;
     private bool nearPlayer = false;
-    public float minDistance = 2.7f;
+    public float minDistance = 5.5f;
     public float damping = 1.0f;
 
     void Start()
@@ -38,7 +38,7 @@ public class ZombieAI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
 
     {
         var vectorToPlayer = playerTransform.transform.position - transform.position;
@@ -61,6 +61,7 @@ public class ZombieAI : MonoBehaviour
             {
                 //Debug.Log("Striking Distance: " + Vector3.Distance(playerTransform.transform.position, transform.position));
                 agent.SetDestination(playerTransform.transform.position);
+                animator.SetBool("Attack", false);
                 animator.SetBool("Chase", true);
                 agent.speed = ChaseSpeed;
             }
@@ -69,6 +70,7 @@ public class ZombieAI : MonoBehaviour
                 SearchForPlayer();
                 Wander();
                 animator.SetBool("Chase", false);
+                animator.SetBool("Attack", false);
                 agent.speed = WanderSpeed;
 
             }
@@ -149,50 +151,25 @@ public class ZombieAI : MonoBehaviour
         return new Vector3(navhit.position.x, transform.position.y, navhit.position.z);
     }
 
-    //  private void OnTriggerEnter(Collider other)
-    //  {
-    //      if (other.gameObject.transform.parent.gameObject.tag == "Player")
-    //      {
-    //          Debug.Log("COLLIDING COLLIDNG");
-    //          //other.isTrigger = false;
-    //          nearPlayer = true;
-    //          animator.SetBool("Chase", false);
-    //          animator.SetBool("Attack", true);
-    //      }
-    //  }
-    //  
-    //  private void OnTriggerExit(Collider other)
-    //  {
-    //      if (other.gameObject.transform.parent.gameObject.tag == "Player")
-    //      {
-    //          Debug.Log("COLLIDING EXIT");
-    //          animator.SetBool("Attack", false);
-    //          animator.SetBool("Chase", true);
-    //      }    
-    //  }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //   if (collision.collider.gameObject.transform.parent.gameObject.tag == "Player")
-    //   {
-    //       Debug.Log("COLLIDING COLLIDNG");
-    //       animator.SetBool("Chase", false);
-    //       animator.SetBool("Attack", true);
-    //   }
-    //}
-    //
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    Debug.Log("COLLIDING EXIT");
-    //    animator.SetBool("Attack", false);
-    //    animator.SetBool("Chase", true);
-    //
-    //}
-
     void lookAt()
     {
         var rotation = Quaternion.LookRotation(playerTransform.transform.position - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            animator.SetBool("Death", true);
+            StartCoroutine(DestroyAfterSeconds(5f));
+        }
+    }
+
+    IEnumerator DestroyAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Destroy(gameObject);
+
+    }
 }

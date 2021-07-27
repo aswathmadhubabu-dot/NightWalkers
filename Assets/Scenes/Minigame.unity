@@ -1976,6 +1976,7 @@ MonoBehaviour:
   isInsight: 0
   roamRadius: 7
   minDistance: 2.7
+  damping: 1
 --- !u!136 &566821941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3075,6 +3076,7 @@ MonoBehaviour:
   isInsight: 0
   roamRadius: 7
   minDistance: 0
+  damping: 1
 --- !u!136 &1115540604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4511,6 +4513,7 @@ MonoBehaviour:
   isInsight: 0
   roamRadius: 7
   minDistance: 0
+  damping: 1
 --- !u!136 &1455674375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5051,6 +5054,7 @@ MonoBehaviour:
   isInsight: 0
   roamRadius: 7
   minDistance: 0
+  damping: 1
 --- !u!136 &1620834586
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5416,6 +5420,7 @@ MonoBehaviour:
   isInsight: 0
   roamRadius: 7
   minDistance: 0
+  damping: 1
 --- !u!136 &1702872568
 CapsuleCollider:
   m_ObjectHideFlags: 0
