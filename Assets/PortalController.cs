@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PortalController : MonoBehaviour
 {
     public float level;
+    public Text nextLevelText;
+    private PlayerControlScript playerControlScript;
+
     void OnTriggerEnter(){
         Destroy(GameObject.Find("TimerUI"));
+        playerControlScript.EnablePlayer(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         //TODO: Stop actual game time
         //TODO: Play dance animation
         Time.timeScale = 0;
@@ -31,12 +39,19 @@ public class PortalController : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1f;
+        playerControlScript = FindObjectOfType<PlayerControlScript>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadNextLevel()
     {
-        
+        nextLevelText.text = "Loading Level...";
+        if (level == 1)
+        {
+            SceneManager.LoadScene("SimpleLevel");
+        } else if (level == 2)
+        {
+            SceneManager.LoadScene("MazeLevel");
+        }
     }
 }
