@@ -125,11 +125,16 @@ public class PlayerControlScript : MonoBehaviour
             //     pickUpBall();
             // }
 
-            if (inputManager.PickUpBallTriggeredThisFrame() &&
-                ballDistanceFromPlayer <= ballCloseEnoughForPickDistance &&
-                isFacingBall)
+            // if (inputManager.PickUpBallTriggeredThisFrame() &&
+            //     ballDistanceFromPlayer <= ballCloseEnoughForPickDistance &&
+            //     isFacingBall)
+            // {
+            //     pickUpBall();
+            // }
+
+            if (inputManager.PickUpBallTriggeredThisFrame())
             {
-                pickUpBall();
+                print("PLayer has ball " + hasBall);
             }
 
             if (inputManager.DropUpBallTriggeredThisFrame())
@@ -206,22 +211,22 @@ public class PlayerControlScript : MonoBehaviour
         {
             // anim.SetTrigger("throw");
             DisableBallKinematics();
-            Vector3 forward = this.transform.forward;
-            forward.y = 0.1f;
-            ballRb.AddForce(forward * throwBallForce, ForceMode.Impulse);
+            Vector3 forward = transform.forward;
+            forward.y = 3f;
+            // TODO - Add proper force
+            // forward.x = 1f;
+            // forward.z = 1f;
+            ballRb.AddForce(forward * 7f, ForceMode.Impulse);
             EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
             hasBall = false;
             ball.transform.parent = null;
-            
-            StartCoroutine(ExecuteAfterTime(0.3f, () =>
-            {            
-                ball.GetComponent<Collider>().isTrigger = false;
-            }));
+
+            StartCoroutine(ExecuteAfterTime(0.3f, () => { ball.GetComponent<Collider>().isTrigger = false; }));
         }
     }
 
     private Boolean isCoroutineExecuting = false;
-    
+
     IEnumerator ExecuteAfterTime(float time, Action task)
     {
         if (isCoroutineExecuting)

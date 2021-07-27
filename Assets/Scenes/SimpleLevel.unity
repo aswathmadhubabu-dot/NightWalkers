@@ -5460,12 +5460,12 @@ PrefabInstance:
     - target: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 3.4984374
       objectReference: {fileID: 0}
     - target: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.77
+      value: 5.7678695
       objectReference: {fileID: 0}
     - target: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
         type: 3}
@@ -5506,6 +5506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148072549785351524, guid: db55214f4f9bdc5449e8ffd559b617b6,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db55214f4f9bdc5449e8ffd559b617b6, type: 3}
@@ -10480,7 +10485,7 @@ PrefabInstance:
     - target: {fileID: 5538911320527396521, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8901502186527141542, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
@@ -10575,17 +10580,52 @@ PrefabInstance:
     - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.177
+      value: -0.148
       objectReference: {fileID: 0}
     - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.192
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.199
+      value: 0.171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502186905329997, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8901502186934158391, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
@@ -12969,6 +13009,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1009487262288784460, guid: 08e81756f81d65349bda17b8e75dc1fe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.88047624
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009487262288784460, guid: 08e81756f81d65349bda17b8e75dc1fe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3647052
+      objectReference: {fileID: 0}
     - target: {fileID: 1009487263904189113, guid: 08e81756f81d65349bda17b8e75dc1fe,
         type: 3}
       propertyPath: m_RootOrder
