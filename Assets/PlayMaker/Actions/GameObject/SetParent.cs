@@ -20,6 +20,8 @@ namespace HutongGames.PlayMaker.Actions
 
 		[Tooltip("Set the local rotation to 0,0,0 after parenting.")]
 		public FsmBool resetLocalRotation;
+		
+		[CheckForComponent(typeof(Rigidbody))] public PlayerControlScript player;
 
 		public override void Reset()
 		{
@@ -36,6 +38,7 @@ namespace HutongGames.PlayMaker.Actions
 			if (go != null)
 			{
 				go.transform.parent = parent.Value == null ? null : parent.Value.transform;
+				// player.hasBall = true;
 
 				if (resetLocalPosition.Value)
 				{
