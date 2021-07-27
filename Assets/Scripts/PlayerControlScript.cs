@@ -82,8 +82,8 @@ public class PlayerControlScript : MonoBehaviour
             if (hasBall)
             {
                 // ball.transform.position = ballHolder.transform.position;
-                ball.transform.position = (rightHand.transform.position + leftHand.transform.position) / 2;
-                ball.transform.parent = rightHand.transform;
+                // ball.transform.position = (rightHand.transform.position + leftHand.transform.position) / 2;
+                // ball.transform.parent = rightHand.transform;
             }
 
             if (inputManager.AttackedThisFrame())

@@ -3420,8 +3420,8 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 358.61005
-        y: 350.92694
+        x: 70.61005
+        y: 174.92694
         width: 153.5
         height: 32
       isBreakpoint: 0
@@ -3522,8 +3522,8 @@ MonoBehaviour:
       colorIndex: 3
       position:
         serializedVersion: 2
-        x: 633.61005
-        y: 289.80975
+        x: 345.61005
+        y: 113.80975
         width: 216
         height: 48
       isBreakpoint: 0
@@ -3740,8 +3740,8 @@ MonoBehaviour:
       colorIndex: 5
       position:
         serializedVersion: 2
-        x: 634.61005
-        y: 480.92694
+        x: 346.61005
+        y: 304.92694
         width: 214
         height: 32
       isBreakpoint: 0
@@ -3961,7 +3961,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: 1
+            value: 0
           FloatParameter:
             useVariable: 0
             name: 
@@ -4165,8 +4165,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 363.61005
-        y: 491.92694
+        x: 75.61005
+        y: 315.92694
         width: 194
         height: 32
       isBreakpoint: 0
@@ -4244,8 +4244,8 @@ MonoBehaviour:
       colorIndex: 1
       position:
         serializedVersion: 2
-        x: 339.11005
-        y: 627.6691
+        x: 51.110046
+        y: 451.66913
         width: 207.5
         height: 32
       isBreakpoint: 0
@@ -4277,7 +4277,7 @@ MonoBehaviour:
         - 
         - 
         - 
-        actionEnabled: 01010101000101
+        actionEnabled: 01010101010101
         actionIsOpen: 01010101010101
         actionStartIndex: 0000000004000000060000000a000000120000001400000017000000
         actionHashCodes: afd8b2025ac85204ea32a105f9f19a025ac852044d51cf045e69bb04
@@ -4740,8 +4740,8 @@ MonoBehaviour:
       colorIndex: 1
       position:
         serializedVersion: 2
-        x: 641.61005
-        y: 629.92694
+        x: 353.61005
+        y: 453.92694
         width: 200
         height: 32
       isBreakpoint: 0
@@ -4800,7 +4800,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 1
           networkSync: 0
-          value: 
+          value: Throw
         - useVariable: 0
           name: 
           tooltip: 
@@ -4965,7 +4965,7 @@ MonoBehaviour:
     locked: 0
     manualUpdate: 0
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     RestartOnEnable: 1
     EnableDebugFlow: 0
@@ -4991,7 +4991,7 @@ MonoBehaviour:
     handleJointBreak: 0
     handleJointBreak2D: 0
     handleOnGUI: 0
-    handleFixedUpdate: 1
+    handleFixedUpdate: 0
     handleLateUpdate: 0
     handleApplicationEvents: 0
     handleUiEvents: 0
@@ -5025,6 +5025,7 @@ GameObject:
   - component: {fileID: 8901502186905329997}
   - component: {fileID: 8901502186905329998}
   - component: {fileID: 3822039175299255172}
+  - component: {fileID: 5538911320527396521}
   m_Layer: 10
   m_Name: Pickup Parent
   m_TagString: Untagged
@@ -5040,7 +5041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8901502186905329996}
   m_LocalRotation: {x: 0.03235314, y: 0.5714046, z: 0.2647552, w: 0.7761152}
-  m_LocalPosition: {x: -0.177, y: 0.192, z: 0.199}
+  m_LocalPosition: {x: -0.149, y: 0.128, z: 0.173}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2840294252673615331}
@@ -5070,8 +5071,8 @@ MonoBehaviour:
       colorIndex: 4
       position:
         serializedVersion: 2
-        x: 321.875
-        y: 374.85156
+        x: 209.875
+        y: 278.85156
         width: 195.5
         height: 32
       isBreakpoint: 0
@@ -5191,8 +5192,8 @@ MonoBehaviour:
       colorIndex: 5
       position:
         serializedVersion: 2
-        x: 632.1797
-        y: 375.35938
+        x: 520.1797
+        y: 279.35938
         width: 133
         height: 32
       isBreakpoint: 0
@@ -5263,8 +5264,8 @@ MonoBehaviour:
       colorIndex: 3
       position:
         serializedVersion: 2
-        x: 365.1797
-        y: 208.84375
+        x: 253.17969
+        y: 112.84375
         width: 100
         height: 32
       isBreakpoint: 0
@@ -5356,8 +5357,8 @@ MonoBehaviour:
       colorIndex: 3
       position:
         serializedVersion: 2
-        x: 589.41406
-        y: 457.21875
+        x: 477.41406
+        y: 361.21875
         width: 227
         height: 16
       isBreakpoint: 0
@@ -5458,8 +5459,8 @@ MonoBehaviour:
       colorIndex: 6
       position:
         serializedVersion: 2
-        x: 163.64844
-        y: 313.92188
+        x: 51.648438
+        y: 217.92188
         width: 100
         height: 16
       isBreakpoint: 0
@@ -5569,12 +5570,12 @@ MonoBehaviour:
     locked: 0
     manualUpdate: 0
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 1
+    preprocessed: 0
     ExposedEvents: []
     RestartOnEnable: 1
     EnableDebugFlow: 0
     EnableBreakpoints: 1
-    editorFlags: 1
+    editorFlags: 7
     activeStateName: 
     mouseEvents: 0
     handleLevelLoaded: 0
@@ -5586,7 +5587,7 @@ MonoBehaviour:
     handleCollisionStay2D: 0
     handleTriggerEnter: 0
     handleTriggerExit: 0
-    handleTriggerStay: 1
+    handleTriggerStay: 0
     handleCollisionEnter: 0
     handleCollisionExit: 0
     handleCollisionStay: 0
@@ -5618,6 +5619,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetFSMs:
   - {fileID: 8901502186905329998}
+--- !u!135 &5538911320527396521
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901502186905329996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8901502187349246446
 GameObject:
   m_ObjectHideFlags: 0
