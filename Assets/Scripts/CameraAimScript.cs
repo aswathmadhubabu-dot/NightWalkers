@@ -38,11 +38,5 @@ public class CameraAimScript : MonoBehaviour
             rotation.z = 0;
             transform.rotation = rotation;
         }
-
-        // Reset y because sometimes player falls through the floor
-        if (transform.position.y < 0)
-        {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        }
     }
 }

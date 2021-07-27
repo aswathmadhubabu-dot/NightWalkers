@@ -41,7 +41,7 @@ public class ShooterRobotScript : MonoBehaviour
 
     private Vector3 laserFinishPoint;
 
-    public bool debug = true;
+    public bool debug = false;
 
     private bool laserOn = false;
 

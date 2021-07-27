@@ -10,6 +10,8 @@ public class PlayerControlScript : MonoBehaviour
     public float followCameraDistance = 3.5f;
     public float aimCameraDistance = 1.1f;
     public float throwBallForce = 7f;
+    public float slopeForce = 20f;
+    public float slopeForceRayLenth = 1.5f;
 
     public GameObject ball;
     public GameObject ballHolder;
@@ -203,6 +205,25 @@ public class PlayerControlScript : MonoBehaviour
 
         anim.SetFloat("velx", turnVel);
         anim.SetFloat("vely", forwardVel);
+
+        if (move != Vector3.zero && OnSlope())
+        {
+            controller.Move(Vector3.down * controller.height / 2 * slopeForce * Time.deltaTime);
+        }
+    }
+
+    private bool OnSlope()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, controller.height / 2 * slopeForceRayLenth))
+        {
+            if (hit.normal != Vector3.up)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void ThrowBall()
