@@ -162,7 +162,7 @@ public class ZombieAI : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             animator.SetBool("Death", true);
-            StartCoroutine(DestroyAfterSeconds(5f));
+            //StartCoroutine(DestroyAfterSeconds(5f));
         }
     }
 
