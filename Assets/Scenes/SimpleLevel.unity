@@ -8455,6 +8455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5148072548412657653, guid: db55214f4f9bdc5449e8ffd559b617b6,
+        type: 3}
+      propertyPath: ballSpawn
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
         type: 3}
       propertyPath: m_RootOrder
@@ -11902,7 +11907,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ball
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 739957893}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2cc60733c1a67d49ba510e28d48579b, type: 3}
 --- !u!1001 &1037855563
