@@ -19,6 +19,12 @@ public class AudioEventManager : MonoBehaviour
     public AudioClip shootAudio;
     public AudioClip aimAudio;
     public AudioClip explodeAudio;
+    public AudioClip zombieAttackAudio;
+    public AudioClip zombieDeathAudio;
+
+    private UnityAction<Vector3> zombieAttackEventListener;
+    private UnityAction<Vector3> zombieDeathEventListener;
+
 
     private UnityAction<Vector3> hitGoalEventListener;
 
@@ -38,6 +44,10 @@ public class AudioEventManager : MonoBehaviour
 
     void Awake()
     {
+        zombieAttackEventListener = new UnityAction<Vector3>(zombieAttackEventHandler);
+
+        zombieDeathEventListener = new UnityAction<Vector3>(zombieDeathEventHandler);
+
         hitGlassEventListener = new UnityAction<Vector3>(hitGlassEventHandler);
         explodeEventListener = new UnityAction<Vector3>(explodeEventHandler);
         shootEventListener = new UnityAction<Vector3>(shootEventHandler);
@@ -64,6 +74,8 @@ public class AudioEventManager : MonoBehaviour
 
     void OnEnable()
     {
+        EventManager.StartListening<ZombieAttackEvent, Vector3>(zombieAttackEventListener);
+        EventManager.StartListening<ZombieDeathEvent, Vector3>(zombieDeathEventListener);
         EventManager.StartListening<MineExplodeEvent, Vector3>(explodeEventListener); 
         EventManager.StartListening<AimEvent, Vector3>(aimEventListener);
         EventManager.StartListening<ShootEvent, Vector3>(shootEventListener); 
@@ -76,6 +88,8 @@ public class AudioEventManager : MonoBehaviour
 
     void OnDisable()
     {
+        EventManager.StopListening<ZombieAttackEvent, Vector3>(zombieAttackEventListener);
+        EventManager.StopListening<ZombieDeathEvent, Vector3>(zombieDeathEventListener);
         EventManager.StopListening<MineExplodeEvent, Vector3>(explodeEventListener); 
         EventManager.StopListening<AimEvent, Vector3>(aimEventListener);
         EventManager.StopListening<ShootEvent, Vector3>(shootEventListener); 
@@ -229,6 +243,34 @@ public class AudioEventManager : MonoBehaviour
         EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
 
         snd.audioSrc.clip = this.explodeAudio;
+
+        snd.audioSrc.minDistance = 10f;
+        snd.audioSrc.maxDistance = 500f;
+
+        snd.audioSrc.Play();
+    }
+
+    void zombieAttackEventHandler(Vector3 worldPos)
+    {
+        //AudioSource.PlayClipAtPoint(this.boxAudio, worldPos);
+
+        EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+        snd.audioSrc.clip = this.zombieAttackAudio;
+
+        snd.audioSrc.minDistance = 10f;
+        snd.audioSrc.maxDistance = 500f;
+
+        snd.audioSrc.Play();
+    }
+
+    void zombieDeathEventHandler(Vector3 worldPos)
+    {
+        //AudioSource.PlayClipAtPoint(this.boxAudio, worldPos);
+
+        EventSound3D snd = Instantiate(eventSound3DPrefab, worldPos, Quaternion.identity, null);
+
+        snd.audioSrc.clip = this.zombieDeathAudio;
 
         snd.audioSrc.minDistance = 10f;
         snd.audioSrc.maxDistance = 500f;
