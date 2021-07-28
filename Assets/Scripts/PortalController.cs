@@ -1,40 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PortalController : MonoBehaviour
 {
-    public float level;
+    public float nextLevel;
     public Text nextLevelText;
     private PlayerControlScript playerControlScript;
 
-    void OnTriggerEnter(){
+    void OnTriggerEnter(Collider other)
+    {
         Destroy(GameObject.Find("TimerUI"));
         playerControlScript.EnablePlayer(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         //TODO: Stop actual game time
         //TODO: Play dance animation
-        Time.timeScale = 0;
-        switch(level){
-
+        Time.timeScale = 0f;
+        switch (nextLevel)
+        {
             case 1:
                 GameObject dm = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
                 dm.SetActive(true);
-            break;
+                break;
             case 2:
                 GameObject dm2 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
                 dm2.SetActive(true);
-            break;
+                break;
             case 3:
-                GameObject dm3 = GameObject.Find("YouWonMenuContainer").transform.GetChild(0).gameObject;
+                GameObject dm3 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
                 dm3.SetActive(true);
-            break;
-            
+                break;
+            default:
+                GameObject gameObject = GameObject.Find("YouWonMenuContainer").transform.GetChild(0).gameObject;
+                gameObject.SetActive(true);
+                break;
         }
-
     }
 
     void Start()
@@ -46,12 +47,24 @@ public class PortalController : MonoBehaviour
     public void LoadNextLevel()
     {
         nextLevelText.text = "Loading Level...";
-        if (level == 1)
+        switch (nextLevel)
         {
-            SceneManager.LoadScene("SimpleLevel");
-        } else if (level == 2)
-        {
-            SceneManager.LoadScene("MazeLevel");
+            case 1:
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("SimpleLevel");
+                break;
+            case 2:
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("MediumLevel");
+                break;
+            case 3:
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("MazeLevel");
+                break;
+            default:
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("GameMenu");
+                break;
         }
     }
 }

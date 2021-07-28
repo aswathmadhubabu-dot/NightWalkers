@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 71f14a2d79f732f4d9893ef1b911f4ff, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17950909, g: 0.22476873, b: 0.30638367, a: 1}
+  m_IndirectSpecularColor: {r: 0.4839615, g: 0.57574034, b: 0.68019885, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1185,6 +1185,11 @@ PrefabInstance:
     - target: {fileID: 7037426441376140916, guid: a5250b136db8c3d4aa69e68de3960ddc,
         type: 3}
       propertyPath: level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037426441376140916, guid: a5250b136db8c3d4aa69e68de3960ddc,
+        type: 3}
+      propertyPath: nextLevel
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7037426441376140916, guid: a5250b136db8c3d4aa69e68de3960ddc,
@@ -3437,7 +3442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previewOnGUI: 1
   enableGUILayout: 1
-  drawStateLabels: 1
+  drawStateLabels: 0
   enableStateLabelsInBuilds: 0
   GUITextureStateLabels: 0
   GUITextStateLabels: 0
@@ -4120,6 +4125,7 @@ GameObject:
   - component: {fileID: 338811274}
   - component: {fileID: 338811273}
   - component: {fileID: 338811272}
+  - component: {fileID: 338811277}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -4257,6 +4263,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338811277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338811271}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7da195324f1914eb1fae4c75c3fa7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionSmoothTime: 0.5
+  rotationSmoothTime: 0.25
+  positionMaxSpeed: 1000
+  rotationMaxSpeed: 1000
+  desiredPose: {fileID: 2137803032}
+  target: {fileID: 1161737596}
 --- !u!1 &339119483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,6 +5732,11 @@ PrefabInstance:
     - target: {fileID: 158895059241813193, guid: baabd9c29f7df0f43a76210bf87fb43f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108093806987093559, guid: baabd9c29f7df0f43a76210bf87fb43f,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6108093807386842664, guid: baabd9c29f7df0f43a76210bf87fb43f,
@@ -11009,6 +11038,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1900074146370205124, guid: fda756433be987e4f81c52625fb592b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fda756433be987e4f81c52625fb592b8, type: 3}
 --- !u!1 &1023219708
@@ -12545,6 +12579,12 @@ MeshFilter:
 --- !u!1 &1161737595 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8901502186527141542, guid: 2735967ee72199043ae48ee3f986869d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028278506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1161737596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8901502186527141544, guid: 2735967ee72199043ae48ee3f986869d,
     type: 3}
   m_PrefabInstance: {fileID: 1028278506}
   m_PrefabAsset: {fileID: 0}
@@ -21958,6 +21998,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 486616, guid: 1759eacdee08e12408d757d50755a6d0,
     type: 3}
   m_PrefabInstance: {fileID: 2136450346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2137803032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8901502187412056659, guid: 2735967ee72199043ae48ee3f986869d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1028278506}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2138021761 stripped
 Transform:
