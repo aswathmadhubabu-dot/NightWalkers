@@ -30,7 +30,8 @@ public class ZombieAI : MonoBehaviour
     public float deathCounter = 25.0f;
     private float loseThreshold = 10f;
     private float loseTimer = 0f;
-    private Vector3 jitterVector; 
+    private Vector3 jitterVector;
+    private float attackTime = 0f;
 
     void Start()
     {
@@ -49,8 +50,8 @@ public class ZombieAI : MonoBehaviour
         var vectorToPlayer = playerTransform.transform.position - transform.position;
         vectorToPlayer.y = 0;
         var distanceToPlayer = vectorToPlayer.magnitude;
-        Debug.Log("Striking Distance: " + distanceToPlayer);
-        Debug.Log("Death Counter: " + deathCounter);
+        //Debug.Log("Striking Distance: " + distanceToPlayer);
+        //Debug.Log("Death Counter: " + deathCounter);
 
         if (distanceToPlayer < minDistance)
         {
@@ -109,7 +110,15 @@ public class ZombieAI : MonoBehaviour
                 {
                     animator.SetFloat("AttackType", Random.Range(0, 3));
                 }
-                animator.SetBool("Attack", true);
+                
+                Debug.Log("TIME:" + Time.realtimeSinceStartup.ToString());
+                Debug.Log("TIME DIFF:" + (Time.realtimeSinceStartup - attackTime).ToString());
+                if ((Time.realtimeSinceStartup - attackTime) > 1f)
+                {
+                    animator.SetBool("Attack", true);
+                    EventManager.TriggerEvent<ZombieAttackEvent, Vector3>(transform.position);
+                    attackTime = Time.realtimeSinceStartup;
+                }                
 
                 agent.speed = 0f;
             }
@@ -119,19 +128,19 @@ public class ZombieAI : MonoBehaviour
 
     public void SearchForPlayer()
     {
-        Debug.Log("Angle: " + Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(playerTransform.transform.position)));
+        //Debug.Log("Angle: " + Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(playerTransform.transform.position)));
         if (Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(playerTransform.transform.position)) < fov / 2)
         {
-            Debug.Log("Distance: " + Vector3.Distance(playerTransform.transform.position, transform.position));
+            //Debug.Log("Distance: " + Vector3.Distance(playerTransform.transform.position, transform.position));
             if (Vector3.Distance(playerTransform.transform.position, transform.position) < viewDistance)
             {
-                Debug.Log("Distance: " + Vector3.Distance(playerTransform.transform.position, transform.position));
+                //Debug.Log("Distance: " + Vector3.Distance(playerTransform.transform.position, transform.position));
 
                 RaycastHit hit;
                 if (Physics.Linecast(playerTransform.transform.position, transform.position, out hit, -1))
                 {
-                    Debug.Log("What I am hitting: " + hit.transform.gameObject);
-                    Debug.Log("Layer Hititng: " + hit.transform.gameObject.layer);
+                    //Debug.Log("What I am hitting: " + hit.transform.gameObject);
+                    //Debug.Log("Layer Hititng: " + hit.transform.gameObject.layer);
                     if (hit.collider.gameObject.layer == 10) // This bit hacky may need to change at some point.
                     {
                         isInsight = true;
@@ -161,7 +170,7 @@ public class ZombieAI : MonoBehaviour
     {
         if (wanderType == WanderType.Random)
         {
-            Debug.Log("Wander point: " + wanderpoint);
+            //Debug.Log("Wander point: " + wanderpoint);
             if (Vector3.Distance(transform.position, wanderpoint) < 2f)
             {
                 wanderpoint = RandomWanderPoint();
@@ -219,6 +228,7 @@ public class ZombieAI : MonoBehaviour
                 animator.SetBool("Chase", false);
                 animator.SetBool("Attack", false);
                 animator.SetTrigger("die");
+                EventManager.TriggerEvent<ZombieDeathEvent, Vector3>(transform.position);
                 Destroy(gameObject.GetComponent<CapsuleCollider>());
                 Destroy(gameObject.GetComponent<Rigidbody>());
                 agent.speed = 0;
