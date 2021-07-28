@@ -1977,6 +1977,7 @@ MonoBehaviour:
   roamRadius: 7
   minDistance: 2.7
   damping: 1
+  deathCounter: 25
 --- !u!136 &566821941
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2048,7 +2049,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3077,6 +3078,7 @@ MonoBehaviour:
   roamRadius: 7
   minDistance: 0
   damping: 1
+  deathCounter: 3
 --- !u!136 &1115540604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4514,6 +4516,7 @@ MonoBehaviour:
   roamRadius: 7
   minDistance: 0
   damping: 1
+  deathCounter: 3
 --- !u!136 &1455674375
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5055,6 +5058,7 @@ MonoBehaviour:
   roamRadius: 7
   minDistance: 0
   damping: 1
+  deathCounter: 3
 --- !u!136 &1620834586
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5421,6 +5425,7 @@ MonoBehaviour:
   roamRadius: 7
   minDistance: 0
   damping: 1
+  deathCounter: 3
 --- !u!136 &1702872568
 CapsuleCollider:
   m_ObjectHideFlags: 0

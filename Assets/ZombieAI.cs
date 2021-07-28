@@ -18,14 +18,19 @@ public class ZombieAI : MonoBehaviour
     public float fov = 180f;
     public float viewDistance = 8f;
     public bool isInsight = false;
+    private bool isDetecting = false;
     private Vector3 wanderpoint; 
     private NavMeshAgent agent;
     private Renderer render;
     public float roamRadius = 7f;
     private Animator animator;
     private bool nearPlayer = false;
-    public float minDistance = 5.5f;
+    public float minDistance = 3.5f;
     public float damping = 1.0f;
+    public float deathCounter = 25.0f;
+    private float loseThreshold = 10f;
+    private float loseTimer = 0f;
+    private Vector3 jitterVector; 
 
     void Start()
     {
@@ -45,6 +50,7 @@ public class ZombieAI : MonoBehaviour
         vectorToPlayer.y = 0;
         var distanceToPlayer = vectorToPlayer.magnitude;
         Debug.Log("Striking Distance: " + distanceToPlayer);
+        Debug.Log("Death Counter: " + deathCounter);
 
         if (distanceToPlayer < minDistance)
         {
@@ -64,23 +70,49 @@ public class ZombieAI : MonoBehaviour
                 animator.SetBool("Attack", false);
                 animator.SetBool("Chase", true);
                 agent.speed = ChaseSpeed;
+                if (!isDetecting)
+                {
+                    loseTimer += Time.deltaTime;
+                    if (loseTimer >= loseThreshold)
+                    {
+                        isInsight = false;
+                        loseTimer = 0;
+                    }
+                }
+
             }
             else
             {
-                SearchForPlayer();
                 Wander();
                 animator.SetBool("Chase", false);
                 animator.SetBool("Attack", false);
                 agent.speed = WanderSpeed;
 
             }
+            SearchForPlayer();
         }
         else
         {
-            lookAt();
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", true);
-            agent.speed = 0f;
+            if (distanceToPlayer < 0.35f)
+            {
+                jitterVector = new Vector3(playerTransform.transform.position.x + 1f, playerTransform.transform.position.y, playerTransform.transform.position.z);
+                animator.SetBool("Attack", false);
+                agent.SetDestination(jitterVector);
+                animator.SetBool("Chase", true);
+
+            }
+            else
+            {
+                lookAt();
+                animator.SetBool("Chase", false);
+                if (!animator.GetBool("Attack"))
+                {
+                    animator.SetFloat("AttackType", Random.Range(0, 3));
+                }
+                animator.SetBool("Attack", true);
+
+                agent.speed = 0f;
+            }
         }
 
     }
@@ -103,10 +135,24 @@ public class ZombieAI : MonoBehaviour
                     if (hit.collider.gameObject.layer == 10) // This bit hacky may need to change at some point.
                     {
                         isInsight = true;
+                        isDetecting = true;
+                        loseTimer = 0;
 
+                    } else
+                    {
+                        isDetecting = false;
                     }
+                } else
+                {
+                    isDetecting = false;
                 }
+            } else
+            {
+                isDetecting = false;
             }
+        } else
+        {
+            isDetecting = false;
         }
 
     }
@@ -161,17 +207,44 @@ public class ZombieAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            animator.SetTrigger("die");
-            animator.SetBool("Chase", false);
-            animator.SetBool("Attack", false);
-            //StartCoroutine(DestroyAfterSeconds(5f));
+            Debug.Log("Dath Counter:" + deathCounter);
+            if (deathCounter > 0)
+            {
+                deathCounter = deathCounter - 1;
+                Debug.Log(deathCounter);
+                animator.SetBool("BallAttack", true);
+
+            } else
+            {
+                animator.SetBool("Chase", false);
+                animator.SetBool("Attack", false);
+                animator.SetTrigger("die");
+                Destroy(gameObject.GetComponent<CapsuleCollider>());
+                Destroy(gameObject.GetComponent<Rigidbody>());
+                agent.speed = 0;
+                agent.angularSpeed = 0;
+                Destroy(gameObject.GetComponent<MeshCollider>());
+                Destroy(gameObject.GetComponent<MeshRenderer>());
+                gameObject.GetComponent<ZombieAI>().enabled = false;
+            }
+    
+            
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ball"))
+        {
+            animator.SetBool("BallAttack", false);
+            RandomWanderPoint();
+            animator.SetBool("Chase", true);
         }
     }
 
     IEnumerator DestroyAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
 
     }
 }
