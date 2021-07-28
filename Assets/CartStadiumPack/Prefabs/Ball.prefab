@@ -91,7 +91,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116176}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 0.85
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -106,7 +106,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116176}
-  m_Material: {fileID: 13400000, guid: e7cee9c3f0598ef469a628cfbf6c2fb6, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f320706efbade44b1f11e2db559bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPower: 1
   ballSpawn: {fileID: 0}
 --- !u!114 &7592548078511635933
 MonoBehaviour:
