@@ -51,3 +51,10 @@ MonoBehaviour:
   ovationAudio1: {fileID: 8300000, guid: 162f768f1a14ef849a5a40b5aceb0bf2, type: 3}
   ovationAudio2: {fileID: 8300000, guid: 4ab727493a6da544d9b169240d98cd9f, type: 3}
   ovationAudio3: {fileID: 8300000, guid: 52852d308d1b64c4cbf114ac927a2b20, type: 3}
+  throwBallAudio: {fileID: 8300000, guid: f7df2ad7385b1794fbb7ef20607b06cb, type: 3}
+  hitGlassAudio: {fileID: 8300000, guid: 6bee370d781a99f4c8481206fdf1d8d0, type: 3}
+  shootAudio: {fileID: 8300000, guid: 168a8aa65f7319543a0216743c0de6a0, type: 3}
+  aimAudio: {fileID: 8300000, guid: 071cbf704feee924c89b4676d15a5eb6, type: 3}
+  explodeAudio: {fileID: 8300000, guid: c4e79c35e5515eb4cb6bcb4174618fd5, type: 3}
+  zombieAttackAudio: {fileID: 8300000, guid: 4fb45f9472f5e554c82a5a9c7ba4c739, type: 3}
+  zombieDeathAudio: {fileID: 8300000, guid: efc7bb9783bdf8a4797f4caae38bea34, type: 3}
