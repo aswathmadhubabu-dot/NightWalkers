@@ -2,7 +2,6 @@
 
 public class BallBehaviourScript : MonoBehaviour
 {
-    [SerializeField] float hitPower = 1f;
     public Transform ballSpawn;
     void Awake(){
         ballSpawn = GameObject.Find("BallSpawn").transform;

@@ -224,13 +224,21 @@ public class ShooterRobotScript : MonoBehaviour
         navmesh.SetDestination(futurePos);
     }
 
-    void OnTriggerEnter(Collider other)
+  /*  void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == GameObject.Find("Ball"))
         {
             Die();
         }
-    }
+    }*/
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("VELOC" + collision.relativeVelocity.magnitude);
+        if (collision.gameObject == GameObject.Find("Ball") && collision.relativeVelocity.magnitude > 10)
+        {
+            Die();
+        }
+    } 
 
     void Die()
     {

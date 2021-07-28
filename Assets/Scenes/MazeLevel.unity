@@ -1664,7 +1664,7 @@ MonoBehaviour:
     - fsmEvent:
         name: RESET
         isSystemEvent: 0
-        isGlobal: 0
+        isGlobal: 1
       toState: Wait
       linkStyle: 0
       linkConstraint: 0
@@ -1672,7 +1672,7 @@ MonoBehaviour:
     - fsmEvent:
         name: START PICK
         isSystemEvent: 0
-        isGlobal: 0
+        isGlobal: 1
       toState: Start Trigger Event
       linkStyle: 0
       linkConstraint: 0
@@ -12260,25 +12260,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 116176, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_RootOrder
       value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 429330, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12320,23 +12304,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2334088, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5487262, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_Mass
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 5487262, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 13507380, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: e7cee9c3f0598ef469a628cfbf6c2fb6,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b161cfe6cea64274eb16e83c0e0f71e3, type: 3}
 --- !u!1001 &286062955
@@ -40982,9 +40949,10 @@ MonoBehaviour:
         - 
         actionEnabled: 010101010101
         actionIsOpen: 010101010101
-        actionStartIndex: 000000000300000006000000080000000a0000000e000000
-        actionHashCodes: 04d8140204d814025ac852045ac85204ea32a1051012c100
-        unityObjectParams: []
+        actionStartIndex: 000000000300000006000000080000000a0000000f000000
+        actionHashCodes: 04d8140204d814025ac852045ac85204def325001012c100
+        unityObjectParams:
+        - {fileID: 0}
         fsmGameObjectParams:
         - useVariable: 1
           name: Pickup Parent
@@ -41345,7 +41313,7 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000018000000010000001400000018000000010000002400000001000000240000000100000014000000130000001100000011000000120000001700000011000000
+        paramDataType: 140000001800000001000000140000001800000001000000240000000100000024000000010000001400000013000000110000001100000005000000120000001700000011000000
         paramName:
         - gameObject
         - storeComponent
@@ -41361,11 +41329,12 @@ MonoBehaviour:
         - parent
         - resetLocalPosition
         - resetLocalRotation
+        - player
         - buttonName
         - sendEvent
         - storeResult
-        paramDataPos: 0000000000000000000000000100000001000000010000000000000002000000010000000300000002000000000000000000000001000000000000000000000002000000
-        paramByteDataSize: 0000000000000000010000000000000000000000010000000000000001000000000000000100000000000000000000000000000000000000000000000000000000000000
+        paramDataPos: 000000000000000000000000010000000100000001000000000000000200000001000000030000000200000000000000000000000100000000000000000000000000000002000000
+        paramByteDataSize: 000000000000000001000000000000000000000001000000000000000100000000000000010000000000000000000000000000000000000000000000000000000000000000000000
     - name: Cancel Pick Anim
       description: 'Trigger Cancel Pick animation
 
@@ -41488,9 +41457,10 @@ MonoBehaviour:
         - 
         actionEnabled: 01010101000101
         actionIsOpen: 01010101010101
-        actionStartIndex: 0000000004000000060000000a000000120000001400000017000000
-        actionHashCodes: afd8b2025ac85204ea32a105f9f19a025ac852044d51cf045e69bb04
+        actionStartIndex: 0000000004000000060000000b000000130000001500000018000000
+        actionHashCodes: afd8b2025ac85204def32500f9f19a025ac852044d51cf045e69bb04
         unityObjectParams:
+        - {fileID: 0}
         - {fileID: 1448844078}
         fsmGameObjectParams:
         - useVariable: 1
@@ -41912,7 +41882,7 @@ MonoBehaviour:
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 140000001c0000001c0000000100000024000000010000001400000013000000110000001100000014000000050000001c0000000f0000000f0000000f000000070000000100000024000000010000001300000013000000010000001f000000170000000f00000001000000
+        paramDataType: 140000001c0000001c000000010000002400000001000000140000001300000011000000110000000500000014000000050000001c0000000f0000000f0000000f000000070000000100000024000000010000001300000013000000010000001f000000170000000f00000001000000
         paramName:
         - gameObject
         - localDirection
@@ -41924,6 +41894,7 @@ MonoBehaviour:
         - parent
         - resetLocalPosition
         - resetLocalRotation
+        - player
         - gameObject
         - player
         - vector
@@ -41941,8 +41912,8 @@ MonoBehaviour:
         - sendEvent
         - delay
         - everyFrame
-        paramDataPos: 000000000000000001000000000000000000000001000000010000000000000000000000010000000200000000000000020000000000000001000000020000000200000006000000010000000700000001000000020000000800000000000000000000000300000009000000
-        paramByteDataSize: 000000000000000000000000010000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000001000000000000000100000000000000000000000100000000000000000000000000000001000000
+        paramDataPos: 00000000000000000100000000000000000000000100000001000000000000000000000001000000000000000200000001000000020000000000000001000000020000000200000006000000010000000700000001000000020000000800000000000000000000000300000009000000
+        paramByteDataSize: 00000000000000000000000001000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000001000000000000000100000000000000000000000100000000000000000000000000000001000000
     - name: Play Throw Animation
       description: "Play Throw animation, and wait \na bit until throwing the picked
         object"
@@ -46654,33 +46625,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 283971114}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1095241253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095241252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f320706efbade44b1f11e2db559bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPower: 1
-  ballSpawn: {fileID: 0}
---- !u!114 &1095241254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095241252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c87656ec25be2d4881027156aba14c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothingTimeFactor: 0.5
 --- !u!1 &1098242472
 GameObject:
   m_ObjectHideFlags: 0

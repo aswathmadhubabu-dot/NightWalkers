@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   welcomeScreenVersion: '1.9.0 '
   playmakerVersion: 
-  showWelcomeScreen: 0
+  showWelcomeScreen: 1
   showUpgradeGuide: 0
-  lastAutoUpdateSignature: 2019.4.26f1__/Users/aswathm/Documents/VGD/NightWalkers/Assets__0.0.0.0
+  lastAutoUpdateSignature: 2019.4.26f1__C:/Users/lucas/Documents/GitHub/nightwalk/Assets__0.0.0.0
   useLegacyNetworking: 0

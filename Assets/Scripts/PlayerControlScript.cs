@@ -233,11 +233,12 @@ public class PlayerControlScript : MonoBehaviour
             // anim.SetTrigger("throw");
             DisableBallKinematics();
             Vector3 forward = transform.forward;
-            forward.y = 3f;
+            //forward.y = 3f;
             // TODO - Add proper force
             // forward.x = 1f;
             // forward.z = 1f;
-            ballRb.AddForce(forward * 7f, ForceMode.Impulse);
+            Debug.Log("FORCE " + forward);
+            ballRb.AddForce(forward * throwBallForce, ForceMode.VelocityChange);
             EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
             hasBall = false;
             ball.transform.parent = null;
