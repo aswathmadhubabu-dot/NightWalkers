@@ -27,7 +27,7 @@ public class ZombieAI : MonoBehaviour
     private bool nearPlayer = false;
     public float minDistance = 3.5f;
     public float damping = 1.0f;
-    public float deathCounter = 25.0f;
+    public float deathCounter = 0.0f;
     private float loseThreshold = 10f;
     private float loseTimer = 0f;
     private Vector3 jitterVector;
@@ -112,8 +112,8 @@ public class ZombieAI : MonoBehaviour
                     animator.SetFloat("AttackType", Random.Range(0, 3));
                 }
                 
-                Debug.Log("TIME:" + Time.realtimeSinceStartup.ToString());
-                Debug.Log("TIME DIFF:" + (Time.realtimeSinceStartup - attackTime).ToString());
+                //Debug.Log("TIME:" + Time.realtimeSinceStartup.ToString());
+                //Debug.Log("TIME DIFF:" + (Time.realtimeSinceStartup - attackTime).ToString());
                 if ((Time.realtimeSinceStartup - attackTime) > 1f)
                 {
                     animator.SetBool("Attack", true);
@@ -215,13 +215,14 @@ public class ZombieAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Ball"))
+        if (other.transform.gameObject.CompareTag("Ball"))
         {
             Debug.Log("Dath Counter:" + deathCounter);
             if (deathCounter > 0)
             {
+
                 deathCounter = deathCounter - 1;
                 Debug.Log(deathCounter);
                 animator.SetBool("BallAttack", true);
@@ -245,9 +246,9 @@ public class ZombieAI : MonoBehaviour
 
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.CompareTag("Ball"))
+        if (other.transform.gameObject.CompareTag("Ball"))
         {
             animator.SetBool("BallAttack", false);
             RandomWanderPoint();
