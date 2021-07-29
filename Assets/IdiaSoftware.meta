@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/IdiaSoftware.meta
 guid: 5c3879e90160d40d092ee0bf5b57bfea
+=======
+guid: 1fd6386af83686c4fbe6f27a78902476
+>>>>>>> throwfixes:Assets/Migration.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
