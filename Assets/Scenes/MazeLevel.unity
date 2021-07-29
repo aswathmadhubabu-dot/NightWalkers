@@ -11688,6 +11688,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263815518}
   m_Mesh: {fileID: 4300000, guid: 3646a0c5f438c6f458c0e176c02676cb, type: 3}
+--- !u!114 &266081457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 864873921105254240, guid: fda756433be987e4f81c52625fb592b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1226109986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &266480685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11814,12 +11826,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 950407237}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &268155869 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8901502187412056659, guid: 2735967ee72199043ae48ee3f986869d,
-    type: 3}
-  m_PrefabInstance: {fileID: 950407237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &268155870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11827,7 +11833,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268155867}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
   m_Name: 
@@ -12321,6 +12327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AI Robot Soldier (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799112080747178362, guid: 7a1dbcb59c3ffc8418c802ca2a672320,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1dbcb59c3ffc8418c802ca2a672320, type: 3}
@@ -18580,6 +18591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AI Robot Soldier (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799112080747178362, guid: 7a1dbcb59c3ffc8418c802ca2a672320,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1dbcb59c3ffc8418c802ca2a672320, type: 3}
@@ -30856,6 +30872,11 @@ PrefabInstance:
       propertyPath: nextLevel
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7037426441376140916, guid: a5250b136db8c3d4aa69e68de3960ddc,
+        type: 3}
+      propertyPath: nextLevelText
+      value: 
+      objectReference: {fileID: 266081457}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5250b136db8c3d4aa69e68de3960ddc, type: 3}
 --- !u!114 &595906487 stripped
@@ -40401,6 +40422,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1448844077}
+    - target: {fileID: 8901502188314073224, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901502188314073225, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 8901502188314073225, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: healthText
@@ -46775,12 +46806,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1100393502}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1101096548 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8901502186527141544, guid: 2735967ee72199043ae48ee3f986869d,
-    type: 3}
-  m_PrefabInstance: {fileID: 950407237}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103808919
 GameObject:
   m_ObjectHideFlags: 0
@@ -48381,6 +48406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AI Robot Soldier (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799112080747178362, guid: 7a1dbcb59c3ffc8418c802ca2a672320,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1dbcb59c3ffc8418c802ca2a672320, type: 3}
@@ -54797,7 +54827,6 @@ GameObject:
   - component: {fileID: 1405210651}
   - component: {fileID: 1405210654}
   - component: {fileID: 1405210656}
-  - component: {fileID: 1405210655}
   - component: {fileID: 1405210657}
   m_Layer: 0
   m_Name: Main Camera
@@ -54904,24 +54933,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1405210655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405210650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f7da195324f1914eb1fae4c75c3fa7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionSmoothTime: 0.5
-  rotationSmoothTime: 0.25
-  positionMaxSpeed: 1000
-  rotationMaxSpeed: 1000
-  desiredPose: {fileID: 268155869}
-  target: {fileID: 1101096548}
 --- !u!114 &1405210656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54929,7 +54940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405210650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
