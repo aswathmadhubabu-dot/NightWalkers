@@ -17143,6 +17143,11 @@ PrefabInstance:
       propertyPath: m_WarningMessage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8348543680075005131, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 283954170}
     - target: {fileID: 8901502186257669845, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: m_Size.y
