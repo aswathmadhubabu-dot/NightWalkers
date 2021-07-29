@@ -2894,10 +2894,10 @@ GameObject:
   - component: {fileID: 8901502188314073247}
   - component: {fileID: 8901502188314073220}
   - component: {fileID: 8901502188314073221}
-  - component: {fileID: 8901502188314073222}
   - component: {fileID: 8901502188314073223}
   - component: {fileID: 8901502188314073224}
   - component: {fileID: 8901502188314073225}
+  - component: {fileID: 8172600084311606355}
   m_Layer: 10
   m_Name: AstraHumanoid
   m_TagString: Player
@@ -3171,21 +3171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1100d6cf684638a4d9cc44fe3dc304df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8901502188314073222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8595424188188888110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a84cc6490916cd54b89710355ef168c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resetTimer: 3.5
-  ball: {fileID: 5148072549782342186, guid: db55214f4f9bdc5449e8ffd559b617b6, type: 3}
-  player: {fileID: 8595424188188888110}
 --- !u!114 &8901502188314073223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,6 +3215,20 @@ MonoBehaviour:
   foregroundImage: {fileID: 0}
   healthText: {fileID: 0}
   maxHealth: 100
+--- !u!114 &8172600084311606355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8595424188188888110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f320706efbade44b1f11e2db559bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballSpawn: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
+    type: 3}
 --- !u!1 &8785855057879747507
 GameObject:
   m_ObjectHideFlags: 0
