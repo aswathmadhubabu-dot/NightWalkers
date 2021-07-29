@@ -2898,6 +2898,7 @@ GameObject:
   - component: {fileID: 8901502188314073224}
   - component: {fileID: 8901502188314073225}
   - component: {fileID: 8172600084311606355}
+  - component: {fileID: 8348543680075005131}
   m_Layer: 10
   m_Name: AstraHumanoid
   m_TagString: Player
@@ -3229,6 +3230,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballSpawn: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
     type: 3}
+--- !u!114 &8348543680075005131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8595424188188888110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c2da0b7def9b54cad5baf4037f53a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 0}
+  maxItarations: 30
 --- !u!1 &8785855057879747507
 GameObject:
   m_ObjectHideFlags: 0

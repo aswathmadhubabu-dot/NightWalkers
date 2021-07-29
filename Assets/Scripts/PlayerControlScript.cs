@@ -81,8 +81,6 @@ public class PlayerControlScript : MonoBehaviour
         {
             MovePlayer();
 
-            Debug.Log(hasBall);
-
             if (hasBall)
             {
                 // ball.transform.position = ballHolder.transform.position;
