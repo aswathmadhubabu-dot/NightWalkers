@@ -8618,12 +8618,6 @@ PrefabInstance:
       propertyPath: ballSpawn
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5148072549778232526, guid: db55214f4f9bdc5449e8ffd559b617b6,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: e7cee9c3f0598ef469a628cfbf6c2fb6,
-        type: 2}
     - target: {fileID: 5148072549781865192, guid: db55214f4f9bdc5449e8ffd559b617b6,
         type: 3}
       propertyPath: m_RootOrder
