@@ -18,6 +18,8 @@ public class SimpleCollectibleScript : MonoBehaviour {
 	public GameObject collectEffect;
 
 	public GameObject timerUI;
+	public enum Levels {Level1, Level2, Level3};
+	public Levels Level;
 
 	// Use this for initialization
 	void Start () {
@@ -66,9 +68,21 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 			//Add in code here;
 			Debug.Log("Do Time Command");
-			GetComponent<Timer>().SetDuration(180);
-			//GetComponent<Timer>().UpdateUI(180);
-
+			int reset;
+			if (Level == Levels.Level1)
+            {
+				reset = 180;
+            } else
+            {
+				if (Level == Levels.Level2)
+                {
+					reset = 240;
+                } else
+                {
+					reset = 300;
+                }
+            }
+			timerUI.gameObject.GetComponent<Timer>().SetDuration(reset);
 		}
 		if (CollectibleType == CollectibleTypes.Destroy) {
 

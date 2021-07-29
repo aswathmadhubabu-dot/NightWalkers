@@ -102,11 +102,19 @@ public class Timer : MonoBehaviour
             onTimerBeginAction.Invoke();
 
         StopAllCoroutines();
-        StartCoroutine(UpdateTimer());
+        int test = -1;
+        StartCoroutine(UpdateTimer(test));
     }
 
-    private IEnumerator UpdateTimer()
+    public IEnumerator UpdateTimer(int num)
     {
+        if (num == -1)
+        {
+
+        } else
+        {
+            remainingDuration = num;
+        }
         while (remainingDuration > 0)
         {
             if (!IsPaused)
