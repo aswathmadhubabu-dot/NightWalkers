@@ -55,6 +55,16 @@ public class HealthController : MonoBehaviour
 
     }
 
+    public void RestoreHealth()
+    {
+        currentHealth = maxHealth;
+        float currentHealthPct = (float)currentHealth / (float)maxHealth;
+        blinkTimer = blinkDuration;
+        OnHealthPctChanged(currentHealthPct);
+
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {

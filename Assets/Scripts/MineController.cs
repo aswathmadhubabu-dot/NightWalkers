@@ -20,6 +20,8 @@ public class MineController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("EXPLODED!!!!!");
+        Debug.Log(other.gameObject.tag);
         //Hack to prevent it from exploding TWICE
         if (!enabled)
         {

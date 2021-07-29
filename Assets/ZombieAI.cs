@@ -35,6 +35,7 @@ public class ZombieAI : MonoBehaviour
 
     void Start()
     {
+
         agent = GetComponent<NavMeshAgent>();
         render = GetComponent<Renderer>();
         vr = playerTransform.GetComponent<VelocityReporter>();
@@ -117,6 +118,8 @@ public class ZombieAI : MonoBehaviour
                 {
                     animator.SetBool("Attack", true);
                     EventManager.TriggerEvent<ZombieAttackEvent, Vector3>(transform.position);
+                    Debug.Log("Hit Player");
+                    playerTransform.GetComponent<HealthController>().TakeDamage(5, this.gameObject);
                     attackTime = Time.realtimeSinceStartup;
                 }                
 

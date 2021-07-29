@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
 
     private int remainingDuration;
 
+
     // Events --
     private UnityAction onTimerBeginAction;
     private UnityAction<int> onTimerChangeAction;
@@ -28,7 +29,7 @@ public class Timer : MonoBehaviour
         ResetTimer();
     }
 
-    private void ResetTimer()
+    public void ResetTimer()
     {
         uiText.showText("00:00");
         uiFillImage.fillAmount = 0f;
@@ -123,7 +124,7 @@ public class Timer : MonoBehaviour
         End();
     }
 
-    private void UpdateUI(int seconds)
+    public void UpdateUI(int seconds)
     {
         uiText.showText(string.Format("{0:D2}:{1:D2}", seconds / 60, seconds % 60));
         uiFillImage.fillAmount = Mathf.InverseLerp(0, Duration, seconds);
