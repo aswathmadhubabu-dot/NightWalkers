@@ -8,7 +8,7 @@ public class PlayerControlScript : MonoBehaviour
 {
     public float speed = 3.0f;
     public float followCameraDistance = 3.5f;
-    public float aimCameraDistance = 1.1f;
+    public float aimCameraDistance = 1.8f;
     public float throwBallForce = 7f;
     public float slopeForce = 20f;
     public float slopeForceRayLenth = 1.5f;
@@ -80,6 +80,8 @@ public class PlayerControlScript : MonoBehaviour
         if (enablePlayer)
         {
             MovePlayer();
+
+            Debug.Log(hasBall);
 
             if (hasBall)
             {
@@ -162,7 +164,7 @@ public class PlayerControlScript : MonoBehaviour
     {
         if (hasBall && isAiming)
         {
-            //ballProjectionPredictor.predictBallPath(throwBallForce);
+            ballProjectionPredictor.predictBallPath(throwBallForce);
         }
     }
 
@@ -250,12 +252,12 @@ public class PlayerControlScript : MonoBehaviour
             //forward.x += 0.39f;
             //Debug.Log("THROF " + forward);
             //Debug.DrawRay(transform.position + new Vector3(0f, 9f, 0f), forward, Color.blue, 30.0f);
-            
+
             //ballRb.angularVelocity = Vector3.zero;
             //ballRb.velocity = forward * throwBallForce;
             //ballRb.AddForce(throwForward * 0, ForceMode.VelocityChange);
 
-            //hasBall = false;
+            hasBall = false;
             //ball.transform.parent = null;
             StartCoroutine(ExecuteAfterTime(0.5f, () => { 
                     
@@ -290,17 +292,15 @@ public class PlayerControlScript : MonoBehaviour
         {
             isAiming = true;
             thirdPersonFollowCamera.CameraDistance = aimCameraDistance;
-            thirdPersonFollowCamera.ShoulderOffset.x = 1.5f;
-
-            thirdPersonFollowCamera.ShoulderOffset.z = -2.0f;
-            thirdPersonFollowCamera.ShoulderOffset.y = 1.0f;
+            thirdPersonFollowCamera.ShoulderOffset.x = 2f;
+            thirdPersonFollowCamera.ShoulderOffset.z = -1f;
         }
         else
         {
             isAiming = false;
             thirdPersonFollowCamera.CameraDistance = followCameraDistance;
             thirdPersonFollowCamera.ShoulderOffset.x = 0;
-            //ballProjectionPredictor.reset();
+            ballProjectionPredictor.reset();
         }
     }
 

@@ -38,9 +38,12 @@ namespace HutongGames.PlayMaker.Actions
 			if (go != null)
 			{
 				go.transform.parent = parent.Value == null ? null : parent.Value.transform;
-				// player.hasBall = true;
+                if (player != null)
+                {
+                    player.hasBall = true;
+                }
 
-				if (resetLocalPosition.Value)
+                if (resetLocalPosition.Value)
 				{
 					go.transform.localPosition = Vector3.zero;
 				}

@@ -60,9 +60,9 @@ public class BallPredictionScript : MonoBehaviour
             predictionBall.transform.position = ball.transform.position;
             lastBallPosition = ball.transform.position;
 
-            Vector3 forward = this.transform.forward;
-            forward.y = 0.1f;
-            predictionBall.GetComponent<Rigidbody>().AddForce(forward * throwBallForce, ForceMode.Impulse);
+            Vector3 forward = transform.forward;
+            predictionBall.GetComponent<Rigidbody>().AddForce(forward * throwBallForce, ForceMode.VelocityChange);
+            predictionBall.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 10f, 10f);
 
             liner.positionCount = 0;
             liner.positionCount = maxItarations;

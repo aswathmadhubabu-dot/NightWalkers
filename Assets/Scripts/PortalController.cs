@@ -10,31 +10,34 @@ public class PortalController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(GameObject.Find("TimerUI"));
-        playerControlScript.EnablePlayer(false);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        //TODO: Stop actual game time
-        //TODO: Play dance animation
-        Time.timeScale = 0f;
-        switch (nextLevel)
+        if (other.CompareTag("Player"))
         {
-            case 1:
-                GameObject dm = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
-                dm.SetActive(true);
-                break;
-            case 2:
-                GameObject dm2 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
-                dm2.SetActive(true);
-                break;
-            case 3:
-                GameObject dm3 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
-                dm3.SetActive(true);
-                break;
-            default:
-                GameObject gameObject = GameObject.Find("YouWonMenuContainer").transform.GetChild(0).gameObject;
-                gameObject.SetActive(true);
-                break;
+            Destroy(GameObject.Find("TimerUI"));
+            playerControlScript.EnablePlayer(false);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            //TODO: Stop actual game time
+            //TODO: Play dance animation
+            Time.timeScale = 0f;
+            switch (nextLevel)
+            {
+                case 1:
+                    GameObject dm = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
+                    dm.SetActive(true);
+                    break;
+                case 2:
+                    GameObject dm2 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
+                    dm2.SetActive(true);
+                    break;
+                case 3:
+                    GameObject dm3 = GameObject.Find("NextLevelMenuContainer").transform.GetChild(0).gameObject;
+                    dm3.SetActive(true);
+                    break;
+                default:
+                    GameObject gameObject = GameObject.Find("YouWonMenuContainer").transform.GetChild(0).gameObject;
+                    gameObject.SetActive(true);
+                    break;
+            }
         }
     }
 

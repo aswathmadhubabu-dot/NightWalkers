@@ -50,6 +50,9 @@ public class CameraAimScript : MonoBehaviour
                 cameraLookAt.Rotate(new Vector3(0.0f,  deltaX * 0.05f, 0.0f));
                 transform.Rotate(new Vector3(0.0f,  deltaX * 0.08f, 0.0f));
             }
+        } else
+        {
+            cameraLookAt.rotation = transform.rotation;
         }
         mousePrevX = mouseX;
         mousePrevY = mouseY;
