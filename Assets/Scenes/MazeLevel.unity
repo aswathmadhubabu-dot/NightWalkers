@@ -40412,6 +40412,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000040233135
       objectReference: {fileID: 0}
+    - target: {fileID: 8901502188314073218, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8901502188314073222, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: ball

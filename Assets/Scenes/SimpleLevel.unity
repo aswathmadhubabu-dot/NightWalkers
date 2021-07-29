@@ -11913,6 +11913,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000020302832
       objectReference: {fileID: 0}
+    - target: {fileID: 8901502188314073218, guid: 2735967ee72199043ae48ee3f986869d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8901502188314073220, guid: 2735967ee72199043ae48ee3f986869d,
         type: 3}
       propertyPath: xAxis.m_MaxSpeed
@@ -11943,8 +11948,7 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 739957893}
-    m_RemovedComponents:
-    - {fileID: 8901502188314073218, guid: 2735967ee72199043ae48ee3f986869d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2735967ee72199043ae48ee3f986869d, type: 3}
 --- !u!114 &1028278507 stripped
 MonoBehaviour:
