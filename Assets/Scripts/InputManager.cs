@@ -71,6 +71,9 @@ public class InputManager : MonoBehaviour
     
     public bool PickUpBallTriggeredThisFrame()
     {
+        if(inputActions.Player.PickUpBall.triggered){
+            Debug.Log("PICKING BALL");
+        }
         return inputActions.Player.PickUpBall.triggered;
     }
     

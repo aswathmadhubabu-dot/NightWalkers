@@ -36,7 +36,7 @@ public class PlayerControlScript : MonoBehaviour
     private Rigidbody rb, ballRb;
     private CharacterController controller;
     private Vector3 playerVelocity;
-
+    private Vector3 throwForward;
     [HideInInspector] public bool hasBall = false;
     private bool slowTime = false;
     [HideInInspector] public bool isAiming = false;
@@ -93,6 +93,8 @@ public class PlayerControlScript : MonoBehaviour
                 if (hasBall)
                 {
                     anim.SetBool("carry", false);
+                    throwForward = transform.forward;
+                    Debug.Log("ANIMATORWORK");
                     anim.SetTrigger("throw");
                 }
             }
@@ -181,6 +183,7 @@ public class PlayerControlScript : MonoBehaviour
     }
 
     private void DisableBallKinematics() => ballRb.isKinematic = false;
+    private void EnableBallKinematics() => ballRb.isKinematic = true;
 
     void pickUpBall()
     {
@@ -231,19 +234,41 @@ public class PlayerControlScript : MonoBehaviour
         if (hasBall)
         {
             // anim.SetTrigger("throw");
-            DisableBallKinematics();
+            //DisableBallKinematics();
+            //EnableBallKinematics();
+            
             Vector3 forward = transform.forward;
+            ballRb.AddForce(forward * throwBallForce, ForceMode.VelocityChange);
+            ballRb.angularVelocity = new Vector3(0, 10f, 10f);
+            EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
+
             //forward.y = 3f;
             // TODO - Add proper force
             // forward.x = 1f;
             // forward.z = 1f;
-            Debug.Log("FORCE " + forward);
-            ballRb.AddForce(forward * throwBallForce, ForceMode.VelocityChange);
-            EventManager.TriggerEvent<ThrowBallEvent, Vector3>(ball.transform.position);
-            hasBall = false;
-            ball.transform.parent = null;
+            //forward.y = -54.00f;
+            //forward.x += 0.39f;
+            //Debug.Log("THROF " + forward);
+            //Debug.DrawRay(transform.position + new Vector3(0f, 9f, 0f), forward, Color.blue, 30.0f);
+            
+            //ballRb.angularVelocity = Vector3.zero;
+            //ballRb.velocity = forward * throwBallForce;
+            //ballRb.AddForce(throwForward * 0, ForceMode.VelocityChange);
 
-            StartCoroutine(ExecuteAfterTime(0.3f, () => { ball.GetComponent<Collider>().isTrigger = false; }));
+            //hasBall = false;
+            //ball.transform.parent = null;
+            StartCoroutine(ExecuteAfterTime(0.5f, () => { 
+                    
+
+                //ball.GetComponent<Collider>().isTrigger = false;
+                //DisableBallKinematics();
+
+                //Vector3 forward2 = transform.forward;
+                //forward2.y = -1.00f;
+                //ballRb.angularVelocity = Vector3.zero;
+                //ballRb.velocity = forward * throwBallForce;
+                //= forward2 ;
+                 }));
         }
     }
 
@@ -266,6 +291,9 @@ public class PlayerControlScript : MonoBehaviour
             isAiming = true;
             thirdPersonFollowCamera.CameraDistance = aimCameraDistance;
             thirdPersonFollowCamera.ShoulderOffset.x = 1.5f;
+
+            thirdPersonFollowCamera.ShoulderOffset.z = -2.0f;
+            thirdPersonFollowCamera.ShoulderOffset.y = 1.0f;
         }
         else
         {

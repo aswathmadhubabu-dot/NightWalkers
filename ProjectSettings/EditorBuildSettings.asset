@@ -11,16 +11,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Minigame.unity
     guid: 369c19839ddab1c4886c54325bbdc094
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameMenu.unity
     guid: f462ff44785fc420b8ecdbdd95e6d47a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MazeLevel.unity
     guid: 10605e927669f435a8070d0c1cb36dbb
   - enabled: 1
     path: Assets/Scenes/SimpleLevel.unity
     guid: c751d43f92a7ee141bf76c975f0ef97e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MediumLevel.unity
     guid: f678d2b9982f7654fa1000ce36c3a7af
   m_configObjects:
